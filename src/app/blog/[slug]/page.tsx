@@ -16,7 +16,7 @@ export default async function BlogPost({ params }: BlogPostPageProps) {
   let post
   try {
     post = await getPostBySlug(params.slug)
-  } catch (error) {
+  } catch {
     notFound()
   }
 

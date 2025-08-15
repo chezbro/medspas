@@ -50,7 +50,7 @@ export default function Contact() {
             Book Your Free Lead Audit
           </h1>
           <p className="mt-6 text-lg leading-8 text-gray-600">
-            Fill out the form below and we'll analyze your current marketing strategy and show you exactly how we can help you get 20+ qualified leads per month.
+            Fill out the form below and we&apos;ll analyze your current marketing strategy and show you exactly how we can help you get 20+ qualified leads per month.
           </p>
         </div>
 
@@ -184,7 +184,7 @@ export default function Contact() {
             {isSuccess ? (
               <div className="rounded-md bg-green-50 p-4">
                 <p className="text-sm text-green-700">
-                  Thanks for your interest! We'll be in touch within 24 hours to schedule your free lead audit.
+                  Thanks for your interest! We&apos;ll be in touch within 24 hours to schedule your free lead audit.
                 </p>
               </div>
             ) : (

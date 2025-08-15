@@ -1,6 +1,5 @@
 'use client'
 
-import Image from 'next/image'
 import { motion } from 'framer-motion/dom'
 import Container from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
@@ -66,7 +65,7 @@ export default function Home() {
             >
               20+ New Med Spa Leads in 30 Days
               <br />
-              <span className="text-primary-600">— or You Don't Pay</span>
+              <span className="text-primary-600">— or You Don&apos;t Pay</span>
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -76,7 +75,7 @@ export default function Home() {
             >
               AI-powered Facebook & Instagram ads combined with Google Maps optimization
               <br />
-              to consistently fill your med spa's calendar with qualified leads.
+              to consistently fill your med spa&apos;s calendar with qualified leads.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -160,7 +159,7 @@ export default function Home() {
             Our Performance Guarantee
           </h2>
           <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-300">
-            If we don't deliver at least 20 qualified leads in your first 30 days, you don't pay a dime. No questions asked.
+            If we don&apos;t deliver at least 20 qualified leads in your first 30 days, you don&apos;t pay a dime. No questions asked.
           </p>
           <div className="mt-10 flex items-center justify-center gap-x-6">
             <Button href="/contact" variant="secondary" size="lg">
