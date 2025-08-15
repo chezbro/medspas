@@ -4,6 +4,7 @@ import Container from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
 import { getPostBySlug } from '@/lib/blog'
 
+export const dynamic = 'force-dynamic'
 export const revalidate = 3600 // Revalidate every hour
 
 export default async function BlogPost({
@@ -14,6 +15,9 @@ export default async function BlogPost({
   let post
   try {
     post = await getPostBySlug(params.slug)
+    if (!post) {
+      notFound()
+    }
   } catch (error) {
     console.error('Error fetching blog post:', error)
     notFound()

@@ -5,6 +5,7 @@ import Button from '@/components/ui/Button'
 import { getAllPosts } from '@/lib/blog'
 import type { BlogPost } from '@/lib/supabase'
 
+export const dynamic = 'force-dynamic'
 export const revalidate = 3600 // Revalidate every hour
 
 export default async function Blog() {
@@ -12,7 +13,7 @@ export default async function Blog() {
   try {
     posts = await getAllPosts()
   } catch (error) {
-    // If table doesn't exist, just show empty state
+    // If table doesn't exist or there's an error, just show empty state
     console.error('Error fetching blog posts:', error)
   }
 
