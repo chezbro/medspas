@@ -1,5 +1,7 @@
+'use client'
+
 import Image from 'next/image'
-import { motion } from 'framer-motion'
+import { motion } from 'framer-motion/dom'
 import Container from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
 

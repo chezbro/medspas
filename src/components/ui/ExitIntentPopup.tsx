@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { Dialog } from '@headlessui/react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion/dom'
 import Button from './Button'
 
 export default function ExitIntentPopup() {
