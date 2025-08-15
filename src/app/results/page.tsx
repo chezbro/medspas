@@ -63,7 +63,7 @@ export default function Results() {
             Real Results for Real Med Spas
           </h1>
           <p className="mt-6 text-lg leading-8 text-gray-600">
-            See how we've helped med spas across the country generate more leads and grow their business with our AI-powered marketing solutions.
+            See how we&apos;ve helped med spas across the country generate more leads and grow their business with our AI-powered marketing solutions.
           </p>
         </div>
 
