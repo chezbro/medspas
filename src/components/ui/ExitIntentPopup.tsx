@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { Dialog } from '@headlessui/react'
-import { motion, AnimatePresence } from 'framer-motion/dom'
+import { motion, AnimatePresence } from 'framer-motion'
 import Button from './Button'
 
 export default function ExitIntentPopup() {
@@ -74,7 +74,7 @@ export default function ExitIntentPopup() {
                     Download our free guide:
                   </p>
                   <p className="mt-1 text-xl font-semibold text-gray-900">
-                    "5 AI-Powered Strategies to Double Your Med Spa Leads"
+                    &quot;5 AI-Powered Strategies to Double Your Med Spa Leads&quot;
                   </p>
                 </div>
 

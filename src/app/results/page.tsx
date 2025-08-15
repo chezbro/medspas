@@ -11,7 +11,7 @@ const caseStudies = [
       roi: '450% return on ad spend',
     },
     testimonial: {
-      content: "The AI-powered ads have transformed our business. We're consistently booked weeks in advance now.",
+      content: "&quot;The AI-powered ads have transformed our business. We&apos;re consistently booked weeks in advance now.&quot;",
       author: 'Dr. Sarah Chen',
       role: 'Owner',
     },
@@ -111,7 +111,7 @@ export default function Results() {
                   {/* Testimonial */}
                   <figure className="mt-10">
                     <blockquote className="text-lg font-semibold leading-8 text-gray-900">
-                      <p>"{study.testimonial.content}"</p>
+                      <p>&quot;{study.testimonial.content}&quot;</p>
                     </blockquote>
                     <figcaption className="mt-6 flex items-center gap-x-4">
                       <div className="h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center">

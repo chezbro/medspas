@@ -12,7 +12,7 @@ export default function Privacy() {
 
           <h2>1. Introduction</h2>
           <p>
-            Med Spa Agency ("we," "our," or "us") respects your privacy and is committed to protecting your personal data. This privacy policy explains how we collect, use, and protect your information when you use our website and services.
+            Med Spa Agency (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) respects your privacy and is committed to protecting your personal data. This privacy policy explains how we collect, use, and protect your information when you use our website and services.
           </p>
 
           <h2>2. Information We Collect</h2>

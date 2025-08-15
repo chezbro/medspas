@@ -28,7 +28,7 @@ export default function Terms() {
 
           <h2>3. Performance Guarantee</h2>
           <p>
-            Our "20+ Leads or You Don't Pay" guarantee is subject to the following conditions:
+            Our &quot;20+ Leads or You Don&apos;t Pay&quot; guarantee is subject to the following conditions:
           </p>
           <ul>
             <li>Minimum 3-month commitment</li>

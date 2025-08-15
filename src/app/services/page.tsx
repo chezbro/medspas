@@ -103,7 +103,7 @@ export default function Services() {
                 Get everything you need to generate 20+ qualified leads per month for your med spa.
               </p>
               <div className="mt-10 flex items-center gap-x-4">
-                <h4 className="flex-none text-sm font-semibold leading-6 text-primary-600">What's included</h4>
+                <h4 className="flex-none text-sm font-semibold leading-6 text-primary-600">What&apos;s included</h4>
                 <div className="h-px flex-auto bg-gray-100"></div>
               </div>
               <ul role="list" className="mt-8 grid grid-cols-1 gap-4 text-sm leading-6 text-gray-600 sm:grid-cols-2 sm:gap-6">
@@ -140,7 +140,7 @@ export default function Services() {
           <div className="mt-24 rounded-3xl bg-white p-8 shadow-lg sm:p-10">
             <h3 className="text-2xl font-bold tracking-tight text-gray-900">Our Performance Guarantee</h3>
             <p className="mt-6 text-base leading-7 text-gray-600">
-              We're so confident in our ability to deliver results that we offer a performance guarantee. If we don't deliver at least 20 qualified leads in your first 30 days, you don't pay a dime. No questions asked.
+              We&apos;re so confident in our ability to deliver results that we offer a performance guarantee. If we don&apos;t deliver at least 20 qualified leads in your first 30 days, you don&apos;t pay a dime. No questions asked.
             </p>
             <div className="mt-8">
               <Button href="/contact" variant="outline" size="lg">

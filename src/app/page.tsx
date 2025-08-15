@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion/dom'
+import { motion } from 'framer-motion'
 import Container from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
 

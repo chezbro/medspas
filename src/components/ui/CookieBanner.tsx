@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion/dom'
+import { motion, AnimatePresence } from 'framer-motion'
 import Button from './Button'
 
 export default function CookieBanner() {
@@ -33,7 +33,7 @@ export default function CookieBanner() {
             <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
               <div className="flex-1">
                 <p className="text-sm text-gray-900">
-                  We use cookies to enhance your browsing experience, serve personalized ads or content, and analyze our traffic. By clicking "Accept", you consent to our use of cookies.
+                  We use cookies to enhance your browsing experience, serve personalized ads or content, and analyze our traffic. By clicking &quot;Accept&quot;, you consent to our use of cookies.
                 </p>
               </div>
               <div className="flex shrink-0 items-center gap-4">
