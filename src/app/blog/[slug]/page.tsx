@@ -6,17 +6,16 @@ import { getPostBySlug } from '@/lib/blog'
 
 export const revalidate = 3600 // Revalidate every hour
 
-interface BlogPostPageProps {
-  params: {
-    slug: string
-  }
-}
-
-export default async function BlogPost({ params }: BlogPostPageProps) {
+export default async function BlogPost({
+  params,
+}: {
+  params: { slug: string };
+}) {
   let post
   try {
     post = await getPostBySlug(params.slug)
-  } catch {
+  } catch (error) {
+    console.error('Error fetching blog post:', error)
     notFound()
   }
 
