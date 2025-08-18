@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Container from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
+import VideoGrid from '@/components/ui/VideoGrid'
 
 const testimonials = [
   {
@@ -148,6 +149,27 @@ export default function Home() {
           </div>
         </Container>
       </div>
+
+      {/* Video Showcase Section */}
+      <VideoGrid
+        videos={[
+          {
+            src: 'lips.mp4',
+            title: 'Advanced Lip Enhancement',
+            description: 'Transform your lips with our premium dermal fillers, expertly administered for natural-looking volume and definition.'
+          },
+          {
+            src: 'botox.mp4',
+            title: 'Premium Botox Treatment',
+            description: 'Experience the gold standard in wrinkle reduction with our precisely targeted Botox treatments.'
+          },
+          {
+            src: 'laser.mp4',
+            title: 'Laser Skin Rejuvenation',
+            description: 'Achieve radiant, youthful skin with our state-of-the-art laser treatments for various skin concerns.'
+          }
+        ]}
+      />
 
       {/* Features Section */}
       <div className="relative bg-gradient-to-b from-white via-primary-50/30 to-white">
