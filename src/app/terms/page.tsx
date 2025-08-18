@@ -17,7 +17,7 @@ export default function Terms() {
 
           <h2>2. Description of Services</h2>
           <p>
-            Med Spa Agency provides digital marketing services including but not limited to:
+          Ads for MedSpas provides digital marketing services including but not limited to:
           </p>
           <ul>
             <li>AI-powered Facebook and Instagram advertising</li>
@@ -50,7 +50,7 @@ export default function Terms() {
 
           <h2>6. Intellectual Property</h2>
           <p>
-            All content, trademarks, and intellectual property on our website belong to Med Spa Agency. You may not use our intellectual property without express written permission.
+            All content, trademarks, and intellectual property on our website belong to Ads for MedSpas. You may not use our intellectual property without express written permission.
           </p>
 
           <h2>7. Limitation of Liability</h2>
@@ -60,7 +60,7 @@ export default function Terms() {
 
           <h2>8. Indemnification</h2>
           <p>
-            You agree to indemnify and hold harmless Med Spa Agency from any claims arising from your use of our services or violation of these terms.
+            You agree to indemnify and hold harmless Ads for MedSpas from any claims arising from your use of our services or violation of these terms.
           </p>
 
           <h2>9. Changes to Terms</h2>

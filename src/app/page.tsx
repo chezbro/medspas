@@ -171,125 +171,6 @@ export default function Home() {
         ]}
       />
 
-      {/* Features Section */}
-      <div className="relative bg-gradient-to-b from-white via-primary-50/30 to-white">
-        <Container className="py-24 sm:py-32">
-          <div className="mx-auto max-w-2xl lg:text-center">
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="text-base font-semibold leading-7 text-primary-600"
-            >
-              Full-Service Marketing
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
-            >
-              Everything You Need to Scale Your Med Spa
-            </motion.p>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="mt-6 text-lg leading-8 text-gray-600"
-            >
-              Our comprehensive marketing solution handles everything from ad creation to lead nurturing, so you can focus on what you do best — running your med spa.
-            </motion.p>
-          </div>
-          <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
-            <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
-              {features.map((feature, index) => (
-                <motion.div
-                  key={feature.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.1 * (index + 3) }}
-                  className="relative group"
-                >
-                  <div className="absolute -inset-y-2 -inset-x-4 z-0 scale-95 bg-white/50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 sm:-inset-x-6 sm:rounded-2xl" />
-                  <div className="relative z-10">
-                    <dt className="flex items-center gap-x-3">
-                      <div className="flex h-14 w-14 items-center justify-center rounded-lg bg-primary-600 group-hover:bg-primary-700 transition-colors">
-                        <span className="text-2xl text-white">{feature.icon}</span>
-                      </div>
-                      <p className="text-lg font-semibold leading-7 text-gray-900">{feature.name}</p>
-                    </dt>
-                    <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-600">
-                      <p className="flex-auto">{feature.description}</p>
-                    </dd>
-                  </div>
-                </motion.div>
-              ))}
-            </dl>
-          </div>
-        </Container>
-      </div>
-
-      {/* Testimonials Section */}
-      <div className="relative isolate bg-white py-24 sm:py-32">
-        <div className="absolute inset-x-0 top-1/2 -z-10 transform-gpu overflow-hidden opacity-30 blur-3xl" aria-hidden="true">
-          <div
-            className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-primary-200 to-primary-400 opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
-            style={{
-              clipPath:
-                'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
-            }}
-          />
-        </div>
-        <Container>
-          <div className="mx-auto max-w-2xl text-center">
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="text-base font-semibold leading-7 text-primary-600"
-            >
-              Client Success Stories
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
-            >
-              Trusted by Leading Med Spas
-            </motion.p>
-          </div>
-          <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-            {testimonials.map((testimonial, index) => (
-              <motion.div
-                key={testimonial.author}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 * (index + 2) }}
-                className="flex flex-col justify-between bg-white shadow-lg ring-1 ring-gray-200 rounded-2xl p-8 xl:p-10"
-              >
-                <div className="flex items-center gap-x-4 mb-6">
-                  <Image
-                    src={testimonial.image}
-                    alt={testimonial.author}
-                    width={48}
-                    height={48}
-                    className="rounded-full"
-                  />
-                  <div>
-                    <h3 className="text-lg font-semibold leading-7 tracking-tight text-gray-900">{testimonial.author}</h3>
-                    <p className="text-sm leading-6 text-gray-600">{testimonial.role}</p>
-                  </div>
-                </div>
-                <blockquote className="text-lg leading-7 text-gray-900">
-                  "{testimonial.quote}"
-                </blockquote>
-              </motion.div>
-            ))}
-          </div>
-        </Container>
-      </div>
-
       {/* Process Section */}
       <div className="relative isolate overflow-hidden bg-primary-900 py-24 sm:py-32">
         <div className="absolute -top-80 left-[max(6rem,33%)] -z-10 transform-gpu blur-3xl sm:left-1/2 md:top-20 lg:ml-20 xl:top-3 xl:ml-56" aria-hidden="true">
@@ -351,6 +232,59 @@ export default function Home() {
           </div>
         </Container>
       </div>
+
+      {/* Testimonials Section */}
+      <div className="relative isolate bg-white py-24 sm:py-32">
+        <div className="absolute inset-x-0 top-1/2 -z-10 transform-gpu overflow-hidden opacity-30 blur-3xl" aria-hidden="true">
+          <div
+            className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-primary-200 to-primary-400 opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+            style={{
+              clipPath:
+                'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
+            }}
+          />
+        </div>
+        <Container>
+          <div className="mx-auto max-w-2xl text-center">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="text-base font-semibold leading-7 text-primary-600"
+            >
+              Client Success Stories
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
+            >
+              Trusted by Leading Med Spas
+            </motion.p>
+          </div>
+          <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+            {testimonials.map((testimonial, index) => (
+              <motion.div
+                key={testimonial.author}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 * (index + 2) }}
+                className="flex flex-col justify-between bg-white shadow-lg ring-1 ring-gray-200 rounded-2xl p-8 xl:p-10"
+              >
+                <div className="mb-6">
+                  <h3 className="text-lg font-semibold leading-7 tracking-tight text-gray-900">{testimonial.author}</h3>
+                  <p className="text-sm leading-6 text-gray-600">{testimonial.role}</p>
+                </div>
+                <blockquote className="text-lg leading-7 text-gray-900">
+                  "{testimonial.quote}"
+                </blockquote>
+              </motion.div>
+            ))}
+          </div>
+        </Container>
+      </div>
+
 
       {/* Guarantee Section */}
       <Container className="py-24 sm:py-32">

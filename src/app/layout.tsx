@@ -6,13 +6,13 @@ import Layout from '@/components/layout/Layout'
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 
 export const metadata: Metadata = {
-  title: 'Med Spa Agency - AI-Powered Marketing Solutions',
+  title: 'Ads for MedSpas - AI-Powered Marketing Solutions',
   description: 'Generate 20+ qualified leads per month for your Med Spa with our AI-powered marketing solutions. Facebook/Instagram ads, Google Maps optimization, and more.',
   openGraph: {
-    title: 'Med Spa Agency - AI-Powered Marketing Solutions',
+    title: 'Ads for MedSpas - AI-Powered Marketing Solutions',
     description: 'Generate 20+ qualified leads per month for your Med Spa with our AI-powered marketing solutions.',
     url: 'https://medspapro.agency',
-    siteName: 'Med Spa Agency',
+    siteName: 'Ads for MedSpas',
     locale: 'en_US',
     type: 'website',
   },
