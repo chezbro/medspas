@@ -7,7 +7,7 @@ insert into public.blog_posts (
   published
 ) values (
   'Turn Inquiries into In-Clinic Results: Med Spa Marketing That Works',
-  'turn-inquiries-into-in-clinic-results-med-spa-marketing-that-works',
+  'turn-inquiries-into-results-med-spa-marketing',
   $markdown$For med spa owners, results matter. Exceptional service should be matched with exceptional marketing. If your inbox is still the missing piece in the journey from lead to loyal client, this post is your roadmap. Here's how to turn curiosity into consultations—with speed, visibility, and credibility.
 
 ---
@@ -132,4 +132,20 @@ Start building that lead engine today—and watch your med spa become the local 
 $markdown$,
   E'For med spa owners, results matter. Exceptional service should be matched with exceptional marketing. If your inbox is still the missing piece in the journey from lead to loyal client, this post is your roadmap. Here''s how to turn curiosity into consultations—with speed, visibility, and credibility.',
   true
+);
+
+INSERT INTO blog_posts (title, slug, content, excerpt, created_at) VALUES (
+  'Innovative Treatments to Boost Your Med Spa Business',
+  'innovative-treatments-to-boost-your-med-spa-business',
+  'In the ever-evolving world of med spas, staying ahead of the curve is crucial for attracting and retaining clients. This post explores innovative treatments to boost your med spa business.',
+  'In the ever-evolving world of med spas, staying ahead of the curve is crucial for attracting and retaining clients. This post explores innovative treatments to boost your med spa business.',
+  NOW()
+);
+
+INSERT INTO blog_posts (title, slug, content, excerpt, created_at) VALUES (
+  'Maximizing Your Med Spa''s Online Presence: A Guide to Digital Marketing',
+  'maximizing-med-spa-online-presence-digital-marketing',
+  'In today''s digital age, having a strong online presence is crucial for the success of any med spa. As a med spa owner, you need to leverage digital marketing strategies to attract new clients and retain existing ones. In this blog post, we will explore effective digital marketing techniques that can help you maximize your med spa''s online presence and drive business growth.\n\n**1. Build a User-Friendly Website**\n\nYour website is often the first point of contact for potential clients. Ensure that it is user-friendly, mobile-responsive, and visually appealing. Include essential information such as services offered, pricing, contact details, and client testimonials. A well-designed website can significantly enhance your credibility and attract more visitors.\n\n**2. Optimize for Search Engines**\n\nSearch engine optimization (SEO) is key to improving your website''s visibility on search engines like Google. Use relevant keywords related to your services and location throughout your website content. Additionally, create high-quality blog posts and articles that provide value to your audience and improve your search rankings.\n\n**3. Leverage Social Media Platforms**\n\nSocial media is a powerful tool for engaging with your audience and promoting your services. Create profiles on platforms like Instagram, Facebook, and Pinterest to showcase your treatments, share client success stories, and interact with potential clients. Regularly post engaging content and use targeted ads to reach a wider audience.\n\n**4. Implement Email Marketing Campaigns**\n\nEmail marketing is an effective way to keep your clients informed about new services, promotions, and events. Build an email list and send regular newsletters to your subscribers. Personalize your emails to make them more relevant and engaging for your audience.\n\n**5. Encourage Online Reviews**\n\nPositive online reviews can significantly impact your med spa''s reputation and attract new clients. Encourage satisfied clients to leave reviews on platforms like Google, Yelp, and Facebook. Respond to reviews promptly and professionally to show that you value client feedback.\n\n**6. Utilize Video Marketing**\n\nVideo content is highly engaging and can effectively showcase your services and expertise. Create videos that highlight your treatments, demonstrate procedures, and share client testimonials. Post these videos on your website, social media, and YouTube to reach a broader audience.\n\n**Conclusion**\n\nBy implementing these digital marketing strategies, you can enhance your med spa''s online presence and attract more clients. Stay up-to-date with the latest marketing trends and continuously refine your approach to achieve the best results. With a strong online presence, your med spa can thrive in today''s competitive market.',
+  'Explore effective digital marketing techniques to maximize your med spa''s online presence and drive business growth.',
+  NOW()
 );
