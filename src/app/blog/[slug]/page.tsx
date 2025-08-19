@@ -64,15 +64,19 @@ export default async function BlogPost({
               a: ({ node, ...props }) => (
                 <a {...props} target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80" />
               ),
-              img: ({ node, ...props }) => (
-                <Image
-                  {...props}
-                  alt={props.alt || ''}
-                  width={800}
-                  height={400}
-                  className="rounded-lg"
-                />
-              ),
+              img: ({ node, ...props }) => {
+                if (!props.src) return null;
+                return (
+                  <Image
+                    {...props}
+                    src={props.src}
+                    alt={props.alt || ''}
+                    width={800}
+                    height={400}
+                    className="rounded-lg"
+                  />
+                );
+              },
               table: ({ node, ...props }) => (
                 <div className="overflow-x-auto">
                   <table {...props} className="min-w-full divide-y divide-gray-300" />
