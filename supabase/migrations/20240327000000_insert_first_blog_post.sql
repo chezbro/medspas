@@ -8,9 +8,7 @@ insert into public.blog_posts (
 ) values (
   'Turn Inquiries into In-Clinic Results: Med Spa Marketing That Works',
   'turn-inquiries-into-in-clinic-results-med-spa-marketing-that-works',
-  $markdown$# Turn Inquiries into In-Clinic Results: Med Spa Marketing That Works
-
-For med spa owners, results matter. Exceptional service should be matched with exceptional marketing. If your inbox is still the missing piece in the journey from lead to loyal client, this post is your roadmap. Here's how to turn curiosity into consultations—with speed, visibility, and credibility.
+  $markdown$For med spa owners, results matter. Exceptional service should be matched with exceptional marketing. If your inbox is still the missing piece in the journey from lead to loyal client, this post is your roadmap. Here's how to turn curiosity into consultations—with speed, visibility, and credibility.
 
 ---
 
