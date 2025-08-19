@@ -136,12 +136,13 @@ export default function Home() {
                 <div className="absolute -bottom-10 -right-10 w-72 h-72 bg-primary-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000" />
                 <div className="absolute inset-0 rounded-2xl bg-white/5 ring-1 ring-inset ring-white/10 backdrop-blur" />
                 <div className="relative rounded-2xl bg-[#FCF9F6] shadow-2xl overflow-hidden">
-                  <Image
-                    src="https://www.plasticsurgery.org/images/blog/top-quality-med-spa.jpg?width=700&format=jpg"
-                    alt="Luxury Med Spa Treatment"
-                    width={700}
-                    height={467}
-                    className="w-full h-auto object-cover"
+                  <video
+                    src="/videos/beforeafter.mp4"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className="w-full h-auto object-none"
                   />
                 </div>
               </div>
