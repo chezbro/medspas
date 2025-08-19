@@ -45,35 +45,48 @@ const navigation = {
 
 export default function Footer() {
   return (
-    <footer className="bg-white" aria-labelledby="footer-heading">
+    <footer className="relative bg-gradient-to-b from-white to-primary-50" aria-labelledby="footer-heading">
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#f0fdfa,#ccfbf1)] opacity-30" />
+        <div className="absolute inset-0 bg-[radial-gradient(70%_80%_at_50%_0%,rgba(45,212,191,0.1),transparent)]" />
+      </div>
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
-      <div className="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8">
-        <div className="xl:grid xl:grid-cols-3 xl:gap-8">
+      <div className="relative mx-auto max-w-7xl px-6 pb-12 pt-24 sm:pt-32 lg:px-8">
+        <div className="xl:grid xl:grid-cols-3 xl:gap-12">
           <div className="space-y-8">
-            <Link href="/" className="text-2xl font-bold text-primary-600">
-            Ads for MedSpas
+            <Link href="/" className="inline-flex items-center">
+              <span className="font-display text-3xl font-bold bg-gradient-to-r from-primary-600 to-primary-400 bg-clip-text text-transparent">
+                Ads for MedSpas
+              </span>
             </Link>
-            <p className="text-sm leading-6 text-gray-600">
+            <p className="text-base leading-7 text-gray-600">
               AI-powered marketing solutions for Med Spas. Generate 20+ qualified leads per month with our proven strategies.
             </p>
-            <div className="flex space-x-6">
+            <div className="flex space-x-8">
               {navigation.social.map((item) => (
-                <Link key={item.name} href={item.href} className="text-gray-400 hover:text-gray-500">
+                <Link 
+                  key={item.name} 
+                  href={item.href} 
+                  className="text-gray-500 hover:text-primary-600 transition-colors duration-200"
+                >
                   <span className="sr-only">{item.name}</span>
-                  <item.icon className="h-6 w-6" aria-hidden="true" />
+                  <item.icon className="h-7 w-7" aria-hidden="true" />
                 </Link>
               ))}
             </div>
           </div>
-          <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
+          <div className="mt-16 grid grid-cols-2 gap-12 xl:col-span-2 xl:mt-0">
             <div>
-              <h3 className="text-sm font-semibold leading-6 text-gray-900">Navigation</h3>
-              <ul role="list" className="mt-6 space-y-4">
+              <h3 className="font-display text-lg font-semibold text-gray-900">Navigation</h3>
+              <ul role="list" className="mt-8 space-y-6">
                 {navigation.main.map((item) => (
                   <li key={item.name}>
-                    <Link href={item.href} className="text-sm leading-6 text-gray-600 hover:text-gray-900">
+                    <Link 
+                      href={item.href} 
+                      className="text-base leading-6 text-gray-600 hover:text-primary-600 transition-colors duration-200"
+                    >
                       {item.name}
                     </Link>
                   </li>
@@ -81,11 +94,14 @@ export default function Footer() {
               </ul>
             </div>
             <div>
-              <h3 className="text-sm font-semibold leading-6 text-gray-900">Legal</h3>
-              <ul role="list" className="mt-6 space-y-4">
+              <h3 className="font-display text-lg font-semibold text-gray-900">Legal</h3>
+              <ul role="list" className="mt-8 space-y-6">
                 {navigation.legal.map((item) => (
                   <li key={item.name}>
-                    <Link href={item.href} className="text-sm leading-6 text-gray-600 hover:text-gray-900">
+                    <Link 
+                      href={item.href} 
+                      className="text-base leading-6 text-gray-600 hover:text-primary-600 transition-colors duration-200"
+                    >
                       {item.name}
                     </Link>
                   </li>
@@ -94,8 +110,19 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <div className="mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 lg:mt-24">
-          <p className="text-xs leading-5 text-gray-500">&copy; {new Date().getFullYear()} Ads for MedSpas. All rights reserved.</p>
+        <div className="mt-16 flex flex-col items-center justify-between gap-8 border-t border-primary-100/30 pt-8 sm:mt-20 lg:mt-24 sm:flex-row">
+          <p className="text-sm leading-5 text-gray-500">
+            &copy; {new Date().getFullYear()} Ads for MedSpas. All rights reserved.
+          </p>
+          <div className="flex items-center space-x-4">
+            <Link href="/privacy" className="text-sm text-gray-500 hover:text-primary-600 transition-colors duration-200">
+              Privacy
+            </Link>
+            <div className="h-4 w-px bg-gray-300" />
+            <Link href="/terms" className="text-sm text-gray-500 hover:text-primary-600 transition-colors duration-200">
+              Terms
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

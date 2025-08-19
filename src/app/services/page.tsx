@@ -161,13 +161,28 @@ export default function Services() {
         </div>
 
         <div className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {/* Placeholder for ad creative examples */}
-          {[1, 2, 3].map((index) => (
+          {[
+            { src: '/videos/lips.mp4', title: 'Lip Filler Treatment' },
+            { src: '/videos/botox.mp4', title: 'Botox Treatment' },
+            { src: '/videos/laser.mp4', title: 'Laser Treatment' },
+          ].map((video) => (
             <div
-              key={index}
-              className="aspect-[4/5] rounded-2xl bg-gray-100 p-8 flex items-center justify-center"
+              key={video.src}
+              className="aspect-[4/5] rounded-2xl bg-gray-100 overflow-hidden relative"
             >
-              <p className="text-gray-400">Ad Creative Example {index}</p>
+              <video
+                className="absolute inset-0 w-full h-full object-cover"
+                autoPlay
+                loop
+                muted
+                playsInline
+              >
+                <source src={video.src} type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
+                <p className="text-white font-semibold">{video.title}</p>
+              </div>
             </div>
           ))}
         </div>

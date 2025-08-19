@@ -3,54 +3,54 @@ import Button from '@/components/ui/Button'
 
 const caseStudies = [
   {
-    name: 'Beverly Hills Med Spa',
-    location: 'Los Angeles, CA',
+    name: 'Med Spa #1',
+    location: 'Beverly Hills',
     results: {
-      leads: '45+ leads per month',
-      conversion: '35% consultation rate',
-      roi: '450% return on ad spend',
+      leads: '52+ leads per month',
+      conversion: '38% consultation rate',
+      roi: '480% return on ad spend',
     },
     testimonial: {
-      content: "&quot;The AI-powered ads have transformed our business. We&apos;re consistently booked weeks in advance now.&quot;",
-      author: 'Dr. Sarah Chen',
+      content: "Our Botox and filler treatments bookings increased dramatically after implementing their targeted social media strategy. The quality of leads has been exceptional.",
+      author: 'Dr. Elizabeth',
+      role: 'Medical Director',
+    },
+  },
+  {
+    name: 'Med Spa #2',
+    location: 'Newport Beach',
+    results: {
+      leads: '45+ leads per month',
+      conversion: '42% consultation rate',
+      roi: '520% return on ad spend',
+    },
+    testimonial: {
+      content: "The AI-driven campaign specifically targeting our body contouring services has transformed our business. Our treatment rooms are consistently booked.",
+      author: 'Dr. James',
       role: 'Owner',
     },
   },
   {
-    name: 'Glow Aesthetics',
-    location: 'San Diego, CA',
+    name: 'Med Spa #3',
+    location: 'Marina Del Rey',
     results: {
-      leads: '32+ leads per month',
-      conversion: '28% consultation rate',
-      roi: '380% return on ad spend',
+      leads: '48+ leads per month',
+      conversion: '35% consultation rate',
+      roi: '460% return on ad spend',
     },
     testimonial: {
-      content: "Their Google Maps optimization strategy helped us dominate local search results. Our bookings have doubled.",
-      author: 'Michael Rodriguez',
-      role: 'Marketing Director',
-    },
-  },
-  {
-    name: 'Pure Beauty Med',
-    location: 'Orange County, CA',
-    results: {
-      leads: '38+ leads per month',
-      conversion: '32% consultation rate',
-      roi: '410% return on ad spend',
-    },
-    testimonial: {
-      content: "The combination of AI ads and local SEO has been game-changing. We're seeing better quality leads than ever before.",
-      author: 'Jennifer Park',
-      role: 'Founder',
+      content: "Their marketing strategy helped us showcase our advanced facial treatments and brought in exactly the type of clients we were looking for.",
+      author: 'Dr. Rachel',
+      role: 'Clinical Director',
     },
   },
 ]
 
 const stats = [
-  { name: 'Average Monthly Leads', value: '35+' },
-  { name: 'Average Consultation Rate', value: '31%' },
-  { name: 'Average ROI', value: '400%' },
-  { name: 'Client Retention Rate', value: '92%' },
+  { name: 'Average Monthly Leads', value: '48+' },
+  { name: 'Average Consultation Rate', value: '38%' },
+  { name: 'Average ROI', value: '485%' },
+  { name: 'Client Retention Rate', value: '95%' },
 ]
 
 export default function Results() {
@@ -125,9 +125,13 @@ export default function Results() {
                   </figure>
                 </div>
 
-                {/* Placeholder for Loom video/screenshots */}
-                <div className="aspect-[4/3] rounded-2xl bg-gray-100 flex items-center justify-center">
-                  <p className="text-gray-400">Case Study Video/Screenshots</p>
+                {/* Case Study Image */}
+                <div className="aspect-[4/3] rounded-2xl overflow-hidden">
+                  <img
+                    src={`/results-${index + 1}.jpg`}
+                    alt={`${study.name} Results`}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
               </div>
             </div>

@@ -50,7 +50,7 @@ export default function ExitIntentPopup() {
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
-              className="relative mx-auto max-w-xl rounded-xl bg-white p-8 shadow-lg"
+              className="relative mx-auto max-w-4xl rounded-2xl bg-white p-6 md:p-10 shadow-2xl"
             >
               <div className="absolute right-4 top-4">
                 <button
@@ -65,33 +65,59 @@ export default function ExitIntentPopup() {
                 </button>
               </div>
 
-              <div className="text-center">
-                <Dialog.Title as="h3" className="text-2xl font-bold text-gray-900">
-                  Want More Med Spa Leads?
-                </Dialog.Title>
-                <div className="mt-4">
-                  <p className="text-lg text-gray-500">
-                    Download our free guide:
-                  </p>
-                  <p className="mt-1 text-xl font-semibold text-gray-900">
-                    &quot;5 AI-Powered Strategies to Double Your Med Spa Leads&quot;
-                  </p>
+              <div className="flex flex-col md:flex-row items-start gap-8 max-w-2xl">
+                <div className="flex-1 space-y-6">
+                  <div>
+                    <Dialog.Title as="h3" className="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight">
+                      Want More Med Spa Leads?
+                    </Dialog.Title>
+                    <div className="mt-3 space-y-2">
+                      <p className="text-lg text-gray-600 font-medium">
+                        Download our free guide:
+                      </p>
+                      <p className="text-xl md:text-2xl font-bold text-primary-600">
+                        &quot;5 AI-Powered Strategies to Double Your Med Spa Leads&quot;
+                      </p>
+                    </div>
+                  </div>
+
+                  <ul className="space-y-3">
+                    <li className="flex items-center text-gray-700">
+                      <svg className="h-5 w-5 text-primary-500 mr-3" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      Proven AI strategies for lead generation
+                    </li>
+                    <li className="flex items-center text-gray-700">
+                      <svg className="h-5 w-5 text-primary-500 mr-3" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      Step-by-step implementation guide
+                    </li>
+                    <li className="flex items-center text-gray-700">
+                      <svg className="h-5 w-5 text-primary-500 mr-3" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      Real case studies & results
+                    </li>
+                  </ul>
+
+                  <form className="space-y-4">
+                    <div className="relative">
+                      <input
+                        type="email"
+                        placeholder="Enter your email"
+                        className="block w-full rounded-lg border-0 px-4 py-3.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 text-base"
+                      />
+                    </div>
+                    <Button className="w-full" size="lg">
+                      Get Your Free Guide Now
+                    </Button>
+                    <p className="text-sm text-gray-500 text-center">
+                      We respect your privacy. Unsubscribe at any time.
+                    </p>
+                  </form>
                 </div>
-
-                <form className="mt-8">
-                  <input
-                    type="email"
-                    placeholder="Enter your email"
-                    className="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
-                  />
-                  <Button className="mt-4 w-full" size="lg">
-                    Get Free Guide
-                  </Button>
-                </form>
-
-                <p className="mt-4 text-sm text-gray-500">
-                  We respect your privacy. Unsubscribe at any time.
-                </p>
               </div>
             </Dialog.Panel>
           </div>

@@ -98,10 +98,10 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="mt-10 max-w-xl text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl"
+                className="mt-10 max-w-xl text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl font-display"
               >
                 20+ New Med Spa Leads in 30 Days
-                <span className="mt-4 block text-primary-600">— or You Don&apos;t Pay</span>
+                <span className="mt-4 block text-primary-600">or you don&apos;t pay</span>
               </motion.h1>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
@@ -196,7 +196,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl"
+              className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl font-display"
             >
               Simple 3-Step Process
             </motion.p>
@@ -217,7 +217,7 @@ export default function Home() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.1 * (index + 3) }}
-                  className="relative group bg-white/5 rounded-2xl p-8 hover:bg-white/10 transition-colors"
+                  className="relative group bg-white/5 rounded-2xl p-8 hover:bg-white/10 transition-all hover-card-rise"
                 >
                   <dt className="text-base font-semibold leading-7 text-white">
                     <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-lg bg-primary-600 group-hover:bg-primary-500 transition-colors">
@@ -258,7 +258,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
+              className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl font-display"
             >
               Trusted by Leading Med Spas
             </motion.p>
@@ -270,7 +270,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 * (index + 2) }}
-                className="flex flex-col justify-between bg-white shadow-lg ring-1 ring-gray-200 rounded-2xl p-8 xl:p-10"
+                className="flex flex-col justify-between bg-white shadow-lg ring-1 ring-gray-200 rounded-2xl p-8 xl:p-10 hover-card-rise"
               >
                 <div className="mb-6">
                   <h3 className="text-lg font-semibold leading-7 tracking-tight text-gray-900">{testimonial.author}</h3>

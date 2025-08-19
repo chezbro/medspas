@@ -35,7 +35,7 @@ module.exports = {
       },
       fontFamily: {
         sans: ['var(--font-inter)'],
-        display: ['var(--font-cabinet-grotesk)'],
+        display: ['var(--font-playfair)'],
       },
     },
   },
