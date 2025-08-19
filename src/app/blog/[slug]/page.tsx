@@ -3,6 +3,9 @@ import Image from 'next/image'
 import Container from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
 import { getPostBySlug } from '@/lib/blog'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
+import rehypeRaw from 'rehype-raw'
 
 export const dynamic = 'force-dynamic'
 export const revalidate = 3600 // Revalidate every hour
@@ -53,10 +56,39 @@ export default async function BlogPost({
           </div>
         )}
 
-        <div
-          className="prose prose-lg prose-primary mt-8 max-w-none"
-          dangerouslySetInnerHTML={{ __html: post.content }}
-        />
+        <div className="prose prose-lg prose-primary mt-8 max-w-none">
+          <ReactMarkdown
+            remarkPlugins={[remarkGfm]}
+            rehypePlugins={[rehypeRaw]}
+            components={{
+              a: ({ node, ...props }) => (
+                <a {...props} target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary/80" />
+              ),
+              img: ({ node, ...props }) => (
+                <Image
+                  {...props}
+                  alt={props.alt || ''}
+                  width={800}
+                  height={400}
+                  className="rounded-lg"
+                />
+              ),
+              table: ({ node, ...props }) => (
+                <div className="overflow-x-auto">
+                  <table {...props} className="min-w-full divide-y divide-gray-300" />
+                </div>
+              ),
+              th: ({ node, ...props }) => (
+                <th {...props} className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 bg-gray-50" />
+              ),
+              td: ({ node, ...props }) => (
+                <td {...props} className="whitespace-nowrap px-3 py-4 text-sm text-gray-500" />
+              ),
+            }}
+          >
+            {post.content}
+          </ReactMarkdown>
+        </div>
 
         <div className="mt-16 border-t border-gray-900/10 pt-16">
           <div className="relative isolate overflow-hidden bg-gray-900 px-6 py-24 text-center shadow-2xl sm:rounded-3xl sm:px-16">
