@@ -29,14 +29,14 @@ export default function CookieBanner() {
           exit={{ y: 100, opacity: 0 }}
           className="fixed inset-x-0 bottom-0 z-50 bg-white shadow-lg"
         >
-          <div className="mx-auto max-w-7xl px-6 py-4 sm:py-6">
-            <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 py-3 sm:py-4 lg:py-6">
+            <div className="flex flex-col items-start justify-between gap-3 sm:gap-4 sm:flex-row sm:items-center">
               <div className="flex-1">
-                <p className="text-sm text-gray-900">
+                <p className="text-xs sm:text-sm text-gray-900">
                   We use cookies to enhance your browsing experience, serve personalized ads or content, and analyze our traffic. By clicking &quot;Accept&quot;, you consent to our use of cookies.
                 </p>
               </div>
-              <div className="flex shrink-0 items-center gap-4">
+              <div className="flex shrink-0 items-center gap-3 sm:gap-4">
                 <Button
                   href="/privacy"
                   variant="outline"

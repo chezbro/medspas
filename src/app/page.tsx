@@ -79,7 +79,7 @@ export default function Home() {
         </div>
 
         <Container className="relative z-10">
-          <div className="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:flex lg:items-center lg:gap-x-10 lg:px-8 lg:py-40">
+          <div className="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:flex lg:items-center lg:gap-x-10 lg:px-8 lg:py-40">
             <div className="mx-auto max-w-2xl lg:mx-0 lg:flex-auto">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -98,16 +98,16 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="mt-10 max-w-xl text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl font-display"
+                className="mt-8 sm:mt-10 max-w-xl text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl font-display"
               >
                 20+ New Med Spa Leads in 30 Days
-                <span className="mt-4 block text-primary-600">or you don&apos;t pay</span>
+                <span className="mt-2 sm:mt-4 block text-primary-600">or you don&apos;t pay</span>
               </motion.h1>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="mt-6 text-lg leading-8 text-gray-600"
+                className="mt-4 sm:mt-6 text-base sm:text-lg leading-7 sm:leading-8 text-gray-600"
               >
                 Experience the power of AI-driven marketing tailored for luxury med spas. Our proven system combines sophisticated Facebook & Instagram ads with strategic Google Maps optimization to consistently fill your calendar with high-value clients.
               </motion.p>
@@ -115,7 +115,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
-                className="mt-10 flex items-center gap-x-6"
+                className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-x-6"
               >
                 <Button href="/contact" size="lg" className="shadow-lg hover:shadow-xl transition-shadow">
                   Book Free Lead Audit
@@ -129,7 +129,7 @@ export default function Home() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="mt-16 sm:mt-24 lg:mt-0 lg:flex-shrink-0 lg:flex-grow"
+              className="mt-12 sm:mt-16 lg:mt-0 lg:flex-shrink-0 lg:flex-grow"
             >
               <div className="relative mx-auto w-full max-w-lg">
                 <div className="absolute -top-10 -left-10 w-72 h-72 bg-primary-50 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob" />
@@ -172,7 +172,7 @@ export default function Home() {
       />
 
       {/* Process Section */}
-      <div className="relative isolate overflow-hidden bg-primary-900 py-24 sm:py-32">
+      <div className="relative isolate overflow-hidden bg-primary-900 py-16 sm:py-24">
         <div className="absolute -top-80 left-[max(6rem,33%)] -z-10 transform-gpu blur-3xl sm:left-1/2 md:top-20 lg:ml-20 xl:top-3 xl:ml-56" aria-hidden="true">
           <div
             className="aspect-[801/1036] w-[50.0625rem] bg-gradient-to-tr from-primary-100 to-primary-300 opacity-30"
@@ -196,7 +196,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl font-display"
+              className="mt-2 text-2xl sm:text-3xl font-bold tracking-tight text-white sm:text-4xl font-display"
             >
               Simple 3-Step Process
             </motion.p>
@@ -204,28 +204,28 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="mt-6 text-lg leading-8 text-primary-100"
+              className="mt-4 sm:mt-6 text-base sm:text-lg leading-7 sm:leading-8 text-primary-100"
             >
               Our proven system consistently delivers qualified leads to med spas across the country.
             </motion.p>
           </div>
-          <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
-            <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-3 lg:gap-y-16">
+          <div className="mx-auto mt-12 sm:mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
+            <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-8 sm:gap-y-10 lg:max-w-none lg:grid-cols-3 lg:gap-y-16">
               {process.map((step, index) => (
                 <motion.div
                   key={step.name}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.1 * (index + 3) }}
-                  className="relative group bg-white/5 rounded-2xl p-8 hover:bg-white/10 transition-all hover-card-rise"
+                  className="relative group bg-white/5 rounded-2xl p-6 sm:p-8 hover:bg-white/10 transition-all hover-card-rise"
                 >
                   <dt className="text-base font-semibold leading-7 text-white">
-                    <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-lg bg-primary-600 group-hover:bg-primary-500 transition-colors">
-                      <span className="text-2xl text-white">{step.icon}</span>
+                    <div className="mb-4 sm:mb-6 flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-lg bg-primary-600 group-hover:bg-primary-500 transition-colors">
+                      <span className="text-xl sm:text-2xl text-white">{step.icon}</span>
                     </div>
                     {step.name}
                   </dt>
-                  <dd className="mt-2 text-base leading-7 text-primary-100">{step.description}</dd>
+                  <dd className="mt-2 text-sm sm:text-base leading-6 sm:leading-7 text-primary-100">{step.description}</dd>
                 </motion.div>
               ))}
             </dl>
@@ -234,7 +234,7 @@ export default function Home() {
       </div>
 
       {/* Testimonials Section */}
-      <div className="relative isolate bg-white py-24 sm:py-32">
+      <div className="relative isolate bg-white py-16 sm:py-24">
         <div className="absolute inset-x-0 top-1/2 -z-10 transform-gpu overflow-hidden opacity-30 blur-3xl" aria-hidden="true">
           <div
             className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-primary-200 to-primary-400 opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
@@ -258,25 +258,25 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl font-display"
+              className="mt-2 text-2xl sm:text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl font-display"
             >
               Trusted by Leading Med Spas
             </motion.p>
           </div>
-          <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+          <div className="mx-auto mt-12 sm:mt-16 grid max-w-2xl grid-cols-1 gap-6 sm:gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
             {testimonials.map((testimonial, index) => (
               <motion.div
                 key={testimonial.author}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 * (index + 2) }}
-                className="flex flex-col justify-between bg-white shadow-lg ring-1 ring-gray-200 rounded-2xl p-8 xl:p-10 hover-card-rise"
+                className="flex flex-col justify-between bg-white shadow-lg ring-1 ring-gray-200 rounded-2xl p-6 sm:p-8 xl:p-10 hover-card-rise"
               >
-                <div className="mb-6">
-                  <h3 className="text-lg font-semibold leading-7 tracking-tight text-gray-900">{testimonial.author}</h3>
+                <div className="mb-4 sm:mb-6">
+                  <h3 className="text-base sm:text-lg font-semibold leading-7 tracking-tight text-gray-900">{testimonial.author}</h3>
                   <p className="text-sm leading-6 text-gray-600">{testimonial.role}</p>
                 </div>
-                <blockquote className="text-lg leading-7 text-gray-900">
+                <blockquote className="text-base sm:text-lg leading-7 text-gray-900">
                   "{testimonial.quote}"
                 </blockquote>
               </motion.div>
@@ -287,12 +287,12 @@ export default function Home() {
 
 
       {/* Guarantee Section */}
-      <Container className="py-24 sm:py-32">
+      <Container className="py-16 sm:py-24">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="relative isolate overflow-hidden bg-gradient-to-r from-primary-900 to-primary-800 px-6 py-24 text-center shadow-2xl sm:rounded-3xl sm:px-16"
+          className="relative isolate overflow-hidden bg-gradient-to-r from-primary-900 to-primary-800 px-4 sm:px-6 py-16 sm:py-24 text-center shadow-2xl sm:rounded-3xl sm:px-16"
         >
           <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,#4f46e5,#0ea5e9)] opacity-10" />
           <div className="absolute -z-10 h-full w-full bg-[radial-gradient(circle_800px_at_100%_200px,rgba(79,70,229,0.3),transparent)]" />
@@ -301,7 +301,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="mx-auto max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-4xl"
+              className="mx-auto max-w-2xl text-2xl sm:text-3xl font-bold tracking-tight text-white sm:text-4xl"
             >
               Our Performance Guarantee
             </motion.h2>
@@ -309,9 +309,9 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="mx-auto mt-6 max-w-xl text-lg leading-8 text-primary-100"
+              className="mx-auto mt-4 sm:mt-6 max-w-xl text-base sm:text-lg leading-7 sm:leading-8 text-primary-100"
             >
-              <p className="mb-4">
+              <p className="mb-3 sm:mb-4">
                 If we don&apos;t deliver at least 20 qualified leads in your first 30 days, you don&apos;t pay a dime.
               </p>
               <p className="text-sm text-primary-200">No questions asked. No hidden terms.</p>
@@ -320,7 +320,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="mt-10 flex items-center justify-center gap-x-6"
+              className="mt-8 sm:mt-10 flex items-center justify-center gap-x-6"
             >
               <Button
                 href="/contact"

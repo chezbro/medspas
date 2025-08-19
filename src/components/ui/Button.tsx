@@ -11,7 +11,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ href, variant = 'primary', size = 'md', className = '', children, ...props }, ref) => {
-    const baseStyles = 'inline-flex items-center justify-center rounded-full font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2'
+    const baseStyles = 'inline-flex items-center justify-center rounded-full font-semibold transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 whitespace-nowrap'
     
     const variants = {
       primary: 'bg-primary-600 text-white hover:bg-primary-500 focus-visible:outline-primary-600',
@@ -20,9 +20,9 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     }
     
     const sizes = {
-      sm: 'px-3 py-1.5 text-sm',
-      md: 'px-4 py-2.5 text-sm',
-      lg: 'px-6 py-3 text-base',
+      sm: 'px-2 py-1.5 text-xs sm:px-3 sm:text-sm',
+      md: 'px-3 py-2 text-sm sm:px-4 sm:py-2.5',
+      lg: 'px-4 py-2.5 text-sm sm:px-6 sm:py-3 sm:text-base',
     }
     
     const classes = twMerge(baseStyles, variants[variant], sizes[size], className)

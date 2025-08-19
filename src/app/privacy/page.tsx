@@ -2,12 +2,12 @@ import Container from '@/components/ui/Container'
 
 export default function Privacy() {
   return (
-    <Container className="py-24 sm:py-32">
+    <Container className="py-16 sm:py-24">
       <div className="mx-auto max-w-3xl">
-        <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+        <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
           Privacy Policy
         </h1>
-        <div className="mt-10 prose prose-lg prose-primary max-w-none">
+        <div className="mt-6 sm:mt-10 prose prose-sm sm:prose-lg prose-primary max-w-none">
           <p>Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
 
           <h2>1. Introduction</h2>

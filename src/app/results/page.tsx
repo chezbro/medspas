@@ -57,69 +57,69 @@ export default function Results() {
   return (
     <>
       {/* Hero Section */}
-      <Container className="py-24 sm:py-32">
+      <Container className="py-16 sm:py-24">
         <div className="mx-auto max-w-2xl lg:text-center">
-          <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
             Real Results for Real Med Spas
           </h1>
-          <p className="mt-6 text-lg leading-8 text-gray-600">
+          <p className="mt-4 sm:mt-6 text-base sm:text-lg leading-7 sm:leading-8 text-gray-600">
             See how we&apos;ve helped med spas across the country generate more leads and grow their business with our AI-powered marketing solutions.
           </p>
         </div>
 
         {/* Stats Grid */}
-        <dl className="mt-16 grid grid-cols-1 gap-0.5 overflow-hidden rounded-2xl text-center sm:grid-cols-2 lg:grid-cols-4">
+        <dl className="mt-12 sm:mt-16 grid grid-cols-1 gap-0.5 overflow-hidden rounded-2xl text-center sm:grid-cols-2 lg:grid-cols-4">
           {stats.map((stat) => (
-            <div key={stat.name} className="flex flex-col bg-gray-50 p-8">
-              <dt className="text-sm font-semibold leading-6 text-gray-600">{stat.name}</dt>
-              <dd className="order-first text-3xl font-semibold tracking-tight text-primary-600">{stat.value}</dd>
+            <div key={stat.name} className="flex flex-col bg-gray-50 p-6 sm:p-8">
+              <dt className="text-xs sm:text-sm font-semibold leading-6 text-gray-600">{stat.name}</dt>
+              <dd className="order-first text-2xl sm:text-3xl font-semibold tracking-tight text-primary-600">{stat.value}</dd>
             </div>
           ))}
         </dl>
       </Container>
 
       {/* Case Studies */}
-      <div className="bg-white py-24 sm:py-32">
+      <div className="bg-white py-16 sm:py-24">
         <Container>
           {caseStudies.map((study, index) => (
             <div
               key={study.name}
               className={`${
-                index !== 0 ? 'mt-16 pt-16 border-t border-gray-200' : ''
+                index !== 0 ? 'mt-12 sm:mt-16 pt-12 sm:pt-16 border-t border-gray-200' : ''
               }`}
             >
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 items-start">
                 <div>
-                  <h2 className="text-2xl font-bold tracking-tight text-gray-900">{study.name}</h2>
-                  <p className="mt-2 text-lg text-gray-600">{study.location}</p>
+                  <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-gray-900">{study.name}</h2>
+                  <p className="mt-2 text-base sm:text-lg text-gray-600">{study.location}</p>
                   
                   {/* Results */}
-                  <div className="mt-8 space-y-6">
-                    <h3 className="text-lg font-semibold text-gray-900">Results Achieved</h3>
-                    <ul role="list" className="space-y-4">
+                  <div className="mt-6 sm:mt-8 space-y-4 sm:space-y-6">
+                    <h3 className="text-base sm:text-lg font-semibold text-gray-900">Results Achieved</h3>
+                    <ul role="list" className="space-y-3 sm:space-y-4">
                       {Object.entries(study.results).map(([key, value]) => (
                         <li key={key} className="flex gap-x-3">
-                          <svg className="h-6 w-5 flex-none text-primary-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                          <svg className="h-5 w-5 sm:h-6 sm:w-6 flex-none text-primary-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                             <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
                           </svg>
-                          <span className="text-gray-600">{value}</span>
+                          <span className="text-sm sm:text-base text-gray-600">{value}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
 
                   {/* Testimonial */}
-                  <figure className="mt-10">
-                    <blockquote className="text-lg font-semibold leading-8 text-gray-900">
+                  <figure className="mt-8 sm:mt-10">
+                    <blockquote className="text-base sm:text-lg font-semibold leading-7 sm:leading-8 text-gray-900">
                       <p>&quot;{study.testimonial.content}&quot;</p>
                     </blockquote>
-                    <figcaption className="mt-6 flex items-center gap-x-4">
-                      <div className="h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center">
-                        <span className="text-lg text-gray-600">{study.testimonial.author[0]}</span>
+                    <figcaption className="mt-4 sm:mt-6 flex items-center gap-x-4">
+                      <div className="h-8 w-8 sm:h-10 sm:w-10 rounded-full bg-gray-100 flex items-center justify-center">
+                        <span className="text-sm sm:text-lg text-gray-600">{study.testimonial.author[0]}</span>
                       </div>
                       <div>
-                        <div className="font-semibold">{study.testimonial.author}</div>
-                        <div className="text-gray-600">{study.testimonial.role}</div>
+                        <div className="text-sm sm:text-base font-semibold">{study.testimonial.author}</div>
+                        <div className="text-xs sm:text-sm text-gray-600">{study.testimonial.role}</div>
                       </div>
                     </figcaption>
                   </figure>
@@ -140,15 +140,15 @@ export default function Results() {
       </div>
 
       {/* CTA Section */}
-      <Container className="py-24 sm:py-32">
-        <div className="relative isolate overflow-hidden bg-gray-900 px-6 py-24 text-center shadow-2xl sm:rounded-3xl sm:px-16">
-          <h2 className="mx-auto max-w-2xl text-3xl font-bold tracking-tight text-white sm:text-4xl">
+      <Container className="py-16 sm:py-24">
+        <div className="relative isolate overflow-hidden bg-gray-900 px-4 sm:px-6 py-16 sm:py-24 text-center shadow-2xl sm:rounded-3xl sm:px-16">
+          <h2 className="mx-auto max-w-2xl text-2xl sm:text-3xl font-bold tracking-tight text-white sm:text-4xl">
             Ready to Get Similar Results?
           </h2>
-          <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-300">
+          <p className="mx-auto mt-4 sm:mt-6 max-w-xl text-base sm:text-lg leading-7 sm:leading-8 text-gray-300">
             Book your free lead audit today and discover how we can help your med spa generate 20+ qualified leads per month.
           </p>
-          <div className="mt-10 flex items-center justify-center gap-x-6">
+          <div className="mt-8 sm:mt-10 flex items-center justify-center gap-x-6">
             <Button href="/contact" variant="secondary" size="lg">
               Book Your Free Lead Audit
             </Button>
