@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, LazyMotion, domAnimation } from 'framer-motion'
 import Image from 'next/image'
 import Container from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
@@ -49,23 +49,37 @@ const process = [
   {
     name: 'Create AI Ads',
     description: 'Our AI analyzes successful med spa campaigns to create high-converting ad copy and visuals.',
-    icon: '🤖',
+    icon: (props: React.SVGProps<SVGSVGElement>) => (
+      <svg fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09Z" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+      </svg>
+    ),
   },
   {
     name: 'Optimize Google Maps',
     description: 'We optimize your Google Business Profile to appear for high-intent local searches.',
-    icon: '🗺️',
+    icon: (props: React.SVGProps<SVGSVGElement>) => (
+      <svg fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+      </svg>
+    ),
   },
   {
     name: 'Fill Your Calendar',
     description: 'Watch as qualified leads book consultations directly into your calendar.',
-    icon: '📅',
+    icon: (props: React.SVGProps<SVGSVGElement>) => (
+      <svg fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+      </svg>
+    ),
   },
 ]
 
 export default function Home() {
   return (
-    <>
+    <LazyMotion features={domAnimation}>
       {/* Hero Section */}
       <div className="relative isolate overflow-hidden bg-white">
         <div className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
@@ -98,10 +112,17 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="mt-8 sm:mt-10 max-w-xl text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl font-display"
+                className="mt-8 sm:mt-10 max-w-2xl text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 sm:text-7xl font-display"
               >
-                20+ New Med Spa Leads in 30 Days
-                <span className="mt-2 sm:mt-4 block text-primary-600">or you don&apos;t pay</span>
+                <div className="space-y-2 sm:space-y-4">
+                  <div className="text-gray-900">
+                    <span className="text-primary-600">20+</span> New Clients
+                  </div>
+                  <div className="text-gray-900">In Your First Month</div>
+                  <div className="text-lg sm:text-xl font-medium text-primary-600 bg-primary-50 px-4 py-2 rounded-full inline-block">
+                    Guaranteed or Free
+                  </div>
+                </div>
               </motion.h1>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
@@ -142,6 +163,7 @@ export default function Home() {
                     muted
                     loop
                     playsInline
+                    preload="metadata"
                     className="w-full h-auto object-none"
                   />
                 </div>
@@ -210,26 +232,41 @@ export default function Home() {
               Our proven system consistently delivers qualified leads to med spas across the country.
             </motion.p>
           </div>
-          <div className="mx-auto mt-12 sm:mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
-            <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-8 sm:gap-y-10 lg:max-w-none lg:grid-cols-3 lg:gap-y-16">
+          <div className="mx-auto mt-16 sm:mt-20 max-w-7xl">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
               {process.map((step, index) => (
                 <motion.div
                   key={step.name}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.1 * (index + 3) }}
-                  className="relative group bg-white/5 rounded-2xl p-6 sm:p-8 hover:bg-white/10 transition-all hover-card-rise"
+                  transition={{ duration: 0.6, delay: 0.1 * (index + 3) }}
+                  className="group relative"
                 >
-                  <dt className="text-base font-semibold leading-7 text-white">
-                    <div className="mb-4 sm:mb-6 flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-lg bg-primary-600 group-hover:bg-primary-500 transition-colors">
-                      <span className="text-xl sm:text-2xl text-white">{step.icon}</span>
+                  <div className="relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 rounded-3xl p-8 lg:p-10 hover:bg-white/15 hover:border-white/30 transition-all duration-300 hover:shadow-2xl hover:shadow-primary-500/10">
+                    {/* Icon Container */}
+                    <div className="relative mb-8">
+                      <div className="absolute inset-0 bg-gradient-to-r from-primary-500 to-primary-400 rounded-2xl blur-lg opacity-30 group-hover:opacity-50 transition-opacity duration-300"></div>
+                      <div className="relative flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-r from-primary-600 to-primary-500 shadow-lg group-hover:shadow-xl group-hover:shadow-primary-500/25 transition-all duration-300">
+                        <step.icon className="h-8 w-8 text-white" />
+                      </div>
                     </div>
-                    {step.name}
-                  </dt>
-                  <dd className="mt-2 text-sm sm:text-base leading-6 sm:leading-7 text-primary-100">{step.description}</dd>
+                    
+                    {/* Content */}
+                    <div className="space-y-4">
+                      <h3 className="text-xl lg:text-2xl font-bold text-white group-hover:text-primary-100 transition-colors duration-300">
+                        {step.name}
+                      </h3>
+                      <p className="text-primary-100/90 leading-relaxed text-base lg:text-lg">
+                        {step.description}
+                      </p>
+                    </div>
+                    
+                    {/* Hover Effect */}
+                    <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-primary-500/0 to-primary-400/0 group-hover:from-primary-500/5 group-hover:to-primary-400/5 transition-all duration-300 pointer-events-none"></div>
+                  </div>
                 </motion.div>
               ))}
-            </dl>
+            </div>
           </div>
         </Container>
       </div>
@@ -344,6 +381,6 @@ export default function Home() {
           </div>
         </motion.div>
       </Container>
-    </>
+    </LazyMotion>
   )
 }

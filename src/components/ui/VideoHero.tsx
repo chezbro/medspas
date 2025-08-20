@@ -21,6 +21,7 @@ const VideoHero: React.FC<VideoHeroProps> = ({
         loop
         muted
         playsInline
+        preload="metadata"
         poster={fallbackImage}
       >
         <source src={videoSrc} type="video/mp4" />

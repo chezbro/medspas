@@ -74,9 +74,72 @@ module.exports = {
         sans: ['var(--font-inter)'],
         display: ['var(--font-playfair)'],
       },
+      // Performance optimizations
+      animation: {
+        'fade-in': 'fadeIn 0.5s ease-in-out',
+        'slide-up': 'slideUp 0.5s ease-out',
+        'scale-in': 'scaleIn 0.3s ease-out',
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        slideUp: {
+          '0%': { transform: 'translateY(20px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+        scaleIn: {
+          '0%': { transform: 'scale(0.95)', opacity: '0' },
+          '100%': { transform: 'scale(1)', opacity: '1' },
+        },
+      },
+      // Optimize spacing for better performance
+      spacing: {
+        '18': '4.5rem',
+        '88': '22rem',
+        '128': '32rem',
+      },
+      // Optimize screens for better responsive performance
+      screens: {
+        'xs': '475px',
+        '3xl': '1600px',
+      },
     },
   },
   plugins: [
     require('@tailwindcss/typography'),
+    // Custom plugin for performance optimizations
+    function({ addUtilities, theme }) {
+      const newUtilities = {
+        '.text-balance': {
+          'text-wrap': 'balance',
+        },
+        '.will-change-auto': {
+          'will-change': 'auto',
+        },
+        '.will-change-scroll': {
+          'will-change': 'scroll-position',
+        },
+        '.will-change-transform': {
+          'will-change': 'transform',
+        },
+        '.contain-layout': {
+          'contain': 'layout',
+        },
+        '.contain-paint': {
+          'contain': 'paint',
+        },
+        '.contain-strict': {
+          'contain': 'strict',
+        },
+      }
+      addUtilities(newUtilities)
+    },
   ],
+  // Performance optimizations
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
+
 }

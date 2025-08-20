@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import VideoHero from './VideoHero';
 import Container from './Container';
 
@@ -12,6 +12,32 @@ interface VideoGridProps {
 }
 
 const VideoGrid: React.FC<VideoGridProps> = ({ videos, className = '' }) => {
+  const [visibleVideos, setVisibleVideos] = useState<Set<number>>(new Set());
+  const videoRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const index = videoRefs.current.findIndex(ref => ref === entry.target);
+          if (entry.isIntersecting && index !== -1) {
+            setVisibleVideos(prev => new Set([...prev, index]));
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '50px',
+      }
+    );
+
+    videoRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <Container className={`py-16 sm:py-24 ${className}`}>
       <div className="mx-auto max-w-2xl lg:text-center mb-12 sm:mb-16">
@@ -28,11 +54,19 @@ const VideoGrid: React.FC<VideoGridProps> = ({ videos, className = '' }) => {
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
         {videos.map((video, index) => (
-          <div key={index} className="flex flex-col">
-            <VideoHero
-              videoSrc={`/videos/${video.src}`}
-              className="h-[250px] sm:h-[300px] rounded-xl"
-            />
+          <div 
+            key={index} 
+            className="flex flex-col"
+            ref={(el) => {
+              videoRefs.current[index] = el;
+            }}
+          >
+            {visibleVideos.has(index) && (
+              <VideoHero
+                videoSrc={`/videos/${video.src}`}
+                className="h-[250px] sm:h-[300px] rounded-xl"
+              />
+            )}
             <h3 className="mt-4 sm:mt-6 text-lg sm:text-xl font-semibold text-gray-900">
               {video.title}
             </h3>
