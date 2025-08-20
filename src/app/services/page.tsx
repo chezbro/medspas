@@ -324,7 +324,7 @@ export default function Services() {
               className="aspect-[4/5] rounded-2xl bg-gray-100 overflow-hidden relative"
             >
               <video
-                className="absolute inset-0 w-full h-full object-cover"
+                className={`absolute inset-0 w-full h-full ${video.src === '/videos/botox.mp4' ? 'object-none' : 'object-cover'}`}
                 autoPlay
                 loop
                 muted

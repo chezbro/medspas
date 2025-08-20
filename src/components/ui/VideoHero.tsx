@@ -5,6 +5,7 @@ interface VideoHeroProps {
   fallbackImage?: string;
   overlay?: boolean;
   className?: string;
+  objectFit?: string;
 }
 
 const VideoHero: React.FC<VideoHeroProps> = ({
@@ -12,11 +13,12 @@ const VideoHero: React.FC<VideoHeroProps> = ({
   fallbackImage,
   overlay = true,
   className = '',
+  objectFit = 'object-cover',
 }) => {
   return (
     <div className={`relative w-full h-[70vh] overflow-hidden ${className}`}>
       <video
-        className="absolute top-0 left-0 w-full h-full object-cover"
+        className={`absolute top-0 left-0 w-full h-full ${objectFit}`}
         autoPlay
         loop
         muted

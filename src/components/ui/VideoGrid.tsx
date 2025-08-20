@@ -65,6 +65,7 @@ const VideoGrid: React.FC<VideoGridProps> = ({ videos, className = '' }) => {
               <VideoHero
                 videoSrc={`/videos/${video.src}`}
                 className="h-[250px] sm:h-[300px] rounded-xl"
+                objectFit={video.src === 'botox.mp4' ? 'object-none' : 'object-cover'}
               />
             )}
             <h3 className="mt-4 sm:mt-6 text-lg sm:text-xl font-semibold text-gray-900">

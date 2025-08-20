@@ -81,18 +81,8 @@ export default function Home() {
   return (
     <LazyMotion features={domAnimation}>
       {/* Hero Section */}
-      <div className="relative isolate overflow-hidden bg-white">
-        <div className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
-          <div
-            className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-primary-100 to-primary-300 opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
-            style={{
-              clipPath:
-                'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
-            }}
-          />
-        </div>
-
-        <Container className="relative z-10">
+      <div className="relative bg-white">
+        <Container className="relative">
           <div className="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:flex lg:items-center lg:gap-x-10 lg:px-8 lg:py-40">
             <div className="mx-auto max-w-2xl lg:mx-0 lg:flex-auto">
               <motion.div
@@ -101,8 +91,8 @@ export default function Home() {
                 transition={{ duration: 0.6 }}
                 className="flex items-center gap-x-4 text-xs"
               >
-                <span className="flex items-center gap-x-1.5 rounded-full bg-primary-100 px-3 py-1.5 font-medium text-primary-600">
-                  <svg className="h-1.5 w-1.5 fill-primary-600" viewBox="0 0 6 6" aria-hidden="true">
+                <span className="flex items-center gap-x-1.5 rounded-full bg-primary-100 px-3 py-1.5 font-medium text-primary-700">
+                  <svg className="h-1.5 w-1.5 fill-primary-700" viewBox="0 0 6 6" aria-hidden="true">
                     <circle cx="3" cy="3" r="3" />
                   </svg>
                   Guaranteed Results
@@ -112,14 +102,14 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="mt-8 sm:mt-10 max-w-2xl text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 sm:text-7xl font-display"
+                className="mt-8 sm:mt-10 max-w-2xl text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 sm:text-7xl"
               >
-                <div className="space-y-2 sm:space-y-4">
+                <div className="space-y-3 sm:space-y-4">
                   <div className="text-gray-900">
                     <span className="text-primary-600">20+</span> New Clients
                   </div>
                   <div className="text-gray-900">In Your First Month</div>
-                  <div className="text-lg sm:text-xl font-medium text-primary-600 bg-primary-50 px-4 py-2 rounded-full inline-block">
+                  <div className="text-lg sm:text-xl font-medium text-primary-700 bg-primary-100 px-4 py-2 rounded-full inline-block">
                     Guaranteed or Free
                   </div>
                 </div>
@@ -128,7 +118,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="mt-4 sm:mt-6 text-base sm:text-lg leading-7 sm:leading-8 text-gray-600"
+                className="mt-6 sm:mt-8 text-base sm:text-lg leading-7 sm:leading-8 text-gray-800"
               >
                 Experience the power of AI-driven marketing tailored for luxury med spas. Our proven system combines sophisticated Facebook & Instagram ads with strategic Google Maps optimization to consistently fill your calendar with high-value clients.
               </motion.p>
@@ -152,7 +142,7 @@ export default function Home() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="mt-12 sm:mt-16 lg:mt-0 lg:flex-shrink-0 lg:flex-grow"
             >
-              <div className="relative mx-auto w-full max-w-lg">
+              <div className="relative mx-auto w-full max-w-xl">
                 <div className="absolute -top-10 -left-10 w-72 h-72 bg-primary-50 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob" />
                 <div className="absolute -bottom-10 -right-10 w-72 h-72 bg-primary-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000" />
                 <div className="absolute inset-0 rounded-2xl bg-white/5 ring-1 ring-inset ring-white/10 backdrop-blur" />
