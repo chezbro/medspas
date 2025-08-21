@@ -50,10 +50,13 @@ const process = [
     name: 'Create AI Ads',
     description: 'Our AI analyzes successful med spa campaigns to create high-converting ad copy and visuals.',
     icon: (props: React.SVGProps<SVGSVGElement>) => (
-      <svg fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09Z" />
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
-      </svg>
+      <Image 
+        src="/ai-icon.svg" 
+        alt="AI Icon" 
+        width={32} 
+        height={32} 
+        className="w-8 h-8 filter brightness-0 invert"
+      />
     ),
   },
   {

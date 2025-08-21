@@ -22,7 +22,9 @@ export default function Navbar() {
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Ads for MedSpas</span>
-            <span className="text-xl sm:text-2xl font-bold text-primary-600">Ads for MedSpas</span>
+            <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-primary-600 via-primary-500 to-primary-400 bg-clip-text text-transparent">
+              Ads for MedSpas
+            </span>
           </Link>
         </div>
         <div className="flex lg:hidden">
@@ -40,9 +42,11 @@ export default function Navbar() {
             <Link
               key={item.name}
               href={item.href}
-              className="text-sm font-semibold leading-6 text-gray-900 hover:text-primary-600 transition-colors"
+              className="relative text-sm font-semibold leading-6 text-gray-900 hover:text-primary-600 transition-all duration-200 group focus:outline-none focus:ring-0 focus:border-0"
+              style={{ outline: 'none', border: 'none', boxShadow: 'none' }}
             >
               {item.name}
+              <span className="absolute inset-x-0 -bottom-1 h-0.5 bg-primary-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left"></span>
             </Link>
           ))}
         </div>
@@ -61,7 +65,9 @@ export default function Navbar() {
           <div className="flex items-center justify-between">
             <Link href="/" className="-m-1.5 p-1.5">
               <span className="sr-only">Ads for MedSpas</span>
-              <span className="text-xl sm:text-2xl font-bold text-primary-600">Ads for MedSpas</span>
+              <span className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-primary-600 via-primary-500 to-primary-400 bg-clip-text text-transparent">
+                Ads for MedSpas
+              </span>
             </Link>
             <button
               type="button"
@@ -79,7 +85,8 @@ export default function Navbar() {
                   <Link
                     key={item.name}
                     href={item.href}
-                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-primary-50 hover:text-primary-600 transition-all duration-200 focus:outline-none focus:ring-0 focus:border-0"
+                    style={{ outline: 'none', border: 'none', boxShadow: 'none' }}
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {item.name}
