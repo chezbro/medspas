@@ -84,52 +84,69 @@ export default function Home() {
   return (
     <LazyMotion features={domAnimation}>
       {/* Hero Section */}
-      <div className="relative bg-white">
+      <div className="relative bg-white overflow-hidden">
+        {/* Background decorative elements */}
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary-50 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob" />
+          <div className="absolute top-1/4 right-1/4 w-80 h-80 bg-primary-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000" />
+          <div className="absolute bottom-0 left-1/3 w-72 h-72 bg-primary-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000" />
+        </div>
+
         <Container className="relative">
-          <div className="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:flex lg:items-center lg:gap-x-10 lg:px-8 lg:py-40">
-            <div className="mx-auto max-w-2xl lg:mx-0 lg:flex-auto">
+          <div className="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:py-32">
+            {/* Mobile-first layout */}
+            <div className="lg:hidden text-center mb-12">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="flex items-center gap-x-4 text-xs"
+                className="flex items-center justify-center gap-x-4 text-xs mb-6"
               >
-                <span className="flex items-center gap-x-1.5 rounded-full bg-primary-100 px-3 py-1.5 font-medium text-primary-700">
+                <span className="flex items-center gap-x-1.5 rounded-full bg-primary-100 px-3 py-1.5 font-medium text-primary-700 shadow-sm">
                   <svg className="h-1.5 w-1.5 fill-primary-700" viewBox="0 0 6 6" aria-hidden="true">
                     <circle cx="3" cy="3" r="3" />
                   </svg>
                   Guaranteed Results
                 </span>
               </motion.div>
+              
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="mt-8 sm:mt-10 max-w-2xl text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 sm:text-7xl"
+                className="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 mb-6"
               >
-                <div className="space-y-3 sm:space-y-4">
+                <div className="space-y-3">
                   <div className="text-gray-900">
                     <span className="text-primary-600">20+</span> New Clients
                   </div>
                   <div className="text-gray-900">In Your First Month</div>
-                  <div className="text-lg sm:text-xl font-medium text-primary-700 bg-primary-100 px-4 py-2 rounded-full inline-block">
-                    Guaranteed or Free
-                  </div>
                 </div>
               </motion.h1>
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="mt-6 sm:mt-8 text-base sm:text-lg leading-7 sm:leading-8 text-gray-800"
-              >
-                Experience the power of AI-driven marketing tailored for luxury med spas. Our proven system combines sophisticated Facebook & Instagram ads with strategic Google Maps optimization to consistently fill your calendar with high-value clients.
-              </motion.p>
+
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="text-lg font-medium text-primary-700 bg-primary-100 px-4 py-2 rounded-full inline-block mb-6 shadow-sm"
+              >
+                Guaranteed or Free
+              </motion.div>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
-                className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-x-6"
+                className="text-lg leading-7 text-gray-800 mb-8 max-w-2xl mx-auto"
+              >
+                Experience the power of AI-driven marketing tailored for luxury med spas. Our proven system combines sophisticated Facebook & Instagram ads with strategic Google Maps optimization to consistently fill your calendar with high-value clients.
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-x-6 justify-center"
               >
                 <Button href="/contact" size="lg" className="shadow-lg hover:shadow-xl transition-shadow">
                   Book Free Lead Audit
@@ -139,32 +156,106 @@ export default function Home() {
                 </Button>
               </motion.div>
             </div>
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="mt-12 sm:mt-16 lg:mt-0 lg:flex-shrink-0 lg:flex-grow"
-            >
-              <div className="relative mx-auto w-full max-w-xl">
-                <div className="absolute -top-10 -left-10 w-72 h-72 bg-primary-50 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob" />
-                <div className="absolute -bottom-10 -right-10 w-72 h-72 bg-primary-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000" />
-                <div className="absolute inset-0 rounded-2xl bg-white/5 ring-1 ring-inset ring-white/10 backdrop-blur" />
-                <div className="relative rounded-2xl bg-[#FCF9F6] shadow-2xl overflow-hidden">
-                  <video
-                    src="/videos/beforeafter.mp4"
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    preload="metadata"
-                    className="w-full h-auto object-none"
-                  />
-                  <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white text-xs px-3 py-2 text-center">
-                    Example creative video generated by our AI platform.
+
+            {/* Desktop layout with better proportions */}
+            <div className="hidden lg:grid lg:grid-cols-12 lg:gap-x-16 lg:items-center">
+              {/* Text content - takes up more space */}
+              <div className="lg:col-span-7 xl:col-span-6">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                  className="flex items-center gap-x-4 text-xs mb-8"
+                >
+                  <span className="flex items-center gap-x-1.5 rounded-full bg-primary-100 px-3 py-1.5 font-medium text-primary-700 shadow-sm">
+                    <svg className="h-1.5 w-1.5 fill-primary-700" viewBox="0 0 6 6" aria-hidden="true">
+                      <circle cx="3" cy="3" r="3" />
+                    </svg>
+                    Guaranteed Results
+                  </span>
+                </motion.div>
+                
+                <motion.h1
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                  className="text-5xl xl:text-6xl font-bold tracking-tight text-gray-900 mb-8 leading-tight"
+                >
+                  <div className="space-y-4">
+                    <div className="text-gray-900">
+                      <span className="text-primary-600 bg-gradient-to-r from-primary-600 to-primary-500 bg-clip-text text-transparent">20+</span> New Clients
+                    </div>
+                    <div className="text-gray-900">In Your First Month</div>
                   </div>
-                </div>
+                </motion.h1>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  className="text-xl font-medium text-primary-700 bg-gradient-to-r from-primary-100 to-primary-50 px-6 py-3 rounded-full inline-block mb-8 shadow-sm border border-primary-200/50"
+                >
+                  Guaranteed or Free
+                </motion.div>
+
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                  className="text-xl leading-8 text-gray-800 mb-10 max-w-2xl"
+                >
+                  Experience the power of AI-driven marketing tailored for luxury med spas. Our proven system combines sophisticated Facebook & Instagram ads with strategic Google Maps optimization to consistently fill your calendar with high-value clients.
+                </motion.p>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                  className="flex items-center gap-x-6"
+                >
+                  <Button href="/contact" size="lg" className="shadow-lg hover:shadow-xl transition-shadow text-lg px-8 py-4">
+                    Book Free Lead Audit
+                  </Button>
+                  <Button href="/results" variant="outline" size="lg" className="text-lg px-8 py-4">
+                    See Client Results
+                  </Button>
+                </motion.div>
               </div>
-            </motion.div>
+
+              {/* Video content - takes up less space */}
+              <div className="lg:col-span-5 xl:col-span-6">
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  className="relative"
+                >
+                  <div className="relative mx-auto w-full max-w-lg xl:max-w-xl">
+                    {/* Enhanced video container with better styling */}
+                    <div className="relative rounded-3xl bg-gradient-to-br from-primary-50 to-white shadow-2xl overflow-hidden ring-1 ring-primary-100/20 hover:shadow-3xl transition-all duration-500 hover:-translate-y-2">
+                      <div className="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-transparent" />
+                      <video
+                        src="/videos/beforeafter.mp4"
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        preload="metadata"
+                        className="w-full h-auto object-none relative z-10"
+                      />
+                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent text-white text-sm px-4 py-3 text-center">
+                        <span className="font-medium">AI-Generated Creative Video</span>
+                        <p className="text-xs text-gray-300 mt-1">Example of our platform's capabilities</p>
+                      </div>
+                    </div>
+                    
+                    {/* Floating elements for visual interest */}
+                    <div className="absolute -top-4 -right-4 w-8 h-8 bg-primary-500 rounded-full shadow-lg animate-pulse" />
+                    <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-primary-300 rounded-full shadow-lg animate-pulse animation-delay-2000" />
+                  </div>
+                </motion.div>
+              </div>
+            </div>
           </div>
         </Container>
       </div>
@@ -238,27 +329,34 @@ export default function Home() {
                   transition={{ duration: 0.6, delay: 0.1 * (index + 3) }}
                   className="group relative"
                 >
-                  <div className="relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm border border-white/20 rounded-3xl p-8 lg:p-10 hover:bg-white/15 hover:border-white/30 transition-all duration-300 hover:shadow-2xl hover:shadow-primary-500/10">
+                  <div className="relative bg-white/95 backdrop-blur-xl border border-white/30 rounded-2xl p-8 lg:p-10 hover:bg-white hover:shadow-2xl hover:shadow-primary-500/20 hover:-translate-y-1 transition-all duration-500 ease-out">
+                    {/* Step Number */}
+                    <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full flex items-center justify-center shadow-lg">
+                      <span className="text-white font-bold text-lg">{index + 1}</span>
+                    </div>
+                    
                     {/* Icon Container */}
-                    <div className="relative mb-8">
-                      <div className="absolute inset-0 bg-gradient-to-r from-primary-500 to-primary-400 rounded-2xl blur-lg opacity-30 group-hover:opacity-50 transition-opacity duration-300"></div>
-                      <div className="relative flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-r from-primary-600 to-primary-500 shadow-lg group-hover:shadow-xl group-hover:shadow-primary-500/25 transition-all duration-300">
-                        <step.icon className="h-8 w-8 text-white" />
+                    <div className="relative mb-8 mt-4">
+                      <div className="w-20 h-20 bg-gradient-to-br from-primary-50 to-primary-100 rounded-2xl flex items-center justify-center shadow-sm group-hover:shadow-lg transition-all duration-300">
+                        <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl flex items-center justify-center shadow-md group-hover:shadow-xl group-hover:scale-110 transition-all duration-300">
+                          <step.icon className="h-6 w-6 text-white" />
+                        </div>
                       </div>
                     </div>
                     
                     {/* Content */}
                     <div className="space-y-4">
-                      <h3 className="text-xl lg:text-2xl font-bold text-white group-hover:text-primary-100 transition-colors duration-300">
+                      <h3 className="text-xl lg:text-2xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors duration-300">
                         {step.name}
                       </h3>
-                      <p className="text-primary-100/90 leading-relaxed text-base lg:text-lg">
+                      <p className="text-gray-600 leading-relaxed text-base lg:text-lg group-hover:text-gray-700 transition-colors duration-300">
                         {step.description}
                       </p>
                     </div>
                     
-                    {/* Hover Effect */}
-                    <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-primary-500/0 to-primary-400/0 group-hover:from-primary-500/5 group-hover:to-primary-400/5 transition-all duration-300 pointer-events-none"></div>
+                    {/* Decorative Elements */}
+                    <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-primary-100/30 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div className="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-primary-50/40 to-transparent rounded-tr-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100"></div>
                   </div>
                 </motion.div>
               ))}
@@ -304,15 +402,28 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 * (index + 2) }}
-                className="flex flex-col justify-between bg-white shadow-lg ring-1 ring-gray-200 rounded-2xl p-6 sm:p-8 xl:p-10 hover-card-rise"
+                className="group relative"
               >
-                <div className="mb-4 sm:mb-6">
-                  <h3 className="text-base sm:text-lg font-semibold leading-7 tracking-tight text-gray-900">{testimonial.author}</h3>
-                  <p className="text-sm leading-6 text-gray-600">{testimonial.role}</p>
+                <div className="relative flex flex-col justify-between bg-white shadow-lg ring-1 ring-gray-200 rounded-2xl p-6 sm:p-8 xl:p-10 transition-all duration-500 hover:shadow-2xl hover:ring-primary-200 hover:-translate-y-2">
+                  {/* Quote Icon */}
+                  <div className="absolute top-4 right-4 opacity-10 group-hover:opacity-20 transition-opacity duration-300">
+                    <svg className="h-8 w-8 text-primary-600" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                    </svg>
+                  </div>
+                  
+                  <div className="mb-4 sm:mb-6">
+                    <h3 className="text-base sm:text-lg font-semibold leading-7 tracking-tight text-gray-900 group-hover:text-primary-600 transition-colors duration-300">{testimonial.author}</h3>
+                    <p className="text-sm leading-6 text-gray-600 group-hover:text-gray-700 transition-colors duration-300">{testimonial.role}</p>
+                  </div>
+                  <blockquote className="text-base sm:text-lg leading-7 text-gray-900 group-hover:text-gray-800 transition-colors duration-300">
+                    "{testimonial.quote}"
+                  </blockquote>
+                  
+                  {/* Decorative Elements */}
+                  <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-primary-100/30 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-primary-50/40 to-transparent rounded-tr-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100"></div>
                 </div>
-                <blockquote className="text-base sm:text-lg leading-7 text-gray-900">
-                  "{testimonial.quote}"
-                </blockquote>
               </motion.div>
             ))}
           </div>

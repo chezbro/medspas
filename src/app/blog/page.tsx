@@ -31,21 +31,23 @@ export default async function Blog() {
       {posts.length > 0 ? (
         <div className="mx-auto mt-12 sm:mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
           {posts.map((post) => (
-            <article key={post.id} className="flex flex-col items-start">
+            <article key={post.id} className="group flex flex-col items-start">
               {post.featured_image && (
-                <div className="relative w-full">
+                <div className="relative w-full overflow-hidden rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-500">
                   <Image
                     src={post.featured_image}
                     alt={post.title}
                     width={400}
                     height={250}
-                    className="aspect-[16/10] w-full rounded-2xl bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2]"
+                    className="aspect-[16/10] w-full bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2] group-hover:scale-105 transition-transform duration-500"
                   />
+                  {/* Decorative overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 </div>
               )}
-              <div className="max-w-xl">
+              <div className="max-w-xl w-full">
                 <div className="mt-6 sm:mt-8 flex items-center gap-x-4 text-xs">
-                  <time dateTime={post.created_at} className="text-gray-500">
+                  <time dateTime={post.created_at} className="text-gray-500 group-hover:text-gray-700 transition-colors duration-300">
                     {new Date(post.created_at).toLocaleDateString('en-US', {
                       year: 'numeric',
                       month: 'long',
@@ -54,13 +56,26 @@ export default async function Blog() {
                   </time>
                 </div>
                 <div className="group relative">
-                  <h3 className="mt-3 text-base sm:text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
+                  <h3 className="mt-3 text-base sm:text-lg font-semibold leading-6 text-gray-900 group-hover:text-primary-600 transition-colors duration-300">
                     <Link href={`/blog/${post.slug}`}>
                       <span className="absolute inset-0" />
                       {post.title}
                     </Link>
                   </h3>
-                  <p className="mt-4 sm:mt-5 line-clamp-3 text-sm leading-6 text-gray-600">{post.excerpt}</p>
+                  <p className="mt-4 sm:mt-5 line-clamp-3 text-sm leading-6 text-gray-600 group-hover:text-gray-700 transition-colors duration-300">{post.excerpt}</p>
+                </div>
+                
+                {/* Read More Link */}
+                <div className="mt-4 sm:mt-6">
+                  <Link 
+                    href={`/blog/${post.slug}`}
+                    className="inline-flex items-center text-sm font-medium text-primary-600 group-hover:text-primary-700 transition-colors duration-300"
+                  >
+                    Read more
+                    <svg className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </Link>
                 </div>
               </div>
             </article>

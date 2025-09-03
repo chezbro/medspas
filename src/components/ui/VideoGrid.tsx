@@ -56,24 +56,31 @@ const VideoGrid: React.FC<VideoGridProps> = ({ videos, className = '' }) => {
         {videos.map((video, index) => (
           <div 
             key={index} 
-            className="flex flex-col"
+            className="group flex flex-col"
             ref={(el) => {
               videoRefs.current[index] = el;
             }}
           >
-            {visibleVideos.has(index) && (
-              <VideoHero
-                videoSrc={`/videos/${video.src}`}
-                className="h-[250px] sm:h-[300px] rounded-xl"
-                objectFit={video.src === 'botox.mp4' ? 'object-none' : 'object-cover'}
-              />
-            )}
-            <h3 className="mt-4 sm:mt-6 text-lg sm:text-xl font-semibold text-gray-900">
-              {video.title}
-            </h3>
-            <p className="mt-2 text-sm sm:text-base text-gray-600">
-              {video.description}
-            </p>
+            <div className="relative overflow-hidden rounded-2xl shadow-lg group-hover:shadow-xl transition-all duration-500">
+              {visibleVideos.has(index) && (
+                <VideoHero
+                  videoSrc={`/videos/${video.src}`}
+                  className="h-[250px] sm:h-[300px] rounded-2xl group-hover:scale-105 transition-transform duration-500"
+                  objectFit={video.src === 'botox.mp4' ? 'object-none' : 'object-cover'}
+                />
+              )}
+              {/* Decorative overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            </div>
+            
+            <div className="mt-4 sm:mt-6 p-4 sm:p-6 bg-white rounded-2xl shadow-sm group-hover:shadow-md transition-all duration-300">
+              <h3 className="text-lg sm:text-xl font-semibold text-gray-900 group-hover:text-primary-600 transition-colors duration-300">
+                {video.title}
+              </h3>
+              <p className="mt-2 text-sm sm:text-base text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
+                {video.description}
+              </p>
+            </div>
           </div>
         ))}
       </div>
