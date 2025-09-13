@@ -45,14 +45,14 @@ export default function Contact() {
             
             <div className="calendly-inline-widget" 
                  data-url="https://calendly.com/adsformedspas/30min" 
-                 style={{ minWidth: '320px', height: '700px' }}>
+                 style={{ minWidth: '320px', height: '750px' }}>
             </div>
           </div>
         </div>
 
         <div className="mt-8 sm:mt-12 text-center">
           <p className="text-xs sm:text-sm text-gray-500">
-            Can't find a time that works? <a href="mailto:hello@adsformedspas.com" className="text-primary-600 hover:text-primary-700 font-medium">Email us</a> and we'll find a time that fits your schedule.
+            Can't find a time that works? <a href="mailto:eric@adsformedspas.com" className="text-primary-600 hover:text-primary-700 font-medium">Email us</a> or call <a href="tel:(424) 272-1172" className="text-primary-600 hover:text-primary-700 font-medium">(424) 272-1172</a> and we'll find a time that fits your schedule.
           </p>
         </div>
       </div>

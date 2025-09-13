@@ -1,3 +1,6 @@
+'use client'
+
+import { useState } from 'react'
 import Container from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
 
@@ -39,50 +42,43 @@ const services = [
 
 const pricingTiers = [
   {
-    name: 'Starter',
-    price: '$1,500',
+    name: 'Essentials',
+    price: '$1,999',
     description: 'Perfect for new med spas looking to establish their online presence.',
     features: [
-      'AI-powered Facebook & Instagram ad management',
-      'Google Maps optimization',
-      'Directory submission & management',
-      'Basic landing page',
-      'Lead tracking dashboard',
-      'Bi-weekly strategy calls',
-      'Monthly performance reports',
+      'Meta ads management',
+      'Maps optimization',
+      'Basic reporting',
       'Email support',
-      'Performance guarantee (10+ leads/month)',
+      'Performance guarantee (20+ leads/month)',
     ],
     cta: 'Start Your Free Lead Audit',
     popular: false,
   },
   {
-    name: 'Professional',
-    price: '$2,500',
-    description: 'Our most popular package for established med spas ready to scale.',
+    name: 'Growth',
+    price: '$2,999',
+    description: 'Most Popular - Everything + creative refresh weekly, retargeting, weekly reporting.',
     features: [
-      'AI-powered Facebook & Instagram ad management',
-      'Google Maps optimization',
-      'Directory submission & management',
-      'Custom landing pages',
-      'Advanced lead tracking dashboard',
-      'Weekly strategy calls',
-      'Monthly performance reports',
+      'Meta ads management',
+      'Maps optimization',
+      'Creative refresh weekly',
+      'Retargeting campaigns',
+      'Weekly reporting',
       'Dedicated account manager',
       '24/7 email support',
       'Performance guarantee (20+ leads/month)',
       'A/B testing of ad creatives',
-      'Retargeting campaigns',
     ],
     cta: 'Start Your Free Lead Audit',
     popular: true,
   },
   {
-    name: 'Enterprise',
+    name: 'Scale',
     price: 'Custom',
-    description: 'For multi-location med spas and large healthcare groups.',
+    description: 'Multi-location, integrations, priority support.',
     features: [
-      'Everything in Professional, plus:',
+      'Everything in Growth, plus:',
       'Multi-location management',
       'Advanced analytics & reporting',
       'Custom AI model training',
@@ -90,7 +86,7 @@ const pricingTiers = [
       'Dedicated success manager',
       'Custom integrations',
       'White-label options',
-      'Performance guarantee (50+ leads/month)',
+      'Performance guarantee (20+ leads/month)',
     ],
     cta: 'Contact Sales',
     popular: false,
@@ -98,6 +94,12 @@ const pricingTiers = [
 ]
 
 export default function Services() {
+  const [expandedGuarantee, setExpandedGuarantee] = useState<number | null>(null)
+
+  const toggleGuarantee = (index: number) => {
+    setExpandedGuarantee(expandedGuarantee === index ? null : index)
+  }
+
   return (
     <>
       {/* Services Overview */}
@@ -136,8 +138,8 @@ export default function Services() {
                 <div className="text-sm text-gray-600">Qualified Leads/Month</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-primary-600">100%</div>
-                <div className="text-sm text-gray-600">Performance Guarantee</div>
+                <div className="text-3xl font-bold text-primary-600">7-14</div>
+                <div className="text-sm text-gray-600">Days to First Results</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-primary-600">24/7</div>
@@ -207,7 +209,7 @@ export default function Services() {
 
           <div className="mx-auto mt-12 sm:mt-16 max-w-7xl">
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-              {pricingTiers.map((tier) => (
+              {pricingTiers.map((tier, index) => (
                 <div key={tier.name} className={`relative group ${tier.popular ? 'lg:scale-105' : ''}`}>
                   {/* Popular badge */}
                   {tier.popular && (
@@ -219,7 +221,7 @@ export default function Services() {
                   )}
 
                   {/* Card */}
-                  <div className={`relative rounded-3xl bg-white shadow-lg ring-1 ring-gray-200 transition-all duration-500 hover:shadow-2xl hover:ring-primary-200 hover:-translate-y-2 ${tier.popular ? 'ring-2 ring-primary-500 shadow-xl' : ''}`}>
+                  <div className={`relative rounded-3xl bg-white shadow-lg ring-1 ring-gray-200 transition-all duration-500 hover:shadow-2xl hover:ring-primary-200 hover:-translate-y-2 flex flex-col ${tier.popular ? 'ring-2 ring-primary-500 shadow-xl' : ''}`}>
                     {/* Header */}
                     <div className="px-6 py-8 sm:px-8 sm:py-12">
                       <div className="text-center">
@@ -272,17 +274,35 @@ export default function Services() {
                       </div>
                     </div>
 
-                    {/* Performance Guarantee */}
-                    <div className="border-t border-gray-200 px-6 py-8 sm:px-8 sm:py-12 bg-gradient-to-br from-gray-50 to-gray-100 rounded-b-3xl">
-                      <div className="text-center">
-                        <h4 className="text-lg font-semibold text-gray-900 mb-4">Our Performance Guarantee</h4>
-                        <p className="text-sm text-gray-600 mb-6">
-                          We&apos;re so confident in our ability to deliver results that we offer a performance guarantee. If we don&apos;t deliver the promised leads in your first 30 days, you don&apos;t pay a dime. No questions asked.
-                        </p>
-                        <Button href="/contact" variant="outline" size="lg" className="hover:scale-105 transition-transform duration-300">
-                          Schedule Your Free Strategy Call
-                        </Button>
-                      </div>
+                    {/* Performance Guarantee Dropdown */}
+                    <div className="border-t border-gray-200 bg-gradient-to-br from-gray-50 to-gray-100 rounded-b-3xl mt-auto">
+                      <button
+                        onClick={() => toggleGuarantee(index)}
+                        className="w-full px-6 py-4 text-center hover:bg-gray-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-inset"
+                      >
+                        <div className="flex items-center justify-center gap-2">
+                          <h4 className="text-lg font-semibold text-gray-900">Our Performance Guarantee</h4>
+                          <svg
+                            className={`w-5 h-5 text-gray-600 transition-transform duration-200 ${expandedGuarantee === index ? 'rotate-180' : ''}`}
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          </svg>
+                        </div>
+                      </button>
+                      
+                      {expandedGuarantee === index && (
+                        <div className="px-6 pb-6 text-center animate-in slide-in-from-top-2 duration-200">
+                          <p className="text-sm text-gray-600 mb-6 text-center">
+                            We aim for 20+ qualified inquiries in the first 30 days. If we miss it, we&apos;ll comp our management fee until we hit it. Client responsibilities: maintain agreed ad spend, approve creatives within 48h, use our tracking, and respond to new leads within 5 minutes during business hours.
+                          </p>
+                          <Button href="/contact" variant="outline" size="md" className="hover:scale-105 transition-transform duration-300 mx-auto">
+                            Schedule Your Free Strategy Call
+                          </Button>
+                        </div>
+                      )}
                     </div>
                     
                     {/* Decorative Elements */}
@@ -305,8 +325,8 @@ export default function Services() {
                 <div className="text-sm text-gray-600">Qualified Leads/Month</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-primary-600">100%</div>
-                <div className="text-sm text-gray-600">Performance Guarantee</div>
+                <div className="text-3xl font-bold text-primary-600">7-14</div>
+                <div className="text-sm text-gray-600">Days to First Results</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-primary-600">24/7</div>
@@ -337,11 +357,14 @@ export default function Services() {
               className="aspect-[4/5] rounded-2xl bg-gray-100 overflow-hidden relative"
             >
               <video
+                controls
+                playsInline
+                poster="/thumbs/botox.jpg"
+                width="720"
                 className={`absolute inset-0 w-full h-full ${video.src === '/videos/botox.mp4' ? 'object-none' : 'object-cover'}`}
                 autoPlay
                 loop
                 muted
-                playsInline
               >
                 <source src={video.src} type="video/mp4" />
                 Your browser does not support the video tag.
