@@ -91,9 +91,14 @@ const process = [
 
 export default function Home() {
   const [expandedGuarantee, setExpandedGuarantee] = useState<number | null>(null)
+  const [expandedFaq, setExpandedFaq] = useState<number | null>(null)
 
   const toggleGuarantee = (index: number) => {
     setExpandedGuarantee(expandedGuarantee === index ? null : index)
+  }
+
+  const toggleFaq = (index: number) => {
+    setExpandedFaq(expandedFaq === index ? null : index)
   }
 
   return (
@@ -203,7 +208,7 @@ export default function Home() {
               transition={{ duration: 0.5 }}
               className="text-2xl sm:text-3xl font-bold tracking-tight text-gray-900"
             >
-              Trusted by thousands of Med Spas
+              Trusted by credible Med Spas
             </motion.h2>
           </div>
           
@@ -748,7 +753,7 @@ export default function Home() {
                     'Simple Maps optimization',
                     'Monthly reporting only',
                     'Email support (48hr response)',
-                    'Performance guarantee (10+ leads/month)',
+                    'Performance guarantee (5+ leads/month)',
                     'Standard ad templates',
                     'No retargeting campaigns',
                     'No creative refreshes',
@@ -890,9 +895,41 @@ export default function Home() {
                       
                       {expandedGuarantee === index && (
                         <div className="px-6 pb-6 text-center animate-in slide-in-from-top-2 duration-200">
-                          <p className="text-sm text-gray-600 mb-6 text-center">
-                            We aim for 20+ qualified inquiries in the first 30 days. If we miss it, we&apos;ll comp our management fee until we hit it. Client responsibilities: maintain agreed ad spend, approve creatives within 48h, use our tracking, and respond to new leads within 5 minutes during business hours.
-                          </p>
+                          <div className="text-sm text-gray-600 mb-6 text-left max-w-2xl mx-auto">
+                            <p className="mb-4 font-semibold text-gray-800">
+                              We guarantee 20+ qualified leads in your first 30 days, or we&apos;ll waive our management fee until we hit it.
+                            </p>
+                            <p className="mb-3 font-medium text-gray-700">Client responsibilities required for guarantee:</p>
+                            <ul className="text-left space-y-2 mb-4">
+                              <li className="flex items-start gap-2">
+                                <span className="text-primary-600 mt-1">•</span>
+                                <span>Maintain agreed monthly ad spend ($3,000+ recommended)</span>
+                              </li>
+                              <li className="flex items-start gap-2">
+                                <span className="text-primary-600 mt-1">•</span>
+                                <span>Approve ad creatives within 48 hours of submission</span>
+                              </li>
+                              <li className="flex items-start gap-2">
+                                <span className="text-primary-600 mt-1">•</span>
+                                <span>Implement our tracking codes and pixel setup</span>
+                              </li>
+                              <li className="flex items-start gap-2">
+                                <span className="text-primary-600 mt-1">•</span>
+                                <span>Respond to leads within 5 minutes during business hours</span>
+                              </li>
+                              <li className="flex items-start gap-2">
+                                <span className="text-primary-600 mt-1">•</span>
+                                <span>Provide accurate business information and compliance docs</span>
+                              </li>
+                              <li className="flex items-start gap-2">
+                                <span className="text-primary-600 mt-1">•</span>
+                                <span>Allow 90 days for full optimization and results</span>
+                              </li>
+                            </ul>
+                            <p className="text-xs text-gray-500 italic">
+                              *Guarantee void if client responsibilities not met. Full terms in service agreement.
+                            </p>
+                          </div>
                           <Button href="/contact" variant="outline" size="md" className="hover:scale-105 transition-transform duration-300 mx-auto">
                             Schedule Your Strategy Call
                           </Button>
@@ -979,7 +1016,7 @@ export default function Home() {
                 },
                 {
                   question: "What's included in your guarantee?",
-                  answer: "We guarantee at least 20 qualified leads in your first 30 days, or you don't pay anything. This includes leads who book consultations, request quotes, or show genuine interest in your services."
+                  answer: "We guarantee at least 20 qualified leads in your first 30 days, or we'll waive our management fee until we hit it. This includes leads who book consultations, request quotes, or show genuine interest in your services. The guarantee requires you to maintain agreed ad spend ($3,000+ monthly), approve creatives within 48 hours, implement our tracking, respond to leads within 5 minutes during business hours, provide accurate business info, and allow 90 days for full optimization. Guarantee is void if client responsibilities aren't met."
                 },
                 {
                   question: "How do you ensure lead quality?",
@@ -1001,13 +1038,66 @@ export default function Home() {
                   transition={{ duration: 0.5, delay: 0.1 * index }}
                   className="group"
                 >
-                  <div className="flex items-center justify-between bg-white border border-gray-200 rounded-xl p-6 hover:border-primary-200 hover:shadow-lg transition-all duration-300">
-                    <h3 className="text-lg font-semibold text-gray-900 group-hover:text-primary-600 transition-colors duration-300">
-                      {faq.question}
-                    </h3>
-                    <svg className="w-5 h-5 text-gray-400 group-hover:text-primary-600 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                    </svg>
+                  <div className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:border-primary-200 hover:shadow-lg transition-all duration-300">
+                    <button
+                      onClick={() => toggleFaq(index)}
+                      className="w-full flex items-center justify-between p-6 text-left hover:bg-gray-50 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-inset"
+                    >
+                      <h3 className="text-lg font-semibold text-gray-900 group-hover:text-primary-600 transition-colors duration-300">
+                        {faq.question}
+                      </h3>
+                      <svg 
+                        className={`w-5 h-5 text-gray-400 group-hover:text-primary-600 transition-all duration-200 ${expandedFaq === index ? 'rotate-45' : ''}`} 
+                        fill="none" 
+                        stroke="currentColor" 
+                        viewBox="0 0 24 24"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                      </svg>
+                    </button>
+                    
+                    {expandedFaq === index && faq.answer && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                        className="overflow-hidden"
+                      >
+                        <div className="border-t border-gray-100 bg-gray-50/50">
+                          <div className="px-6 py-8">
+                            <div className="max-w-none">
+                              <p className="text-gray-700 leading-relaxed text-base">
+                                {faq.answer}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                    
+                    {expandedFaq === index && !faq.answer && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                        className="overflow-hidden"
+                      >
+                        <div className="border-t border-gray-100 bg-gradient-to-br from-primary-50/30 to-primary-100/20">
+                          <div className="px-6 py-8 text-center">
+                            <div className="max-w-md mx-auto">
+                              <p className="text-gray-700 mb-6 text-base leading-relaxed">
+                                Can't find what you're looking for? We're here to help!
+                              </p>
+                              <Button href="/contact" variant="outline" size="md" className="hover:scale-105 transition-transform duration-300 bg-white border-primary-200 text-primary-700 hover:bg-primary-50 hover:border-primary-300">
+                                Contact Us
+                              </Button>
+                            </div>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
                   </div>
                 </motion.div>
               ))}
@@ -1124,14 +1214,25 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="mx-auto mt-4 sm:mt-6 max-w-xl text-base sm:text-lg leading-7 sm:leading-8 text-primary-100"
+              className="mx-auto mt-4 sm:mt-6 max-w-2xl text-base sm:text-lg leading-7 sm:leading-8 text-primary-100"
             >
-              <p className="mb-3 sm:mb-4">
-                We aim for 20+ qualified inquiries in the first 30 days. If we miss it, we&apos;ll comp our management fee until we hit it.
+              <p className="mb-4 font-semibold text-white">
+                We guarantee 20+ qualified leads in your first 30 days, or we&apos;ll waive our management fee until we hit it.
               </p>
-              <p className="text-sm text-primary-200">
-                Client responsibilities: maintain agreed ad spend, approve creatives within 48h, use our tracking, and respond to new leads within 5 minutes during business hours.
-              </p>
+              <div className="text-sm text-primary-200 space-y-2">
+                <p className="font-medium">Client responsibilities required for guarantee:</p>
+                <ul className="text-left space-y-1 ml-4">
+                  <li>• Maintain agreed monthly ad spend ($3,000+ recommended)</li>
+                  <li>• Approve ad creatives within 48 hours of submission</li>
+                  <li>• Implement our tracking codes and pixel setup</li>
+                  <li>• Respond to leads within 5 minutes during business hours</li>
+                  <li>• Provide accurate business information and compliance docs</li>
+                  <li>• Allow 90 days for full optimization and results</li>
+                </ul>
+                <p className="text-xs italic mt-3">
+                  *Guarantee void if client responsibilities not met. Full terms in service agreement.
+                </p>
+              </div>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}

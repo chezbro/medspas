@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import React from 'react'
 
 const navigation = {
@@ -60,16 +61,22 @@ export default function Footer() {
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-16">
             {/* Brand section */}
             <div className="lg:col-span-1">
-              <Link href="/" className="inline-block mb-6 flex items-center gap-2">
-                <div className="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-sm">A</span>
+              <Link href="/" className="inline-block mb-6 flex items-center gap-3">
+                <div className="relative w-12 h-12 flex-shrink-0">
+                  <Image
+                    src="/logo.png"
+                    alt="Ads for MedSpas Logo"
+                    fill
+                    className="object-contain"
+                    priority
+                  />
                 </div>
-                <span className="text-2xl font-bold text-gray-900">
+                <span className="text-2xl font-bold text-gray-900 tracking-tight">
                   Ads for MedSpas
                 </span>
               </Link>
               <p className="text-gray-600 text-base leading-relaxed mb-8 max-w-md">
-                Ads for MedSpas helps teams work smarter, stay aligned, and get things done.
+                AI-powered marketing solutions that generate 20+ qualified leads per month for medical spas nationwide.
               </p>
               
               {/* Social Media */}
@@ -144,7 +151,7 @@ export default function Footer() {
         <div className="border-t border-gray-200 py-8">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <p className="text-gray-500 text-sm">
-              &copy; {new Date().getFullYear()} NextGen Solutions. All rights reserved.
+              &copy; {new Date().getFullYear()} Ads for MedSpas. All rights reserved.
             </p>
             <div className="flex items-center space-x-6">
               {navigation.legal.map((item) => (

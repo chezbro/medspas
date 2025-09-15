@@ -295,9 +295,41 @@ export default function Services() {
                       
                       {expandedGuarantee === index && (
                         <div className="px-6 pb-6 text-center animate-in slide-in-from-top-2 duration-200">
-                          <p className="text-sm text-gray-600 mb-6 text-center">
-                            We aim for 20+ qualified inquiries in the first 30 days. If we miss it, we&apos;ll comp our management fee until we hit it. Client responsibilities: maintain agreed ad spend, approve creatives within 48h, use our tracking, and respond to new leads within 5 minutes during business hours.
-                          </p>
+                          <div className="text-sm text-gray-600 mb-6 text-left max-w-2xl mx-auto">
+                            <p className="mb-4 font-semibold text-gray-800">
+                              We guarantee 20+ qualified leads in your first 30 days, or we&apos;ll waive our management fee until we hit it.
+                            </p>
+                            <p className="mb-3 font-medium text-gray-700">Client responsibilities required for guarantee:</p>
+                            <ul className="text-left space-y-2 mb-4">
+                              <li className="flex items-start gap-2">
+                                <span className="text-primary-600 mt-1">•</span>
+                                <span>Maintain agreed monthly ad spend ($3,000+ recommended)</span>
+                              </li>
+                              <li className="flex items-start gap-2">
+                                <span className="text-primary-600 mt-1">•</span>
+                                <span>Approve ad creatives within 48 hours of submission</span>
+                              </li>
+                              <li className="flex items-start gap-2">
+                                <span className="text-primary-600 mt-1">•</span>
+                                <span>Implement our tracking codes and pixel setup</span>
+                              </li>
+                              <li className="flex items-start gap-2">
+                                <span className="text-primary-600 mt-1">•</span>
+                                <span>Respond to leads within 5 minutes during business hours</span>
+                              </li>
+                              <li className="flex items-start gap-2">
+                                <span className="text-primary-600 mt-1">•</span>
+                                <span>Provide accurate business information and compliance docs</span>
+                              </li>
+                              <li className="flex items-start gap-2">
+                                <span className="text-primary-600 mt-1">•</span>
+                                <span>Allow 90 days for full optimization and results</span>
+                              </li>
+                            </ul>
+                            <p className="text-xs text-gray-500 italic">
+                              *Guarantee void if client responsibilities not met. Full terms in service agreement.
+                            </p>
+                          </div>
                           <Button href="/contact" variant="outline" size="md" className="hover:scale-105 transition-transform duration-300 mx-auto">
                             Schedule Your Free Strategy Call
                           </Button>

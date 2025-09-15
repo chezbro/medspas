@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Dialog } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 
@@ -20,12 +21,18 @@ export default function Navbar() {
     <header className="fixed inset-x-0 top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200/50">
       <nav className="flex items-center justify-between p-4 sm:p-6 lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1">
-          <Link href="/" className="-m-1.5 p-1.5 flex items-center gap-2">
+          <Link href="/" className="-m-1.5 p-1.5 flex items-center gap-3">
             <span className="sr-only">Ads for MedSpas</span>
-            <div className="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">A</span>
+            <div className="relative w-10 h-10 flex-shrink-0">
+              <Image
+                src="/logo.png"
+                alt="Ads for MedSpas Logo"
+                fill
+                className="object-contain"
+                priority
+              />
             </div>
-            <span className="text-xl sm:text-2xl font-bold text-gray-900">
+            <span className="text-xl sm:text-2xl font-bold text-gray-900 tracking-tight">
               Ads for MedSpas
             </span>
           </Link>
@@ -64,12 +71,18 @@ export default function Navbar() {
         <div className="fixed inset-0 z-50" />
         <Dialog.Panel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-4 sm:px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
-            <Link href="/" className="-m-1.5 p-1.5 flex items-center gap-2">
+            <Link href="/" className="-m-1.5 p-1.5 flex items-center gap-3">
               <span className="sr-only">Ads for MedSpas</span>
-              <div className="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">A</span>
+              <div className="relative w-10 h-10 flex-shrink-0">
+                <Image
+                  src="/logo.png"
+                  alt="Ads for MedSpas Logo"
+                  fill
+                  className="object-contain"
+                  priority
+                />
               </div>
-              <span className="text-xl sm:text-2xl font-bold text-gray-900">
+              <span className="text-xl sm:text-2xl font-bold text-gray-900 tracking-tight">
                 Ads for MedSpas
               </span>
             </Link>

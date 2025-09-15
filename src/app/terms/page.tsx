@@ -28,14 +28,33 @@ export default function Terms() {
 
           <h2>3. Performance Guarantee</h2>
           <p>
-            Our &quot;20+ Leads or You Don&apos;t Pay&quot; guarantee is subject to the following conditions:
+            Our &quot;20+ Leads Guarantee&quot; is subject to strict client compliance with the following requirements:
           </p>
+          <h3>3.1 Guarantee Terms</h3>
+          <p>
+            We guarantee 20+ qualified leads in your first 30 days, or we&apos;ll waive our management fee until we hit it. 
+            This guarantee is ONLY valid if ALL client responsibilities below are met.
+          </p>
+          <h3>3.2 Client Responsibilities (Required for Guarantee)</h3>
           <ul>
-            <li>Minimum 3-month commitment</li>
-            <li>Adherence to our recommended strategies</li>
-            <li>Timely approval of ad creatives and content</li>
-            <li>Maintenance of required marketing budget</li>
-            <li>Proper tracking implementation</li>
+            <li>Maintain agreed monthly ad spend of $3,000+ (minimum)</li>
+            <li>Approve ad creatives and content within 48 hours of submission</li>
+            <li>Implement and maintain our tracking codes and pixel setup</li>
+            <li>Respond to leads within 5 minutes during business hours (9 AM - 6 PM)</li>
+            <li>Provide accurate business information and required compliance documentation</li>
+            <li>Allow 90 days for full optimization and results</li>
+            <li>Minimum 3-month service commitment</li>
+            <li>Adhere to our recommended strategies and best practices</li>
+            <li>Maintain active business operations during the guarantee period</li>
+            <li>Provide timely feedback and communication as requested</li>
+          </ul>
+          <h3>3.3 Guarantee Limitations</h3>
+          <ul>
+            <li>Guarantee is VOID if any client responsibility is not met</li>
+            <li>Lead quality is determined by our tracking and qualification criteria</li>
+            <li>Guarantee applies only to qualified leads, not raw inquiries</li>
+            <li>External factors (economic conditions, platform changes) may affect results</li>
+            <li>Guarantee is limited to management fee waiver only</li>
           </ul>
 
           <h2>4. Payment Terms</h2>
