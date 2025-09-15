@@ -3,15 +3,23 @@ import React from 'react'
 
 const navigation = {
   main: [
-    { name: 'Home', href: '/' },
-    { name: 'Services', href: '/services' },
-    { name: 'Results', href: '/results' },
-    { name: 'Blog', href: '/blog' },
+    { name: 'Features', href: '/services' },
+    { name: 'Integrations', href: '/services' },
+    { name: 'Pricing', href: '/pricing' },
+    { name: 'Demo', href: '/contact' },
+    { name: 'About Us', href: '/contact' },
+  ],
+  resources: [
+    { name: 'Resources', href: '/blog' },
+    { name: 'Help Center', href: '/contact' },
     { name: 'Contact', href: '/contact' },
+    { name: 'Blogs', href: '/blog' },
+    { name: 'Careers', href: '/contact' },
   ],
   legal: [
-    { name: 'Privacy Policy', href: '/privacy' },
     { name: 'Terms of Service', href: '/terms' },
+    { name: 'Privacy Policy', href: '/privacy' },
+    { name: 'Cookie policy', href: '/privacy' },
   ],
   social: [
     {
@@ -45,81 +53,53 @@ const navigation = {
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-br from-slate-50 via-white to-primary-50/30 border-t border-slate-200/50">
+    <footer className="bg-white border-t border-gray-200">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Main footer content */}
         <div className="py-16 lg:py-20">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-12 lg:gap-16">
             {/* Brand section */}
             <div className="lg:col-span-1">
-              <Link href="/" className="inline-block mb-6">
-                <span className="text-3xl font-bold bg-gradient-to-r from-primary-600 via-primary-500 to-primary-400 bg-clip-text text-transparent">
+              <Link href="/" className="inline-block mb-6 flex items-center gap-2">
+                <div className="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
+                  <span className="text-white font-bold text-sm">A</span>
+                </div>
+                <span className="text-2xl font-bold text-gray-900">
                   Ads for MedSpas
                 </span>
               </Link>
-              <p className="text-slate-600 text-lg leading-relaxed mb-6 max-w-md">
-                AI-powered marketing solutions for Med Spas. Generate 20+ qualified leads per month with our proven strategies.
+              <p className="text-gray-600 text-base leading-relaxed mb-8 max-w-md">
+                Ads for MedSpas helps teams work smarter, stay aligned, and get things done.
               </p>
               
-              {/* Badges */}
-              <div className="flex flex-wrap gap-2 mb-6">
-                <span className="inline-flex items-center rounded-full bg-primary-100 px-3 py-1 text-xs font-medium text-primary-800">
-                  HIPAA-aware workflow
-                </span>
-                <span className="inline-flex items-center rounded-full bg-primary-100 px-3 py-1 text-xs font-medium text-primary-800">
-                  LA market expertise
-                </span>
-                <span className="inline-flex items-center rounded-full bg-primary-100 px-3 py-1 text-xs font-medium text-primary-800">
-                  Transparent reporting
-                </span>
-              </div>
-              
-              {/* Contact Information */}
-              <div className="space-y-3 mb-8">
-                <div className="flex items-center gap-3 text-slate-600">
-                  <svg className="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
-                  <span className="text-sm">eric@adsformedspas.com</span>
+              {/* Social Media */}
+              <div className="mb-8">
+                <h3 className="text-sm font-medium text-gray-900 mb-4">Follow Our Socials:</h3>
+                <div className="flex space-x-4">
+                  {navigation.social.map((item) => (
+                    <Link 
+                      key={item.name} 
+                      href={item.href} 
+                      className="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors duration-200"
+                    >
+                      <span className="sr-only">{item.name}</span>
+                      <item.icon className="h-5 w-5 text-gray-600" aria-hidden="true" />
+                    </Link>
+                  ))}
                 </div>
-                <div className="flex items-center gap-3 text-slate-600">
-                  <svg className="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                  </svg>
-                  <span className="text-sm">(424) 272-1172</span>
-                </div>
-                <div className="flex items-center gap-3 text-slate-600">
-                  <svg className="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                  <span className="text-sm">Mon-Fri 9AM-6PM PST</span>
-                </div>
-              </div>
-              <div className="flex space-x-4">
-                {navigation.social.map((item) => (
-                  <Link 
-                    key={item.name} 
-                    href={item.href} 
-                    className="group p-3 rounded-full bg-white shadow-sm border border-slate-200 hover:shadow-md hover:border-primary-200 transition-all duration-200"
-                  >
-                    <span className="sr-only">{item.name}</span>
-                    <item.icon className="h-5 w-5 text-slate-600 group-hover:text-primary-600 transition-colors duration-200" aria-hidden="true" />
-                  </Link>
-                ))}
               </div>
             </div>
 
             {/* Navigation links */}
-            <div className="lg:col-span-2">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-12">
+            <div className="lg:col-span-3">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12">
                 <div>
-                  <h3 className="text-lg font-semibold text-slate-900 mb-6">Navigation</h3>
                   <ul className="space-y-4">
                     {navigation.main.map((item) => (
                       <li key={item.name}>
                         <Link 
                           href={item.href} 
-                          className="text-slate-600 hover:text-primary-600 transition-colors duration-200 text-base"
+                          className="text-gray-600 hover:text-gray-900 transition-colors duration-200 text-base"
                         >
                           {item.name}
                         </Link>
@@ -128,13 +108,26 @@ export default function Footer() {
                   </ul>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-slate-900 mb-6">Legal</h3>
+                  <ul className="space-y-4">
+                    {navigation.resources.map((item) => (
+                      <li key={item.name}>
+                        <Link 
+                          href={item.href} 
+                          className="text-gray-600 hover:text-gray-900 transition-colors duration-200 text-base"
+                        >
+                          {item.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
                   <ul className="space-y-4">
                     {navigation.legal.map((item) => (
                       <li key={item.name}>
                         <Link 
                           href={item.href} 
-                          className="text-slate-600 hover:text-primary-600 transition-colors duration-200 text-base"
+                          className="text-gray-600 hover:text-gray-900 transition-colors duration-200 text-base"
                         >
                           {item.name}
                         </Link>
@@ -148,18 +141,17 @@ export default function Footer() {
         </div>
 
         {/* Bottom section */}
-        <div className="border-t border-slate-200/50 py-8">
+        <div className="border-t border-gray-200 py-8">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="text-slate-500 text-sm">
-              &copy; {new Date().getFullYear()} Ads for MedSpas. All rights reserved.
+            <p className="text-gray-500 text-sm">
+              &copy; {new Date().getFullYear()} NextGen Solutions. All rights reserved.
             </p>
             <div className="flex items-center space-x-6">
-              <Link href="/privacy" className="text-slate-500 hover:text-primary-600 transition-colors duration-200 text-sm">
-                Privacy
-              </Link>
-              <Link href="/terms" className="text-slate-500 hover:text-primary-600 transition-colors duration-200 text-sm">
-                Terms
-              </Link>
+              {navigation.legal.map((item) => (
+                <Link key={item.name} href={item.href} className="text-gray-500 hover:text-gray-900 transition-colors duration-200 text-sm">
+                  {item.name}
+                </Link>
+              ))}
             </div>
           </div>
         </div>

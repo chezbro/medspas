@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import { motion, LazyMotion, domAnimation } from 'framer-motion'
 import Image from 'next/image'
 import Container from '@/components/ui/Container'
@@ -53,186 +54,127 @@ const process = [
     name: 'Create AI Ads',
     description: 'Our AI analyzes successful med spa campaigns to create high-converting ad copy and visuals.',
     icon: (props: React.SVGProps<SVGSVGElement>) => (
-      <Image 
-        src="/ai-icon.svg" 
-        alt="AI Icon" 
-        width={32} 
-        height={32} 
-        className="w-8 h-8 filter brightness-0 invert"
-      />
+      <div className="relative">
+        <svg fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 1-3m-1 3h-2.25M9 12.75l3 3m0 0 3-3m-3 3V9.75" />
+        </svg>
+        <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-pulse"></div>
+      </div>
     ),
   },
   {
     name: 'Optimize Google Maps',
     description: 'We optimize your Google Business Profile to appear for high-intent local searches.',
     icon: (props: React.SVGProps<SVGSVGElement>) => (
-      <svg fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-        <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
-      </svg>
+      <div className="relative">
+        <svg fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+        </svg>
+        <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-r from-red-500 to-yellow-500 rounded-full"></div>
+      </div>
     ),
   },
   {
     name: 'Fill Your Calendar',
     description: 'Watch as qualified leads book consultations directly into your calendar.',
     icon: (props: React.SVGProps<SVGSVGElement>) => (
-      <svg fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
-        <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
-      </svg>
+      <div className="relative">
+        <svg fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+        </svg>
+        <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-r from-green-500 to-blue-500 rounded-full animate-pulse"></div>
+      </div>
     ),
   },
 ]
 
 export default function Home() {
+  const [expandedGuarantee, setExpandedGuarantee] = useState<number | null>(null)
+
+  const toggleGuarantee = (index: number) => {
+    setExpandedGuarantee(expandedGuarantee === index ? null : index)
+  }
+
   return (
     <LazyMotion features={domAnimation}>
-      {/* Hero Section */}
-      <div className="relative bg-white overflow-hidden">
-        {/* Background decorative elements */}
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary-50 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob" />
-          <div className="absolute top-1/4 right-1/4 w-80 h-80 bg-primary-100 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000" />
-          <div className="absolute bottom-0 left-1/3 w-72 h-72 bg-primary-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000" />
+      {/* AI Announcement Banner */}
+      <div className="bg-primary-50 border-b border-primary-100">
+        <Container>
+          <div className="py-3 text-center">
+            <p className="text-sm font-medium text-primary-700 flex items-center justify-center gap-2">
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+              </svg>
+              New AI-Powered Marketing is now available
+            </p>
+          </div>
+        </Container>
         </div>
 
+      {/* Hero Section */}
+      <div className="relative bg-white overflow-hidden">
         <Container className="relative">
-          <div className="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:py-32">
-            {/* Mobile-first layout */}
-            <div className="lg:hidden text-center mb-12">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="flex items-center justify-center gap-x-4 text-xs mb-6"
-              >
-                <span className="flex items-center gap-x-1.5 rounded-full bg-primary-100 px-3 py-1.5 font-medium text-primary-700 shadow-sm">
-                  <svg className="h-1.5 w-1.5 fill-primary-700" viewBox="0 0 6 6" aria-hidden="true">
-                    <circle cx="3" cy="3" r="3" />
-                  </svg>
-                  Guaranteed Results
-                </span>
-              </motion.div>
+          <div className="mx-auto max-w-7xl px-6 py-20 sm:py-32 lg:py-40">
+            {/* Centered layout for modern design */}
+            <div className="text-center max-w-4xl mx-auto">
               
+              {/* Main Headline */}
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="text-2xl sm:text-3xl font-bold tracking-tight text-gray-900 mb-6"
+                className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 mb-8 leading-tight"
               >
-                <div className="space-y-1">
-                  <div className="text-gray-900">More Qualified Leads.</div>
-                  <div className="text-gray-900">Higher Revenue.</div>
-                </div>
+                Turn Scattered Marketing Into
+                <br />
+                <span className="text-primary-600">Seamless Growth</span>
               </motion.h1>
 
+              {/* Sub-headline */}
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="text-lg leading-7 text-gray-800 mb-8 max-w-2xl mx-auto"
+                className="text-xl sm:text-2xl leading-8 text-gray-600 mb-12 max-w-3xl mx-auto"
               >
-                AI-powered Facebook & Instagram ads + Google Maps optimization for med spas that want consistent growth.
+                AI-powered Facebook & Instagram ads + Google Maps optimization brings qualified leads and revenue together so your Med Spa can focus on growth.
               </motion.p>
 
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                className="text-base leading-6 text-gray-600 mb-8 max-w-2xl mx-auto"
-              >
-                Book a free 15-minute audit to see where your next clients will come from.
-              </motion.p>
-
+              {/* CTA Buttons */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-                className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-x-6 justify-center"
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-8"
               >
-                <Button href="/contact" size="lg" className="shadow-lg hover:shadow-xl transition-shadow">
-                  Book Free Audit
+                <Button href="/contact" size="lg" className="bg-white text-gray-900 border border-gray-300 hover:bg-gray-50 shadow-lg hover:shadow-xl transition-all text-lg px-8 py-4 font-semibold">
+                  Book a Free Consultation
                 </Button>
-                <Button href="/services" variant="outline" size="lg">
-                  See Sample Ads
+                <Button href="/services" size="lg" className="bg-primary-600 text-white hover:bg-primary-700 shadow-lg hover:shadow-xl transition-all text-lg px-8 py-4">
+                  Learn More
                 </Button>
               </motion.div>
-            </div>
 
-            {/* Desktop layout with better proportions */}
-            <div className="hidden lg:grid lg:grid-cols-12 lg:gap-x-16 lg:items-center">
-              {/* Text content - takes up more space */}
-              <div className="lg:col-span-7 xl:col-span-6">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6 }}
-                  className="flex items-center gap-x-4 text-xs mb-8"
-                >
-                  <span className="flex items-center gap-x-1.5 rounded-full bg-primary-100 px-3 py-1.5 font-medium text-primary-700 shadow-sm">
-                    <svg className="h-1.5 w-1.5 fill-primary-700" viewBox="0 0 6 6" aria-hidden="true">
-                      <circle cx="3" cy="3" r="3" />
-                    </svg>
-                    Guaranteed Results
-                  </span>
-                </motion.div>
-                
-                <motion.h1
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                  className="text-4xl xl:text-5xl font-bold tracking-tight text-gray-900 mb-8 leading-tight"
-                >
-                  <div className="space-y-2">
-                    <div className="text-gray-900">More Qualified Leads.</div>
-                    <div className="text-gray-900">Higher Revenue.</div>
-                  </div>
-                </motion.h1>
-
+              {/* Disclaimer */}
                 <motion.p
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                  className="text-xl leading-8 text-gray-800 mb-6 max-w-2xl"
+                transition={{ duration: 0.5, delay: 0.4 }}
+                className="text-sm text-gray-500 mb-16"
                 >
-                  AI-powered Facebook & Instagram ads + Google Maps optimization for med spas that want consistent growth.
+                No credit card required
                 </motion.p>
 
-                <motion.p
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.3 }}
-                  className="text-lg leading-7 text-gray-600 mb-10 max-w-2xl"
-                >
-                  Book a free 15-minute audit to see where your next clients will come from.
-                </motion.p>
-
+              {/* Main Product Screenshot/Demo */}
                 <motion.div
-                  initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.4 }}
-                  className="flex items-center gap-x-6"
-                >
-                  <Button href="/contact" size="lg" className="shadow-lg hover:shadow-xl transition-shadow text-lg px-8 py-4">
-                    Book Free Audit
-                  </Button>
-                  <Button href="/services" variant="outline" size="lg" className="text-lg px-8 py-4">
-                    See Sample Ads
-                  </Button>
-                </motion.div>
-              </div>
-
-              {/* Visual content - takes up less space */}
-              <div className="lg:col-span-5 xl:col-span-6">
-                <motion.div
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                  className="relative"
-                >
-                  <div className="relative mx-auto w-full max-w-xl xl:max-w-2xl space-y-6">
-                    {/* Main video container */}
-                    <div className="relative rounded-3xl bg-gradient-to-br from-primary-50 to-white shadow-2xl overflow-hidden ring-1 ring-primary-100/20 hover:shadow-3xl transition-all duration-500 hover:-translate-y-2">
-                      <div className="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-transparent" />
+                transition={{ duration: 0.6, delay: 0.5 }}
+                className="relative mx-auto max-w-5xl"
+              >
+                <div className="relative rounded-3xl bg-white shadow-2xl overflow-hidden ring-1 ring-gray-200/50 hover:shadow-3xl transition-all duration-500">
+                  <div className="relative aspect-[16/10] overflow-hidden">
                       <video
                         src="/videos/beforeafter.mp4"
                         autoPlay
@@ -240,127 +182,45 @@ export default function Home() {
                         loop
                         playsInline
                         preload="metadata"
-                        className="w-full h-auto object-none relative z-10"
+                      className="w-full h-full object-none"
                       />
-                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent text-white text-sm px-4 py-3 text-center">
-                        <span className="font-medium">AI-Generated Creative Video</span>
-                        <p className="text-xs text-gray-300 mt-1">Example of our platform's capabilities</p>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
                       </div>
-                    </div>
-                    
-                    {/* Second video ad creative */}
-                    <div className="relative rounded-2xl bg-gradient-to-br from-primary-50 to-white shadow-xl overflow-hidden ring-1 ring-primary-100/20 hover:shadow-2xl transition-all duration-500 hover:-translate-y-1">
-                      <div className="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-transparent" />
-                      <video
-                        src="/videos/easy-botox.mp4"
-                        autoPlay
-                        muted
-                        loop
-                        playsInline
-                        preload="metadata"
-                        className="w-full h-auto object-none relative z-10"
-                      />
-                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent text-white text-sm px-4 py-3 text-center">
-                        <span className="font-medium">Botox Ad Creative</span>
-                        <p className="text-xs text-gray-300 mt-1">High-converting treatment video</p>
-                      </div>
-                    </div>
-                    
-                    {/* Floating elements for visual interest */}
-                    <div className="absolute -top-4 -right-4 w-8 h-8 bg-primary-500 rounded-full shadow-lg animate-pulse" />
-                    <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-primary-300 rounded-full shadow-lg animate-pulse animation-delay-2000" />
                   </div>
                 </motion.div>
-              </div>
             </div>
           </div>
         </Container>
       </div>
 
-      {/* Statistics Section */}
-      <div className="relative bg-gradient-to-br from-primary-50 via-white to-primary-50/50 py-16 sm:py-24 overflow-hidden">
-        {/* Background decorative elements */}
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute top-10 left-10 w-32 h-32 bg-primary-100 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob" />
-          <div className="absolute bottom-10 right-10 w-40 h-40 bg-primary-200 rounded-full mix-blend-multiply filter blur-2xl opacity-20 animate-blob animation-delay-2000" />
-        </div>
+      {/* Trusted by Section */}
+      <div className="relative bg-white py-16 sm:py-24">
         <Container>
-          <div className="mx-auto max-w-2xl lg:text-center mb-12 sm:mb-16">
+          <div className="mx-auto max-w-2xl text-center mb-16">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-base font-semibold leading-7 text-primary-600"
+              className="text-2xl sm:text-3xl font-bold tracking-tight text-gray-900"
             >
-              Proven Results
+              Trusted by thousands of Med Spas
             </motion.h2>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="mt-2 text-2xl sm:text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl font-display"
-            >
-              Trusted by Med Spas Nationwide
-            </motion.p>
           </div>
           
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12">
+          {/* Company logos placeholder */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center justify-items-center opacity-60">
             {[
-              { 
-                number: "500+", 
-                label: "Med Spas Served", 
-                icon: (props: React.SVGProps<SVGSVGElement>) => (
-                  <svg fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" />
-                  </svg>
-                )
-              },
-              { 
-                number: "15,000+", 
-                label: "Leads Generated", 
-                icon: (props: React.SVGProps<SVGSVGElement>) => (
-                  <svg fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
-                  </svg>
-                )
-              },
-              { 
-                number: "98%", 
-                label: "Client Satisfaction", 
-                icon: (props: React.SVGProps<SVGSVGElement>) => (
-                  <svg fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
-                  </svg>
-                )
-              },
-              { 
-                number: "24/7", 
-                label: "Support Available", 
-                icon: (props: React.SVGProps<SVGSVGElement>) => (
-                  <svg fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a6.048 6.048 0 01-1.5 0m1.5-2.383a6.048 6.048 0 00-1.5 0m0 0V9.75m0 0a6.01 6.01 0 00-1.5-.189m1.5.189a6.01 6.01 0 01-1.5-.189" />
-                  </svg>
-                )
-              }
-            ].map((stat, index) => (
+              "MedSpa Pro", "Aesthetic Partners", "Beauty Collective", 
+              "Wellness Group", "Spa Solutions", "Beauty Network"
+            ].map((company, index) => (
               <motion.div
-                key={stat.label}
+                key={company}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 * (index + 2) }}
-                className="text-center group"
+                transition={{ duration: 0.5, delay: 0.1 * index }}
+                className="text-gray-400 font-medium text-sm"
               >
-                <div className="relative">
-                  <div className="text-4xl sm:text-5xl lg:text-6xl font-bold text-primary-600 group-hover:text-primary-700 transition-colors duration-300">
-                    {stat.number}
-                  </div>
-                  <div className="absolute -top-2 -right-2 w-8 h-8 bg-primary-100 rounded-full flex items-center justify-center opacity-60 group-hover:opacity-100 transition-opacity duration-300">
-                    <stat.icon className="h-4 w-4 text-primary-600" />
-                  </div>
-                </div>
-                <div className="mt-2 text-sm sm:text-base font-medium text-gray-900 group-hover:text-gray-700 transition-colors duration-300">
-                  {stat.label}
-                </div>
+                {company}
               </motion.div>
             ))}
           </div>
@@ -431,7 +291,7 @@ export default function Home() {
                       src={result.image}
                       alt={result.title}
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="object-none group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                     <div className="absolute bottom-4 left-4 right-4 text-white">
@@ -529,7 +389,7 @@ export default function Home() {
                       src={feature.image}
                       alt={feature.name}
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="object-none group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                     
@@ -561,89 +421,87 @@ export default function Home() {
       {/* Features Section */}
       <div className="relative bg-white py-16 sm:py-24">
         <Container>
-          <div className="mx-auto max-w-2xl lg:text-center mb-12 sm:mb-16">
+          <div className="mx-auto max-w-2xl text-center mb-16">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-base font-semibold leading-7 text-primary-600"
+              className="text-sm font-medium text-gray-500 mb-4"
             >
-              Our Services
+              Our Features
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="mt-2 text-2xl sm:text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl font-display"
+              className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 mb-6"
             >
-              Complete Marketing Solutions
+              Features To Boost Your Productivity
             </motion.p>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="mt-4 sm:mt-6 text-base sm:text-lg leading-7 sm:leading-8 text-gray-600"
+              className="text-lg text-gray-600"
             >
-              Everything you need to grow your med spa business, all in one place.
+              Everything you need to plan, track, and deliver on all your marketing goals.
             </motion.p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                name: 'AI-Powered Facebook & Instagram Ads',
-                description: 'Our AI algorithms create and optimize high-converting ad campaigns specifically for med spas.',
-                icon: (props: React.SVGProps<SVGSVGElement>) => (
-                  <svg fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.042 21.672L13.684 16.6m0 0l-2.51 2.225.569-9.47 5.227 7.917-3.286-.672zM12 2.25V4.5m5.834.166l-1.591 1.591M20.25 10.5H18M7.757 14.743l-1.59 1.59M6 10.5H3.75m4.007-4.243l-1.59-1.59" />
-                  </svg>
-                ),
+                name: 'Adaptive Organizer',
+                description: 'AI-powered campaign management that automatically optimizes your ad performance and budget allocation.',
+                image: '/computer.png'
               },
               {
-                name: 'Google Maps Optimization',
-                description: 'Dominate local search results and attract more clients with our proven GMB optimization strategies.',
-                icon: (props: React.SVGProps<SVGSVGElement>) => (
-                  <svg fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
-                  </svg>
-                ),
+                name: 'Templates & Workflows',
+                description: 'Pre-built campaign templates and automated workflows designed specifically for med spa marketing.',
+                image: '/file.svg'
               },
               {
-                name: 'Directory Submissions',
-                description: 'Get listed on all major medical spa directories to boost your online presence and credibility.',
-                icon: (props: React.SVGProps<SVGSVGElement>) => (
-                  <svg fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" />
-                  </svg>
-                ),
+                name: 'Collaboration Made Easy',
+                description: 'Seamless team collaboration with real-time updates, shared dashboards, and instant communication.',
+                image: '/globe.svg'
               },
+              {
+                name: 'Progress Tracking',
+                description: 'Comprehensive analytics and reporting to track your marketing performance and growth metrics.',
+                image: '/window.svg'
+              }
             ].map((feature, index) => (
               <motion.div
                 key={feature.name}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 * (index + 3) }}
-                className="group relative"
+                transition={{ duration: 0.5, delay: 0.1 * index }}
+                className="group"
               >
-                <div className="relative bg-white border border-gray-200 rounded-2xl p-6 sm:p-8 hover:border-primary-200 hover:shadow-lg transition-all duration-300">
-                  {/* Icon */}
-                  <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-primary-100 to-primary-50 rounded-2xl mb-6 group-hover:from-primary-200 group-hover:to-primary-100 transition-all duration-300">
-                    <feature.icon className="h-8 w-8 text-primary-600" />
+                <div className="bg-white border border-gray-200 rounded-2xl p-8 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                  {/* Feature Screenshot Placeholder */}
+                  <div className="relative mb-6">
+                    <div className="w-full h-32 bg-gray-100 rounded-xl flex items-center justify-center mb-4">
+                      <Image
+                        src={feature.image}
+                        alt={feature.name}
+                        width={48}
+                        height={48}
+                        className="w-12 h-12 opacity-60"
+                      />
+                    </div>
                   </div>
                   
                   {/* Content */}
                   <div className="space-y-4">
-                    <h3 className="text-xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors duration-300">
+                    <h3 className="text-xl font-bold text-gray-900">
                       {feature.name}
                     </h3>
-                    <p className="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
+                    <p className="text-gray-600 leading-relaxed">
                       {feature.description}
                     </p>
+                    
                   </div>
-                  
-                  {/* Decorative Elements */}
-                  <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-primary-50/30 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 </div>
               </motion.div>
             ))}
@@ -651,24 +509,15 @@ export default function Home() {
         </Container>
       </div>
 
-      {/* Process Section */}
-      <div className="relative isolate overflow-hidden bg-primary-900 py-16 sm:py-24">
-        <div className="absolute -top-80 left-[max(6rem,33%)] -z-10 transform-gpu blur-3xl sm:left-1/2 md:top-20 lg:ml-20 xl:top-3 xl:ml-56" aria-hidden="true">
-          <div
-            className="aspect-[801/1036] w-[50.0625rem] bg-gradient-to-tr from-primary-100 to-primary-300 opacity-30"
-            style={{
-              clipPath:
-                'polygon(63.1% 29.6%, 100% 17.2%, 76.7% 3.1%, 48.4% 0.1%, 44.6% 4.8%, 54.5% 25.4%, 59.8% 49.1%, 55.3% 57.9%, 44.5% 57.3%, 27.8% 48%, 35.1% 81.6%, 0% 97.8%, 39.3% 100%, 35.3% 81.5%, 97.2% 52.3%, 63.1% 29.6%)',
-            }}
-          />
-        </div>
+      {/* How It Works Section */}
+      <div className="relative bg-white py-16 sm:py-24">
         <Container>
-          <div className="mx-auto max-w-2xl lg:text-center">
+          <div className="mx-auto max-w-2xl text-center mb-16">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-base font-semibold leading-7 text-primary-200"
+              className="text-sm font-medium text-gray-500 mb-4"
             >
               How It Works
             </motion.h2>
@@ -676,61 +525,49 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="mt-2 text-2xl sm:text-3xl font-bold tracking-tight text-white sm:text-4xl font-display"
+              className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 mb-6"
             >
-              Simple 3-Step Process
+              Get Started in 3 Simple Steps
             </motion.p>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="mt-4 sm:mt-6 text-base sm:text-lg leading-7 sm:leading-8 text-primary-100"
+              className="text-lg text-gray-600"
             >
-              Our proven system consistently delivers qualified leads to med spas across the country.
+              Three steps to set up your marketing and get your med spa growing.
             </motion.p>
           </div>
-          <div className="mx-auto mt-16 sm:mt-20 max-w-7xl">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {process.map((step, index) => (
                 <motion.div
                   key={step.name}
-                  initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.1 * (index + 3) }}
-                  className="group relative"
-                >
-                  <div className="relative bg-white/95 backdrop-blur-xl border border-white/30 rounded-2xl p-8 lg:p-10 hover:bg-white hover:shadow-2xl hover:shadow-primary-500/20 hover:-translate-y-1 transition-all duration-500 ease-out">
-                    {/* Step Number */}
-                    <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full flex items-center justify-center shadow-lg">
-                      <span className="text-white font-bold text-lg">{index + 1}</span>
-                    </div>
-                    
-                    {/* Icon Container */}
-                    <div className="relative mb-8 mt-4">
-                      <div className="w-20 h-20 bg-gradient-to-br from-primary-50 to-primary-100 rounded-2xl flex items-center justify-center shadow-sm group-hover:shadow-lg transition-all duration-300">
-                        <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl flex items-center justify-center shadow-md group-hover:shadow-xl group-hover:scale-110 transition-all duration-300">
-                          <step.icon className="h-6 w-6 text-white" />
-                        </div>
+                transition={{ duration: 0.5, delay: 0.1 * index }}
+                className="text-center group"
+              >
+                <div className="bg-white border border-gray-200 rounded-2xl p-8 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                  {/* Step Icon */}
+                  <div className="relative mb-6">
+                    <div className="w-20 h-20 bg-gradient-to-br from-primary-50 to-primary-100 rounded-2xl mx-auto flex items-center justify-center shadow-sm group-hover:shadow-md transition-all duration-300">
+                      <step.icon className="h-10 w-10 text-primary-600" />
                       </div>
                     </div>
                     
                     {/* Content */}
                     <div className="space-y-4">
-                      <h3 className="text-xl lg:text-2xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors duration-300">
+                    <h3 className="text-xl font-bold text-gray-900">
                         {step.name}
                       </h3>
-                      <p className="text-gray-600 leading-relaxed text-base lg:text-lg group-hover:text-gray-700 transition-colors duration-300">
+                    <p className="text-gray-600 leading-relaxed">
                         {step.description}
                       </p>
                     </div>
-                    
-                    {/* Decorative Elements */}
-                    <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-primary-100/30 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div className="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-primary-50/40 to-transparent rounded-tr-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100"></div>
                   </div>
                 </motion.div>
               ))}
-            </div>
           </div>
         </Container>
       </div>
@@ -802,7 +639,7 @@ export default function Home() {
                       loop
                       playsInline
                       preload="metadata"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-none group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                   </div>
@@ -825,107 +662,308 @@ export default function Home() {
         </Container>
       </div>
 
-      {/* Testimonials Section */}
-      <div className="relative isolate bg-white py-16 sm:py-24">
-        <div className="absolute inset-x-0 top-1/2 -z-10 transform-gpu overflow-hidden opacity-30 blur-3xl" aria-hidden="true">
-          <div
-            className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-primary-200 to-primary-400 opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
-            style={{
-              clipPath:
-                'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
-            }}
-          />
-        </div>
+      {/* Success Stories Section */}
+      <div className="relative bg-white py-16 sm:py-24">
         <Container>
-          <div className="mx-auto max-w-2xl text-center">
+          <div className="mx-auto max-w-2xl text-center mb-16">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-base font-semibold leading-7 text-primary-600"
+              className="text-sm font-medium text-gray-500 mb-4"
             >
-              Client Success Stories
+              Success Stories
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="mt-2 text-2xl sm:text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl font-display"
+              className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 mb-6"
             >
-              What Our Clients Say
+              Why Teams Love Working With Us
+            </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-lg text-gray-600"
+            >
+              Real feedback from Med Spas who simplified their marketing with our platform.
             </motion.p>
           </div>
-          <div className="mx-auto mt-12 sm:mt-16 grid max-w-2xl grid-cols-1 gap-6 sm:gap-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
               <motion.div
                 key={testimonial.author}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 * (index + 2) }}
-                className="group relative"
+                transition={{ duration: 0.5, delay: 0.1 * index }}
+                className="group"
               >
-                <div className="relative flex flex-col justify-between bg-white shadow-lg ring-1 ring-gray-200 rounded-2xl p-6 sm:p-8 xl:p-10 transition-all duration-500 hover:shadow-2xl hover:ring-primary-200 hover:-translate-y-2">
-                  {/* Quote Icon */}
-                  <div className="absolute top-4 right-4 opacity-10 group-hover:opacity-20 transition-opacity duration-300">
-                    <svg className="h-8 w-8 text-primary-600" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
-                    </svg>
-                  </div>
-                  
-                  {/* Business visual element */}
-                  <div className="absolute top-4 left-4 w-12 h-12 bg-gradient-to-br from-primary-100 to-primary-50 rounded-xl flex items-center justify-center opacity-60 group-hover:opacity-100 transition-opacity duration-300">
-                    <Image
-                      src="/biz-cards.png"
-                      alt="Business"
-                      width={24}
-                      height={24}
-                      className="w-6 h-6 object-contain"
-                    />
-                  </div>
-                  
-                  <div className="mb-4 sm:mb-6">
-                    <h3 className="text-base sm:text-lg font-semibold leading-7 tracking-tight text-gray-900 group-hover:text-primary-600 transition-colors duration-300">{testimonial.author}</h3>
-                    <p className="text-sm leading-6 text-gray-600 group-hover:text-gray-700 transition-colors duration-300">{testimonial.role}</p>
-                    <p className="text-xs leading-5 text-gray-500 group-hover:text-gray-600 transition-colors duration-300">{testimonial.location}</p>
-                  </div>
-                  <blockquote className="text-base sm:text-lg leading-7 text-gray-900 group-hover:text-gray-800 transition-colors duration-300">
+                <div className="bg-white border border-gray-200 rounded-2xl p-8 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                  {/* Quote */}
+                  <blockquote className="text-gray-900 mb-6 leading-relaxed">
                     "{testimonial.quote}"
                   </blockquote>
                   
-                  {/* Decorative Elements */}
-                  <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-primary-100/30 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  <div className="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-primary-50/40 to-transparent rounded-tr-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100"></div>
+                  {/* Author Info */}
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center">
+                      <span className="text-gray-600 font-medium text-sm">
+                        {testimonial.author.split(' ').map(n => n[0]).join('')}
+                      </span>
+                    </div>
+                    <div>
+                      <div className="font-semibold text-gray-900">{testimonial.author}</div>
+                      <div className="text-sm text-gray-600">{testimonial.role}</div>
+                    </div>
+                  </div>
                 </div>
               </motion.div>
             ))}
           </div>
         </Container>
+                  </div>
+                  
+      {/* Pricing Section */}
+      <div className="bg-gray-50 py-16 sm:py-24">
+        <Container>
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Simple, Transparent Pricing</h2>
+            <p className="mt-6 text-lg leading-8 text-gray-600">
+              Choose the perfect package for your med spa's growth stage and scale as you grow.
+            </p>
+          </div>
+
+          <div className="mx-auto mt-12 sm:mt-16 max-w-7xl">
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+              {[
+                {
+                  name: 'Essentials',
+                  price: '$1,999',
+                  description: 'Basic package for med spas just getting started with digital marketing.',
+                  features: [
+                    'Basic Meta ads setup',
+                    'Simple Maps optimization',
+                    'Monthly reporting only',
+                    'Email support (48hr response)',
+                    'Performance guarantee (10+ leads/month)',
+                    'Standard ad templates',
+                    'No retargeting campaigns',
+                    'No creative refreshes',
+                  ],
+                  cta: 'Schedule Your Strategy Call',
+                  popular: false,
+                },
+                {
+                  name: 'Growth',
+                  price: '$2,999',
+                  description: 'Most Popular - Complete marketing solution with AI optimization and premium support.',
+                  features: [
+                    'Advanced AI-powered Meta ads management',
+                    'Complete Google Maps optimization',
+                    'Weekly creative refreshes & A/B testing',
+                    'Advanced retargeting campaigns',
+                    'Weekly detailed reporting & analytics',
+                    'Dedicated account manager',
+                    '24/7 priority email support',
+                    'Performance guarantee (20+ leads/month)',
+                    'Custom landing page creation',
+                    'Advanced audience targeting',
+                    'Competitor analysis & optimization',
+                    'Lead quality scoring & filtering',
+                  ],
+                  cta: 'Schedule Your Strategy Call',
+                  popular: true,
+                },
+                {
+                  name: 'Scale',
+                  price: 'Custom',
+                  description: 'Enterprise solution for multi-location med spa chains and franchises.',
+                  features: [
+                    'Everything in Growth, plus:',
+                    'Multi-location management (unlimited)',
+                    'Advanced analytics & custom reporting',
+                    'Custom AI model training',
+                    'Priority phone & video support',
+                    'Dedicated success manager',
+                    'Custom integrations & API access',
+                    'White-label reporting & branding',
+                    'Performance guarantee (50+ leads/month)',
+                    'Custom campaign strategies',
+                    'Advanced attribution tracking',
+                    'Dedicated onboarding specialist',
+                  ],
+                  cta: 'Contact Sales',
+                  popular: false,
+                },
+              ].map((tier, index) => (
+                <motion.div
+                  key={tier.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.1 * index }}
+                  className={`relative group ${tier.popular ? 'lg:scale-105' : ''}`}
+                >
+                  {/* Popular badge */}
+                  {tier.popular && (
+                    <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
+                      <span className="inline-flex items-center rounded-full bg-gradient-to-r from-primary-600 to-primary-700 px-4 py-2 text-sm font-semibold text-white shadow-lg">
+                        Most Popular
+                      </span>
+                    </div>
+                  )}
+
+                  {/* Card */}
+                  <div className={`relative rounded-3xl bg-white shadow-lg ring-1 ring-gray-200 transition-all duration-500 hover:shadow-2xl hover:ring-primary-200 hover:-translate-y-2 flex flex-col ${tier.popular ? 'ring-2 ring-primary-500 shadow-xl' : ''}`}>
+                    {/* Header */}
+                    <div className="px-6 py-8 sm:px-8 sm:py-12">
+                      <div className="text-center">
+                        <h3 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl group-hover:text-primary-600 transition-colors duration-300">
+                          {tier.name}
+                        </h3>
+                        <p className="mt-4 text-base text-gray-600 group-hover:text-gray-700 transition-colors duration-300">
+                          {tier.description}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Pricing */}
+                    <div className="border-t border-gray-200 px-6 py-8 sm:px-8 sm:py-12">
+                      <div className="text-center">
+                        <div className="flex items-center justify-center gap-x-2">
+                          <span className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl group-hover:text-primary-600 transition-colors duration-300">{tier.price}</span>
+                          {tier.price !== 'Custom' && <span className="text-lg font-semibold text-gray-600">/month</span>}
+                        </div>
+                        <p className="mt-4 text-sm text-gray-600">
+                          No long-term contracts. Cancel anytime.
+                        </p>
+                        <div className="mt-8">
+                          <Button 
+                            href={tier.name === 'Scale' ? '/contact' : '/contact'} 
+                            className={`w-full transition-all duration-300 ${tier.popular ? 'bg-primary-600 hover:bg-primary-700 hover:scale-105' : 'hover:scale-105'}`} 
+                            variant={tier.popular ? 'primary' : 'outline'}
+                            size="lg"
+                          >
+                            {tier.cta}
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Features */}
+                    <div className="border-t border-gray-200 px-6 py-8 sm:px-8 sm:py-12">
+                      <div>
+                        <h4 className="text-lg font-semibold text-gray-900 mb-6">Everything included:</h4>
+                        <ul className="space-y-3">
+                          {tier.features.map((feature) => (
+                            <li key={feature} className="flex items-start gap-x-3">
+                              <svg className="h-5 w-5 flex-none text-primary-600 mt-0.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
+                              </svg>
+                              <span className="text-sm text-gray-600">{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+
+                    {/* Performance Guarantee Dropdown */}
+                    <div className="border-t border-gray-200 bg-gradient-to-br from-gray-50 to-gray-100 rounded-b-3xl mt-auto">
+                      <button
+                        onClick={() => toggleGuarantee(index)}
+                        className="w-full px-6 py-4 text-center hover:bg-gray-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-inset"
+                      >
+                        <div className="flex items-center justify-center gap-2">
+                          <h4 className="text-lg font-semibold text-gray-900">Our Performance Guarantee</h4>
+                          <svg
+                            className={`w-5 h-5 text-gray-600 transition-transform duration-200 ${expandedGuarantee === index ? 'rotate-180' : ''}`}
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                          </svg>
+                        </div>
+                      </button>
+                      
+                      {expandedGuarantee === index && (
+                        <div className="px-6 pb-6 text-center animate-in slide-in-from-top-2 duration-200">
+                          <p className="text-sm text-gray-600 mb-6 text-center">
+                            We aim for 20+ qualified inquiries in the first 30 days. If we miss it, we&apos;ll comp our management fee until we hit it. Client responsibilities: maintain agreed ad spend, approve creatives within 48h, use our tracking, and respond to new leads within 5 minutes during business hours.
+                          </p>
+                          <Button href="/contact" variant="outline" size="md" className="hover:scale-105 transition-transform duration-300 mx-auto">
+                            Schedule Your Strategy Call
+                          </Button>
+                        </div>
+                      )}
+                    </div>
+                    
+                    {/* Decorative Elements */}
+                    <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-primary-100/30 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <div className="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-primary-50/40 to-transparent rounded-tr-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100"></div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Trust Indicators */}
+          <div className="mt-16 sm:mt-24 mx-auto max-w-2xl text-center">
+            <h3 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl mb-8">
+              Trusted by Med Spas Nationwide
+            </h3>
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
+              <div className="text-center">
+                <div className="text-3xl font-bold text-primary-600">20+</div>
+                <div className="text-sm text-gray-600">Qualified Leads/Month</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-primary-600">7-14</div>
+                <div className="text-sm text-gray-600">Days to First Results</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-primary-600">24/7</div>
+                <div className="text-sm text-gray-600">Email Support</div>
+              </div>
+            </div>
+          </div>
+        </Container>
       </div>
 
       {/* FAQ Section */}
-      <div className="relative bg-gradient-to-br from-gray-50 via-white to-primary-50/30 py-16 sm:py-24">
+      <div className="relative bg-white py-16 sm:py-24">
         <Container>
-          <div className="mx-auto max-w-2xl lg:text-center mb-12 sm:mb-16">
+          <div className="mx-auto max-w-2xl text-center mb-16">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-base font-semibold leading-7 text-primary-600"
+              className="text-sm font-medium text-gray-500 mb-4"
             >
-              Frequently Asked Questions
+              FAQ
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="mt-2 text-2xl sm:text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl font-display"
+              className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 mb-6"
             >
-              Everything You Need to Know
+              Frequently Asked Questions
+            </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-lg text-gray-600"
+            >
+              Answers to common questions before you get started.
             </motion.p>
           </div>
           
           <div className="mx-auto max-w-3xl">
-            <div className="space-y-6">
+            <div className="space-y-4">
               {[
                 {
                   question: "How quickly will I see results?",
@@ -950,22 +988,26 @@ export default function Home() {
                 {
                   question: "Can I cancel if I'm not satisfied?",
                   answer: "Absolutely. We're confident in our results, but if you're not completely satisfied with our service, you can cancel at any time with no long-term contracts or hidden fees."
+                },
+                {
+                  question: "Can't find what you're looking for? Contact Us",
+                  answer: ""
                 }
               ].map((faq, index) => (
                 <motion.div
                   key={faq.question}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.1 * (index + 2) }}
+                  transition={{ duration: 0.5, delay: 0.1 * index }}
                   className="group"
                 >
-                  <div className="bg-white border border-gray-200 rounded-2xl p-6 sm:p-8 hover:border-primary-200 hover:shadow-lg transition-all duration-300">
-                    <h3 className="text-lg sm:text-xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors duration-300 mb-4">
+                  <div className="flex items-center justify-between bg-white border border-gray-200 rounded-xl p-6 hover:border-primary-200 hover:shadow-lg transition-all duration-300">
+                    <h3 className="text-lg font-semibold text-gray-900 group-hover:text-primary-600 transition-colors duration-300">
                       {faq.question}
                     </h3>
-                    <p className="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
-                      {faq.answer}
-                    </p>
+                    <svg className="w-5 h-5 text-gray-400 group-hover:text-primary-600 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                    </svg>
                   </div>
                 </motion.div>
               ))}
@@ -1103,7 +1145,7 @@ export default function Home() {
                 size="lg"
                 className="bg-white text-primary-900 hover:bg-primary-50 shadow-lg hover:shadow-xl transition-all"
               >
-                Book Your Free Lead Audit
+                Book Your Strategy Call
               </Button>
             </motion.div>
           </div>
@@ -1119,69 +1161,80 @@ export default function Home() {
         </motion.div>
       </Container>
 
-      {/* Final CTA Section */}
-      <div className="relative bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800 py-16 sm:py-24">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-            backgroundRepeat: 'repeat'
-          }}></div>
-        </div>
+      {/* Integrations Section */}
+      <div className="relative bg-white py-16 sm:py-24">
         <Container>
-          <div className="relative text-center">
+          <div className="mx-auto max-w-2xl text-center mb-16">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="text-sm font-medium text-gray-500 mb-4"
+            >
+              Integrations
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 mb-6"
+            >
+              Stay Connected With Your Favorite Apps
+            </motion.p>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-lg text-gray-600"
+            >
+              Integrate with the tools your Med Spa already uses.
+            </motion.p>
+        </div>
+          
+          {/* Integration Logos */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center justify-items-center opacity-60">
+            {[
+              "Facebook", "Instagram", "Google Ads", "Google Maps", "Mailchimp", "Calendly",
+              "Slack", "Zapier", "HubSpot", "Salesforce", "QuickBooks", "Stripe"
+            ].map((app, index) => (
+              <motion.div
+                key={app}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 * index }}
+                className="text-gray-400 font-medium text-sm text-center"
+              >
+                {app}
+              </motion.div>
+            ))}
+          </div>
+        </Container>
+      </div>
+
+      {/* Final CTA Section */}
+      <div className="relative bg-primary-600 py-16 sm:py-24">
+        <Container>
+          <div className="text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               className="mx-auto max-w-3xl"
             >
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-6 font-display">
-                Ready to Transform Your Med Spa?
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-6">
+                Ready to Supercharge Your Med Spa's Growth?
               </h2>
               <p className="text-lg sm:text-xl text-primary-100 mb-8 leading-relaxed">
-                Join hundreds of successful med spas who trust us to fill their calendars with high-value clients. 
-                Start your free lead audit today and see the difference AI-powered marketing can make.
+                Start today and see how easy marketing can be with our AI-powered platform.
               </p>
               
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-8">
                 <Button
                   href="/contact"
-                  variant="secondary"
                   size="lg"
-                  className="bg-white text-primary-900 hover:bg-primary-50 shadow-lg hover:shadow-xl transition-all text-lg px-8 py-4"
+                className="bg-white text-primary-600 hover:bg-gray-50 shadow-lg hover:shadow-xl transition-all text-lg px-8 py-4"
                 >
-                  Book Free Audit
+                Get Started
                 </Button>
-                <Button
-                  href="/services"
-                  variant="outline"
-                  size="lg"
-                  className="border-white text-white hover:bg-white hover:text-primary-900 text-lg px-8 py-4"
-                >
-                  See Sample Ads
-                </Button>
-              </div>
-              
-              <div className="flex items-center justify-center gap-8 text-primary-200 text-sm">
-                <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                  <span>No Setup Fees</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                  <span>Results in 7-14 Days</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                  <span>Cancel Anytime</span>
-                </div>
-              </div>
             </motion.div>
           </div>
         </Container>
