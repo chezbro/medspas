@@ -919,7 +919,7 @@ export default function Home() {
                     'Funnel Build-Outs (Email/SMS Nurture)',
                     'Quarterly Roadmap + Competitor Analysis',
                   ],
-                  cta: 'Talk To Eric',
+                  cta: "Let's Chat",
                   popular: false,
                 },
               ].map((tier, index) => (

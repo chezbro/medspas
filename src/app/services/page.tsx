@@ -93,7 +93,7 @@ const pricingTiers = [
       'Funnel build-outs (email/SMS nurture)',
       'Quarterly roadmap + competitor analysis',
     ],
-    cta: 'Talk to Eric',
+    cta: "Let's Chat",
     popular: false,
   },
 ]
