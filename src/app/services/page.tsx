@@ -158,21 +158,18 @@ export default function Services() {
               <div key={service.name} className="group relative">
                 {/* Card with hover effects */}
                 <div className="relative rounded-2xl bg-white p-8 shadow-lg ring-1 ring-gray-200 transition-all duration-500 hover:shadow-2xl hover:ring-primary-200 hover:-translate-y-2">
-                  {/* Service icon with enhanced styling */}
-                  <div className="mb-8 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-primary-50 to-primary-100 group-hover:from-primary-100 group-hover:to-primary-200 transition-all duration-300 shadow-sm group-hover:shadow-lg">
-                    <div className="h-10 w-10 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl flex items-center justify-center shadow-md group-hover:shadow-xl group-hover:scale-110 transition-all duration-300">
-                      <svg className="h-5 w-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                        {index === 0 && (
-                          <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" />
-                        )}
-                        {index === 1 && (
-                          <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-                        )}
-                        {index === 2 && (
-                          <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        )}
-                      </svg>
-                    </div>
+                  {/* Service thumbnail with enhanced styling */}
+                  <div className="mb-8 flex h-24 w-24 items-center justify-center rounded-2xl bg-gradient-to-br from-primary-50 to-primary-100 group-hover:from-primary-100 group-hover:to-primary-200 transition-all duration-300 shadow-sm group-hover:shadow-lg overflow-hidden">
+                    <img 
+                      src={
+                        index === 0 ? '/ai-video.jpg' :
+                        index === 1 ? '/gmaps.jpg' :
+                        index === 2 ? '/speed.png' :
+                        '/dashboard.jpg'
+                      }
+                      alt={`${service.name} thumbnail`}
+                      className="h-20 w-20 rounded-xl object-cover shadow-md group-hover:shadow-xl group-hover:scale-110 transition-all duration-300"
+                    />
                   </div>
                   
                   <h3 className="text-xl font-semibold leading-8 tracking-tight text-gray-900 mb-4 group-hover:text-primary-600 transition-colors duration-300">{service.name}</h3>
