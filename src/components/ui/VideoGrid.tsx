@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, memo } from 'react';
 import VideoHero from './VideoHero';
 import Container from './Container';
 
@@ -11,7 +11,7 @@ interface VideoGridProps {
   className?: string;
 }
 
-const VideoGrid: React.FC<VideoGridProps> = ({ videos, className = '' }) => {
+const VideoGrid: React.FC<VideoGridProps> = memo(({ videos, className = '' }) => {
   const [visibleVideos, setVisibleVideos] = useState<Set<number>>(new Set());
   const videoRefs = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -86,6 +86,8 @@ const VideoGrid: React.FC<VideoGridProps> = ({ videos, className = '' }) => {
       </div>
     </Container>
   );
-};
+});
+
+VideoGrid.displayName = 'VideoGrid';
 
 export default VideoGrid;

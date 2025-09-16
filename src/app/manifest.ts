@@ -2,9 +2,9 @@ import { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Ads for MedSpas - AI-Powered Marketing Solutions',
+    name: 'AI Ads for Med Spas | Smarter Ads. More Appointments.',
     short_name: 'MedSpa Ads',
-    description: 'Generate 20+ qualified leads per month for your Med Spa with our AI-powered marketing solutions.',
+    description: 'AI-powered ad creative and local visibility that books more patients.',
     start_url: '/',
     display: 'standalone',
     background_color: '#ffffff',

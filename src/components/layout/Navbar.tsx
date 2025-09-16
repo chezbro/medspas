@@ -7,11 +7,10 @@ import { Dialog } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 
 const navigation = [
-  { name: 'Solutions', href: '/services' },
-  { name: 'Features', href: '/services' },
-  { name: 'Resources', href: '/blog' },
-  { name: 'Pricing', href: '/pricing' },
-  { name: 'About', href: '/contact' },
+  { name: 'Services', href: '/services' },
+  { name: 'Results', href: '/results' },
+  { name: 'About', href: '/about' },
+  { name: 'Book', href: '/contact' },
 ]
 
 export default function Navbar() {
@@ -63,7 +62,7 @@ export default function Navbar() {
             href="/contact"
             className="rounded-full bg-primary-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-primary-700 transition-colors whitespace-nowrap"
           >
-            Get Started
+            Book Free Audit
           </Link>
         </div>
       </nav>
@@ -115,7 +114,7 @@ export default function Navbar() {
                   className="block rounded-full bg-primary-600 px-4 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-primary-700 transition-colors whitespace-nowrap"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  Get Started
+                  Book Free Audit
                 </Link>
               </div>
             </div>

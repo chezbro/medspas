@@ -1,11 +1,13 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, lazy, Suspense } from 'react'
 import { motion, LazyMotion, domAnimation } from 'framer-motion'
 import Image from 'next/image'
 import Container from '@/components/ui/Container'
 import Button from '@/components/ui/Button'
-import VideoGrid from '@/components/ui/VideoGrid'
+
+// Lazy load heavy components
+const VideoGrid = lazy(() => import('@/components/ui/VideoGrid'))
 
 const testimonials = [
   {
@@ -24,7 +26,7 @@ const testimonials = [
   },
   {
     quote: "Finally, a marketing agency that truly understands the med spa industry. Our calendar is consistently full now.",
-    author: "Michael Chen",
+    author: "Michael Cohen",
     role: "Med Spa CEO",
     location: "Austin, TX",
     image: "/testimonial3.jpg"
@@ -51,37 +53,36 @@ const features = [
 
 const process = [
   {
-    name: 'Create AI Ads',
-    description: 'Our AI analyzes successful med spa campaigns to create high-converting ad copy and visuals.',
+    name: 'Free Audit',
+                description: 'We Assess Your Ads, Maps, And Quick Wins.',
     icon: (props: React.SVGProps<SVGSVGElement>) => (
       <div className="relative">
         <svg fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 1-3m-1 3h-2.25M9 12.75l3 3m0 0 3-3m-3 3V9.75" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.623 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
         </svg>
         <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-pulse"></div>
       </div>
     ),
   },
   {
-    name: 'Optimize Google Maps',
-    description: 'We optimize your Google Business Profile to appear for high-intent local searches.',
+    name: 'Launch',
+                description: 'New Creatives + Tracking Live In ~10 Days.',
     icon: (props: React.SVGProps<SVGSVGElement>) => (
       <div className="relative">
         <svg fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-          <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M15.042 21.672L13.684 16.6m0 0l-2.51 2.225.569-9.47 5.227 7.917-3.286-.672zM12 2.25V4.5m5.834.166l-1.591 1.591M20.25 10.5H18M7.757 14.743l-1.59 1.59M6 10.5H3.75m4.007-4.243l-1.59-1.59" />
         </svg>
         <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-r from-red-500 to-yellow-500 rounded-full"></div>
       </div>
     ),
   },
   {
-    name: 'Fill Your Calendar',
-    description: 'Watch as qualified leads book consultations directly into your calendar.',
+    name: 'Scale',
+                description: 'Weekly Refreshes, Optimization, And Clear Reporting.',
     icon: (props: React.SVGProps<SVGSVGElement>) => (
       <div className="relative">
         <svg fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
-          <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+          <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
         </svg>
         <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-r from-green-500 to-blue-500 rounded-full animate-pulse"></div>
       </div>
@@ -131,9 +132,7 @@ export default function Home() {
                 transition={{ duration: 0.5, delay: 0.1 }}
                 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 mb-8 leading-tight"
               >
-                Turn Scattered Marketing Into
-                <br />
-                <span className="text-primary-600">Seamless Growth</span>
+                Smarter Ads. More Appointments.
               </motion.h1>
 
               {/* Sub-headline */}
@@ -143,7 +142,7 @@ export default function Home() {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="text-xl sm:text-2xl leading-8 text-gray-600 mb-12 max-w-3xl mx-auto"
               >
-                AI-powered Facebook & Instagram ads + Google Maps optimization brings qualified leads and revenue together so your Med Spa can focus on growth.
+                Transform your before/after photos into high-converting video ads that dominate local search and fill your calendar.
               </motion.p>
 
               {/* CTA Buttons */}
@@ -153,11 +152,11 @@ export default function Home() {
                 transition={{ duration: 0.5, delay: 0.3 }}
                 className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-8"
               >
-                <Button href="/contact" size="lg" className="bg-white text-gray-900 border border-gray-300 hover:bg-gray-50 shadow-lg hover:shadow-xl transition-all text-lg px-8 py-4 font-semibold">
-                  Book a Free Consultation
+                <Button href="/contact" size="lg" className="bg-primary-600 text-white hover:bg-primary-700 shadow-lg hover:shadow-xl transition-all text-lg px-8 py-4 font-semibold">
+                  Book Free Audit
                 </Button>
-                <Button href="/services" size="lg" className="bg-primary-600 text-white hover:bg-primary-700 shadow-lg hover:shadow-xl transition-all text-lg px-8 py-4">
-                  Learn More
+                <Button href="/services" size="lg" className="bg-white text-gray-900 border border-gray-300 hover:bg-gray-50 shadow-lg hover:shadow-xl transition-all text-lg px-8 py-4">
+                  See Sample Ads
                 </Button>
               </motion.div>
 
@@ -187,7 +186,8 @@ export default function Home() {
                         loop
                         playsInline
                         preload="metadata"
-                      className="w-full h-full object-none"
+                        className="w-full h-full object-none"
+                        aria-label="Before and after transformation video"
                       />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
                       </div>
@@ -208,15 +208,15 @@ export default function Home() {
               transition={{ duration: 0.5 }}
               className="text-2xl sm:text-3xl font-bold tracking-tight text-gray-900"
             >
-              Trusted by credible Med Spas
+              Trusted By Med Spas Nationwide
             </motion.h2>
           </div>
           
           {/* Company logos placeholder */}
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center justify-items-center opacity-60">
             {[
-              "MedSpa Pro", "Aesthetic Partners", "Beauty Collective", 
-              "Wellness Group", "Spa Solutions", "Beauty Network"
+              "Beverly Hills Med Spa", "Newport Beach Aesthetics", "Marina Del Rey Spa", 
+              "Santa Monica Wellness", "Manhattan Beach Beauty", "Redondo Beach Med Spa"
             ].map((company, index) => (
               <motion.div
                 key={company}
@@ -232,6 +232,113 @@ export default function Home() {
         </Container>
       </div>
 
+      {/* Problem → Solution Section */}
+      <div className="relative bg-gradient-to-br from-gray-50 via-white to-primary-50/30 py-16 sm:py-24">
+        <Container>
+          <div className="mx-auto max-w-4xl">
+            {/* Problem Section */}
+            <div className="mb-16">
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="text-2xl sm:text-3xl font-bold tracking-tight text-gray-900 mb-8"
+              >
+                Why Most Med Spa Marketing Underperforms
+              </motion.h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                  className="bg-white p-6 rounded-xl border border-gray-200"
+                >
+                  <h3 className="text-lg font-semibold text-gray-900 mb-3">Ads Fatigue Quickly And Costs Climb.</h3>
+                  <p className="text-gray-600">Static creatives lose effectiveness fast, driving up acquisition costs.</p>
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  className="bg-white p-6 rounded-xl border border-gray-200"
+                >
+                  <h3 className="text-lg font-semibold text-gray-900 mb-3">Google Maps Visibility Is Inconsistent.</h3>
+                  <p className="text-gray-600">Poor optimization means missing "Botox near me" searches.</p>
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                  className="bg-white p-6 rounded-xl border border-gray-200"
+                >
+                  <h3 className="text-lg font-semibold text-gray-900 mb-3">Slow Follow-Up Means Missed Bookings.</h3>
+                  <p className="text-gray-600">Inquiries go cold when response time exceeds 5 minutes.</p>
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                  className="bg-white p-6 rounded-xl border border-gray-200"
+                >
+                  <h3 className="text-lg font-semibold text-gray-900 mb-3">No Clear Data On What's Working.</h3>
+                  <p className="text-gray-600">Without proper tracking, optimization is guesswork.</p>
+                </motion.div>
+              </div>
+            </div>
+
+            {/* Solution Section */}
+            <div>
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.5 }}
+                className="text-2xl sm:text-3xl font-bold tracking-tight text-gray-900 mb-8"
+              >
+                Our Solution
+              </motion.h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.6 }}
+                  className="bg-gradient-to-br from-primary-50 to-primary-100 p-6 rounded-xl border border-primary-200"
+                >
+                  <h3 className="text-lg font-semibold text-gray-900 mb-3">AI Video Creative</h3>
+                  <p className="text-gray-700">We turn your before/after photos into cinematic ads that convert.</p>
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.7 }}
+                  className="bg-gradient-to-br from-primary-50 to-primary-100 p-6 rounded-xl border border-primary-200"
+                >
+                  <h3 className="text-lg font-semibold text-gray-900 mb-3">Google Maps Optimization</h3>
+                  <p className="text-gray-700">Be found for "Botox near me" and local intent searches.</p>
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.8 }}
+                  className="bg-gradient-to-br from-primary-50 to-primary-100 p-6 rounded-xl border border-primary-200"
+                >
+                  <h3 className="text-lg font-semibold text-gray-900 mb-3">Speed-To-Lead Systems</h3>
+                  <p className="text-gray-700">Ensure inquiries get contacted in minutes.</p>
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.9 }}
+                  className="bg-gradient-to-br from-primary-50 to-primary-100 p-6 rounded-xl border border-primary-200"
+                >
+                  <h3 className="text-lg font-semibold text-gray-900 mb-3">Real-Time Dashboard</h3>
+                  <p className="text-gray-700">See leads, CPL, bookings, and ROI at a glance.</p>
+                </motion.div>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </div>
+
       {/* Results Showcase Section */}
       <div className="relative bg-gradient-to-br from-gray-50 via-white to-primary-50/30 py-16 sm:py-24">
         <Container>
@@ -242,7 +349,7 @@ export default function Home() {
               transition={{ duration: 0.5 }}
               className="text-base font-semibold leading-7 text-primary-600"
             >
-              Real Results
+              What Results Look Like
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -250,7 +357,7 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="mt-2 text-2xl sm:text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl font-display"
             >
-              See the Difference Our Marketing Makes
+              More Qualified Inquiries From Local Intent Searches
             </motion.p>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -258,7 +365,7 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="mt-4 sm:mt-6 text-base sm:text-lg leading-7 sm:leading-8 text-gray-600"
             >
-              Before and after results from actual med spa clients who trusted us with their growth.
+              Lower Acquisition Costs With Better Creative. Faster Response = More Booked Consultations.
             </motion.p>
           </div>
           
@@ -266,21 +373,21 @@ export default function Home() {
             {[
               {
                 image: "/results-1.jpg",
-                title: "40% Increase in Bookings",
-                description: "Dr. Sarah's med spa saw a dramatic improvement in client bookings within the first month.",
-                location: "Los Angeles, CA"
+                title: "Lower CPL With Better Creative",
+                description: "AI-Generated Video Ads Reduce Acquisition Costs While Improving Lead Quality.",
+                location: "Sample Dashboard"
               },
               {
                 image: "/results-2.jpg", 
-                title: "Premium Client Acquisition",
-                description: "Higher-value clients booking multiple treatments and returning for follow-up services.",
-                location: "Miami, FL"
+                title: "Faster Lead Response",
+                description: "Speed-To-Lead Systems Ensure Inquiries Get Contacted Within Minutes.",
+                location: "Maps Ranking Grid"
               },
               {
                 image: "/results-3.jpg",
-                title: "Consistent Calendar Fill",
-                description: "Steady stream of qualified leads resulting in fully booked appointment calendars.",
-                location: "Austin, TX"
+                title: "More Booked Consultations",
+                description: "Higher Show Rates From Qualified Local Intent Searches.",
+                location: "Sample Ad Thumbnails"
               }
             ].map((result, index) => (
               <motion.div
@@ -297,6 +404,11 @@ export default function Home() {
                       alt={result.title}
                       fill
                       className="object-none group-hover:scale-105 transition-transform duration-500"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      priority={index === 0}
+                      loading={index === 0 ? "eager" : "lazy"}
+                      placeholder="blur"
+                      blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                     <div className="absolute bottom-4 left-4 right-4 text-white">
@@ -332,7 +444,7 @@ export default function Home() {
               Complete Marketing Solutions
             </p>
             <p className="mt-4 sm:mt-6 text-base sm:text-lg leading-7 sm:leading-8 text-gray-600">
-              Everything you need to grow your med spa business, all in one place.
+              Everything You Need To Grow Your Med Spa Business, All In One Place.
             </p>
           </div>
           
@@ -340,7 +452,7 @@ export default function Home() {
             {[
               {
                 name: 'AI Video & Ad Creative',
-                description: 'Weekly refreshes tailored to Botox, fillers, laser.',
+                description: 'Weekly Refreshes Tailored To Botox, Fillers, Laser.',
                 image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1926&q=80',
                 icon: (props: React.SVGProps<SVGSVGElement>) => (
                   <svg fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
@@ -350,7 +462,7 @@ export default function Home() {
               },
               {
                 name: 'Google Maps Optimization',
-                description: 'Profile, photos, reviews, citations to lift local visibility.',
+                description: 'Profile, Photos, Reviews, Citations To Lift Local Visibility.',
                 image: 'https://images.unsplash.com/photo-1524666041070-9d87656c25bb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
                 icon: (props: React.SVGProps<SVGSVGElement>) => (
                   <svg fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
@@ -360,8 +472,8 @@ export default function Home() {
                 ),
               },
               {
-                name: 'Speed-to-Lead System',
-                description: 'SMS/call workflows so inquiries get contacted in minutes.',
+                name: 'Speed-To-Lead System',
+                description: 'SMS/Call Workflows So Inquiries Get Contacted In Minutes.',
                 image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
                 icon: (props: React.SVGProps<SVGSVGElement>) => (
                   <svg fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
@@ -371,7 +483,7 @@ export default function Home() {
               },
               {
                 name: 'Real-Time Dashboard',
-                description: 'Leads, booking rate, and CPL—clear and transparent.',
+                description: 'Leads, Booking Rate, And CPL—Clear And Transparent.',
                 image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
                 icon: (props: React.SVGProps<SVGSVGElement>) => (
                   <svg fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
@@ -395,6 +507,10 @@ export default function Home() {
                       alt={feature.name}
                       fill
                       className="object-none group-hover:scale-105 transition-transform duration-500"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 50vw"
+                      loading="lazy"
+                      placeholder="blur"
+                      blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                     
@@ -449,7 +565,7 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-lg text-gray-600"
             >
-              Everything you need to plan, track, and deliver on all your marketing goals.
+              Everything You Need To Plan, Track, And Deliver On All Your Marketing Goals.
             </motion.p>
           </div>
           
@@ -457,22 +573,22 @@ export default function Home() {
             {[
               {
                 name: 'Adaptive Organizer',
-                description: 'AI-powered campaign management that automatically optimizes your ad performance and budget allocation.',
+                description: 'AI-Powered Campaign Management That Automatically Optimizes Your Ad Performance And Budget Allocation.',
                 image: '/computer.png'
               },
               {
                 name: 'Templates & Workflows',
-                description: 'Pre-built campaign templates and automated workflows designed specifically for med spa marketing.',
+                description: 'Pre-Built Campaign Templates And Automated Workflows Designed Specifically For Med Spa Marketing.',
                 image: '/file.svg'
               },
               {
                 name: 'Collaboration Made Easy',
-                description: 'Seamless team collaboration with real-time updates, shared dashboards, and instant communication.',
+                description: 'Seamless Team Collaboration With Real-Time Updates, Shared Dashboards, And Instant Communication.',
                 image: '/globe.svg'
               },
               {
                 name: 'Progress Tracking',
-                description: 'Comprehensive analytics and reporting to track your marketing performance and growth metrics.',
+                description: 'Comprehensive Analytics And Reporting To Track Your Marketing Performance And Growth Metrics.',
                 image: '/window.svg'
               }
             ].map((feature, index) => (
@@ -493,6 +609,8 @@ export default function Home() {
                         width={48}
                         height={48}
                         className="w-12 h-12 opacity-60"
+                        loading="lazy"
+                        sizes="48px"
                       />
                     </div>
                   </div>
@@ -532,7 +650,7 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 mb-6"
             >
-              Get Started in 3 Simple Steps
+              Get Started In 3 Simple Steps
             </motion.p>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -540,7 +658,7 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-lg text-gray-600"
             >
-              Three steps to set up your marketing and get your med spa growing.
+              Three Steps To Set Up Your Marketing And Get Your Med Spa Growing.
             </motion.p>
           </div>
           
@@ -595,7 +713,7 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="mt-2 text-2xl sm:text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl font-display"
             >
-              See Our AI-Generated Content in Action
+              See Our AI-Generated Content In Action
             </motion.p>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -603,67 +721,76 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="mt-4 sm:mt-6 text-base sm:text-lg leading-7 sm:leading-8 text-gray-600"
             >
-              High-converting video content created specifically for med spa treatments that drive bookings.
+              High-Converting Video Content Created Specifically For Med Spa Treatments That Drive Bookings.
             </motion.p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
-            {[
-              {
-                video: "/videos/botox.mp4",
-                title: "Botox Treatments",
-                description: "Professional video content showcasing Botox procedures and results",
-                thumbnail: "/cup.png"
-              },
-              {
-                video: "/videos/laser.mp4", 
-                title: "Laser Treatments",
-                description: "Advanced laser therapy demonstrations and before/after results",
-                thumbnail: "/cup.png"
-              },
-              {
-                video: "/videos/lips.mp4",
-                title: "Lip Fillers",
-                description: "Premium lip enhancement procedures and natural-looking results",
-                thumbnail: "/cup.png"
-              }
-            ].map((treatment, index) => (
-              <motion.div
-                key={treatment.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 * (index + 3) }}
-                className="group relative"
-              >
-                <div className="relative bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
-                  <div className="relative aspect-[16/9] overflow-hidden">
-                    <video
-                      src={treatment.video}
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
-                      preload="metadata"
-                      className="w-full h-full object-none group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+          <Suspense fallback={
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="bg-gray-100 rounded-2xl h-80 animate-pulse" />
+              ))}
+            </div>
+          }>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+              {[
+                {
+                  video: "/videos/botox.mp4",
+                  title: "Botox Treatments",
+                  description: "Professional Video Content Showcasing Botox Procedures And Results",
+                  thumbnail: "/cup.png"
+                },
+                {
+                  video: "/videos/laser.mp4", 
+                  title: "Laser Treatments",
+                  description: "Advanced Laser Therapy Demonstrations And Before/After Results",
+                  thumbnail: "/cup.png"
+                },
+                {
+                  video: "/videos/lips.mp4",
+                  title: "Lip Fillers",
+                  description: "Premium Lip Enhancement Procedures And Natural-Looking Results",
+                  thumbnail: "/cup.png"
+                }
+              ].map((treatment, index) => (
+                <motion.div
+                  key={treatment.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.1 * (index + 3) }}
+                  className="group relative"
+                >
+                  <div className="relative bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
+                    <div className="relative aspect-[16/9] overflow-hidden">
+                      <video
+                        src={treatment.video}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        preload="metadata"
+                        className="w-full h-full object-none group-hover:scale-105 transition-transform duration-500"
+                        aria-label={`${treatment.title} demonstration video`}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    </div>
+                    
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors duration-300 mb-3">
+                        {treatment.title}
+                      </h3>
+                      <p className="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
+                        {treatment.description}
+                      </p>
+                    </div>
+                    
+                    {/* Decorative Elements */}
+                    <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-primary-100/30 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   </div>
-                  
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors duration-300 mb-3">
-                      {treatment.title}
-                    </h3>
-                    <p className="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
-                      {treatment.description}
-                    </p>
-                  </div>
-                  
-                  {/* Decorative Elements */}
-                  <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-primary-100/30 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+                </motion.div>
+              ))}
+            </div>
+          </Suspense>
         </Container>
       </div>
 
@@ -693,7 +820,7 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-lg text-gray-600"
             >
-              Real feedback from Med Spas who simplified their marketing with our platform.
+              Real Feedback From Med Spas Who Simplified Their Marketing With Our Platform.
             </motion.p>
           </div>
           
@@ -735,9 +862,9 @@ export default function Home() {
       <div className="bg-gray-50 py-16 sm:py-24">
         <Container>
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Simple, Transparent Pricing</h2>
+            <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Packages</h2>
             <p className="mt-6 text-lg leading-8 text-gray-600">
-              Choose the perfect package for your med spa's growth stage and scale as you grow.
+              Choose The Perfect Package For Your Med Spa's Growth Stage And Scale As You Grow.
             </p>
           </div>
 
@@ -745,62 +872,47 @@ export default function Home() {
             <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
               {[
                 {
-                  name: 'Essentials',
-                  price: '$1,999',
-                  description: 'Basic package for med spas just getting started with digital marketing.',
+                  name: 'Basic',
+                  price: '$1,500',
+                  description: 'Essentials',
                   features: [
-                    'Basic Meta ads setup',
-                    'Simple Maps optimization',
-                    'Monthly reporting only',
-                    'Email support (48hr response)',
-                    'Performance guarantee (5+ leads/month)',
-                    'Standard ad templates',
-                    'No retargeting campaigns',
-                    'No creative refreshes',
+                    '4 AI-Powered Video Ads/Month',
+                    'Transform Your Before/After Photos Into Cinematic Creatives',
+                    'Google Maps Listing Optimization',
+                    'Basic Directory Listings',
+                    'Monthly Visibility Report',
                   ],
-                  cta: 'Schedule Your Strategy Call',
+                  cta: 'Book Free Audit',
                   popular: false,
                 },
                 {
-                  name: 'Growth',
-                  price: '$2,999',
-                  description: 'Most Popular - Complete marketing solution with AI optimization and premium support.',
+                  name: 'Standard',
+                  price: '$3,000',
+                  description: 'Growth Engine (Most Popular)',
                   features: [
-                    'Advanced AI-powered Meta ads management',
-                    'Complete Google Maps optimization',
-                    'Weekly creative refreshes & A/B testing',
-                    'Advanced retargeting campaigns',
-                    'Weekly detailed reporting & analytics',
-                    'Dedicated account manager',
-                    '24/7 priority email support',
-                    'Performance guarantee (20+ leads/month)',
-                    'Custom landing page creation',
-                    'Advanced audience targeting',
-                    'Competitor analysis & optimization',
-                    'Lead quality scoring & filtering',
+                    '10 AI-Powered Video Ads/Month',
+                    'Advanced Google Maps + Directory Optimization',
+                    'Paid Ads Management On Meta & Google Included',
+                    'A/B Creative Testing + Landing Page Optimization',
+                    'Detailed Monthly Reports Tied To Leads & Bookings',
+                    'Priority Turnaround For New Service Promos',
                   ],
-                  cta: 'Schedule Your Strategy Call',
+                  cta: 'Book Free Audit',
                   popular: true,
                 },
                 {
-                  name: 'Scale',
-                  price: 'Custom',
-                  description: 'Enterprise solution for multi-location med spa chains and franchises.',
+                  name: 'Custom',
+                  price: 'Contact Us',
+                  description: 'Enterprise Growth Partner',
                   features: [
-                    'Everything in Growth, plus:',
-                    'Multi-location management (unlimited)',
-                    'Advanced analytics & custom reporting',
-                    'Custom AI model training',
-                    'Priority phone & video support',
-                    'Dedicated success manager',
-                    'Custom integrations & API access',
-                    'White-label reporting & branding',
-                    'Performance guarantee (50+ leads/month)',
-                    'Custom campaign strategies',
-                    'Advanced attribution tracking',
-                    'Dedicated onboarding specialist',
+                    'Everything In Growth Engine',
+                    'Unlimited Creatives/Month',
+                    'Multi-Location Maps/SEO Management',
+                    'Dedicated Ads Manager & Strategy Sessions',
+                    'Funnel Build-Outs (Email/SMS Nurture)',
+                    'Quarterly Roadmap + Competitor Analysis',
                   ],
-                  cta: 'Contact Sales',
+                  cta: 'Talk To Eric',
                   popular: false,
                 },
               ].map((tier, index) => (
@@ -839,7 +951,7 @@ export default function Home() {
                       <div className="text-center">
                         <div className="flex items-center justify-center gap-x-2">
                           <span className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl group-hover:text-primary-600 transition-colors duration-300">{tier.price}</span>
-                          {tier.price !== 'Custom' && <span className="text-lg font-semibold text-gray-600">/month</span>}
+                          {tier.price !== 'Custom' && tier.price !== 'Contact Us' && <span className="text-lg font-semibold text-gray-600">/month</span>}
                         </div>
                         <p className="mt-4 text-sm text-gray-600">
                           No long-term contracts. Cancel anytime.
@@ -927,7 +1039,7 @@ export default function Home() {
                               </li>
                             </ul>
                             <p className="text-xs text-gray-500 italic">
-                              *Guarantee void if client responsibilities not met. Full terms in service agreement.
+                              *Guarantee Void If Client Responsibilities Not Met. Full Terms In Service Agreement.
                             </p>
                           </div>
                           <Button href="/contact" variant="outline" size="md" className="hover:scale-105 transition-transform duration-300 mx-auto">
@@ -946,10 +1058,20 @@ export default function Home() {
             </div>
           </div>
 
+          {/* CTA below pricing */}
+          <div className="mt-16 sm:mt-24 mx-auto max-w-2xl text-center">
+            <p className="text-lg text-gray-600 mb-8">
+              Not sure which plan fits? Book a free audit.
+            </p>
+            <Button href="/contact" variant="primary" size="lg" className="hover:scale-105 transition-transform duration-300">
+              Book Free Audit
+            </Button>
+          </div>
+
           {/* Trust Indicators */}
           <div className="mt-16 sm:mt-24 mx-auto max-w-2xl text-center">
             <h3 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl mb-8">
-              Trusted by Med Spas Nationwide
+              HIPAA-aware workflow · National market expertise · Transparent reporting
             </h3>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
               <div className="text-center">
@@ -995,7 +1117,7 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-lg text-gray-600"
             >
-              Answers to common questions before you get started.
+              Answers To Common Questions Before You Get Started.
             </motion.p>
           </div>
           
@@ -1003,31 +1125,27 @@ export default function Home() {
             <div className="space-y-4">
               {[
                 {
-                  question: "How quickly will I see results?",
-                  answer: "Most of our clients see their first qualified leads within 7-14 days of campaign launch. Our AI-powered system is designed to optimize quickly and start generating quality leads immediately."
+                  question: "Do You Replace Our Current Agency?",
+                  answer: "We offer flexible partnership options. We can either work alongside your existing agency to enhance specific areas (like creative production or Google Maps optimization), or we can take over your entire digital marketing strategy. Our Standard and Custom packages include full end-to-end management, while our Basic package focuses on creative production and local visibility improvements. We'll assess your current setup during the free audit and recommend the best approach for your specific needs."
                 },
                 {
-                  question: "What makes your leads different from other agencies?",
-                  answer: "Our leads are pre-qualified and specifically targeted for med spa services. We use advanced AI to identify high-intent prospects who are actively looking for aesthetic treatments and have the budget to invest in premium services."
+                  question: "Do We Need New Photoshoots?",
+                  answer: "No new photoshoots required! We specialize in transforming your existing before/after photos into high-converting video content using AI technology. Our creative team can work with photos from any quality level - from professional studio shots to smartphone images. We'll enhance lighting, composition, and create compelling video sequences that showcase your results effectively. If you do have access to additional photos or want to plan future shoots, we can incorporate those as well."
                 },
                 {
-                  question: "Do you work with med spas in all locations?",
-                  answer: "Yes! We work with med spas across the United States. Our digital marketing strategies are location-agnostic and can be customized for any market, from major metropolitan areas to smaller communities."
+                  question: "How Soon Do We Launch?",
+                  answer: "We typically launch new campaigns within 10-14 days after onboarding. This timeline includes: 1-2 days for account setup and tracking implementation, 3-5 days for creative production and AI video generation, 2-3 days for campaign setup and optimization, and 1-2 days for testing and refinement. For urgent launches (like seasonal promotions), we can expedite this to 7-10 days. We'll provide a detailed timeline during your strategy call based on your specific requirements and current marketing setup."
                 },
                 {
-                  question: "What's included in your guarantee?",
-                  answer: "We guarantee at least 20 qualified leads in your first 30 days, or we'll waive our management fee until we hit it. This includes leads who book consultations, request quotes, or show genuine interest in your services. The guarantee requires you to maintain agreed ad spend ($3,000+ monthly), approve creatives within 48 hours, implement our tracking, respond to leads within 5 minutes during business hours, provide accurate business info, and allow 90 days for full optimization. Guarantee is void if client responsibilities aren't met."
+                  question: "What Ad Spend Is Typical?",
+                  answer: "Most single-location med spas see optimal results with $2,500-$5,000 monthly ad spend. This range typically generates 20-50 qualified leads per month depending on your market and treatment offerings. Multi-location practices often invest $5,000-$15,000 monthly. We recommend starting conservatively and scaling based on performance - our AI optimization helps maximize ROI at any budget level. During your audit, we'll analyze your market, competition, and goals to recommend the ideal starting budget and growth plan."
                 },
                 {
-                  question: "How do you ensure lead quality?",
-                  answer: "We use advanced targeting, AI-powered ad optimization, and multi-step qualification processes. Every lead is verified for genuine interest and budget qualification before being sent to your practice."
+                  question: "What's Included In Reporting?",
+                  answer: "Our comprehensive reporting includes weekly performance summaries with lead volume, cost per lead (CPL), booking conversion rates, and ROI analysis. You'll also receive detailed breakdowns by campaign, creative performance, and demographic insights. Monthly reports include competitor analysis, market trends, and strategic recommendations. All data is presented in easy-to-understand dashboards with clear action items. We also provide real-time alerts for significant changes in performance and monthly strategy calls to review results and optimize campaigns."
                 },
                 {
-                  question: "Can I cancel if I'm not satisfied?",
-                  answer: "Absolutely. We're confident in our results, but if you're not completely satisfied with our service, you can cancel at any time with no long-term contracts or hidden fees."
-                },
-                {
-                  question: "Can't find what you're looking for? Contact Us",
+                  question: "Can't Find What You're Looking For? Contact Us",
                   answer: ""
                 }
               ].map((faq, index) => (
@@ -1132,7 +1250,7 @@ export default function Home() {
             {[
               {
                 title: "Google Partner",
-                description: "Certified Google Ads Partner with advanced optimization expertise",
+                description: "Certified Google Ads Partner With Advanced Optimization Expertise",
                 icon: (props: React.SVGProps<SVGSVGElement>) => (
                   <svg fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
@@ -1141,7 +1259,7 @@ export default function Home() {
               },
               {
                 title: "Meta Certified",
-                description: "Official Meta Business Partner for Facebook & Instagram advertising",
+                description: "Official Meta Business Partner For Facebook & Instagram Advertising",
                 icon: (props: React.SVGProps<SVGSVGElement>) => (
                   <svg fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 0 1 .865-.501 48.172 48.172 0 0 0 3.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z" />
@@ -1150,7 +1268,7 @@ export default function Home() {
               },
               {
                 title: "HIPAA Compliant",
-                description: "Fully compliant with healthcare privacy regulations",
+                description: "Fully Compliant With Healthcare Privacy Regulations",
                 icon: (props: React.SVGProps<SVGSVGElement>) => (
                   <svg fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.623 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
@@ -1159,7 +1277,7 @@ export default function Home() {
               },
               {
                 title: "5-Star Rated",
-                description: "Consistently rated 5 stars by our med spa clients",
+                description: "Consistently Rated 5 Stars By Our Med Spa Clients",
                 icon: (props: React.SVGProps<SVGSVGElement>) => (
                   <svg fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
@@ -1217,20 +1335,20 @@ export default function Home() {
               className="mx-auto mt-4 sm:mt-6 max-w-2xl text-base sm:text-lg leading-7 sm:leading-8 text-primary-100"
             >
               <p className="mb-4 font-semibold text-white">
-                We guarantee 20+ qualified leads in your first 30 days, or we&apos;ll waive our management fee until we hit it.
+                We Guarantee 20+ Qualified Leads In Your First 30 Days, Or We&apos;ll Waive Our Management Fee Until We Hit It.
               </p>
               <div className="text-sm text-primary-200 space-y-2">
-                <p className="font-medium">Client responsibilities required for guarantee:</p>
+                <p className="font-medium">Client Responsibilities Required For Guarantee:</p>
                 <ul className="text-left space-y-1 ml-4">
-                  <li>• Maintain agreed monthly ad spend ($3,000+ recommended)</li>
-                  <li>• Approve ad creatives within 48 hours of submission</li>
-                  <li>• Implement our tracking codes and pixel setup</li>
-                  <li>• Respond to leads within 5 minutes during business hours</li>
-                  <li>• Provide accurate business information and compliance docs</li>
-                  <li>• Allow 90 days for full optimization and results</li>
+                  <li>• Maintain Agreed Monthly Ad Spend ($3,000+ Recommended)</li>
+                  <li>• Approve Ad Creatives Within 48 Hours Of Submission</li>
+                  <li>• Implement Our Tracking Codes And Pixel Setup</li>
+                  <li>• Respond To Leads Within 5 Minutes During Business Hours</li>
+                  <li>• Provide Accurate Business Information And Compliance Docs</li>
+                  <li>• Allow 90 Days For Full Optimization And Results</li>
                 </ul>
                 <p className="text-xs italic mt-3">
-                  *Guarantee void if client responsibilities not met. Full terms in service agreement.
+                  *Guarantee Void If Client Responsibilities Not Met. Full Terms In Service Agreement.
                 </p>
               </div>
             </motion.div>
@@ -1288,7 +1406,7 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-lg text-gray-600"
             >
-              Integrate with the tools your Med Spa already uses.
+              Integrate With The Tools Your Med Spa Already Uses.
             </motion.p>
         </div>
           
@@ -1323,10 +1441,10 @@ export default function Home() {
               className="mx-auto max-w-3xl"
             >
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-6">
-                Ready to Supercharge Your Med Spa's Growth?
+                Ready To See Where Your Next Patients Will Come From?
               </h2>
               <p className="text-lg sm:text-xl text-primary-100 mb-8 leading-relaxed">
-                Start today and see how easy marketing can be with our AI-powered platform.
+                Book A Free Audit And Discover How We Can Help Your Med Spa Generate More Qualified Leads.
               </p>
               
                 <Button
@@ -1334,7 +1452,7 @@ export default function Home() {
                   size="lg"
                 className="bg-white text-primary-600 hover:bg-gray-50 shadow-lg hover:shadow-xl transition-all text-lg px-8 py-4"
                 >
-                Get Started
+                Book Free Audit
                 </Button>
             </motion.div>
           </div>

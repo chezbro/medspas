@@ -6,89 +6,94 @@ import Button from '@/components/ui/Button'
 
 const services = [
   {
-    name: 'AI-Powered Facebook & Instagram Ads',
-    description: 'Our proprietary AI algorithms analyze thousands of successful med spa campaigns to create high-converting ad copy and visuals.',
+    name: 'AI Video & Ad Creative',
+    description: 'We produce weekly cinematic ads from your existing before/after photos (Botox, fillers, laser, rhinoplasty, etc.).',
     features: [
-      'Custom audience targeting',
-      'A/B testing of ad creatives',
-      'Dynamic ad optimization',
-      'Retargeting campaigns',
-      'Weekly performance reports',
+      'Formats for Reels, Stories, Feed, YouTube Shorts',
+      'Weekly creative refreshes',
+      'A/B testing optimization',
+      'Cinematic video production',
+      'Before/after photo transformation',
     ],
   },
   {
-    name: 'Google Maps Optimization',
-    description: 'Dominate local search results and attract more clients with our proven Google Business Profile optimization strategies.',
+    name: 'Google Maps & Directories',
+    description: 'Categories, photos, Q&A, citations, review velocity coaching.',
     features: [
-      'Keyword-rich business description',
-      'Photo optimization',
+      'Google Maps optimization',
+      'Directory listings',
       'Review management',
       'Local citation building',
-      'Competitor analysis',
+      'Track improvement with simple, shared dashboards',
     ],
   },
   {
-    name: 'Directory Submissions',
-    description: 'Get listed on all major medical spa directories to boost your online presence and credibility.',
+    name: 'Speed-to-Lead',
+    description: 'SMS/call workflows so every inquiry gets a response within minutes.',
     features: [
-      'RealSelf profile optimization',
-      'Yelp business optimization',
-      'Medical directory listings',
-      'Local business directories',
-      'Regular listing updates',
+      'Automated response systems',
+      'Templates for front desk scripts and follow-up',
+      'Lead qualification workflows',
+      'Integration with booking systems',
+      'Response time optimization',
+    ],
+  },
+  {
+    name: 'Paid Ads Management (included in Standard & Custom)',
+    description: 'Meta + Google execution with weekly creative rotation.',
+    features: [
+      'Meta & Google ads management',
+      'A/B testing, landing page improvements',
+      'Conversion tracking',
+      'Weekly creative rotation',
+      'Performance optimization',
     ],
   },
 ]
 
 const pricingTiers = [
   {
-    name: 'Essentials',
-    price: '$1,999',
-    description: 'Perfect for new med spas looking to establish their online presence.',
+    name: 'Basic',
+    price: '$1,500',
+    description: 'Essentials',
     features: [
-      'Meta ads management',
-      'Maps optimization',
-      'Basic reporting',
-      'Email support',
-      'Performance guarantee (20+ leads/month)',
+      '4 AI-powered video ads/month',
+      'Transform your before/after photos into cinematic creatives',
+      'Google Maps listing optimization',
+      'Basic directory listings',
+      'Monthly visibility report',
     ],
-    cta: 'Start Your Free Lead Audit',
+    cta: 'Book Free Audit',
     popular: false,
   },
   {
-    name: 'Growth',
-    price: '$2,999',
-    description: 'Most Popular - Everything + creative refresh weekly, retargeting, weekly reporting.',
+    name: 'Standard',
+    price: '$3,000',
+    description: 'Growth Engine (Most Popular)',
     features: [
-      'Meta ads management',
-      'Maps optimization',
-      'Creative refresh weekly',
-      'Retargeting campaigns',
-      'Weekly reporting',
-      'Dedicated account manager',
-      '24/7 email support',
-      'Performance guarantee (20+ leads/month)',
-      'A/B testing of ad creatives',
+      '10 AI-powered video ads/month',
+      'Advanced Google Maps + directory optimization',
+      'Paid Ads Management on Meta & Google included',
+      'A/B creative testing + landing page optimization',
+      'Detailed monthly reports tied to leads & bookings',
+      'Priority turnaround for new service promos',
     ],
-    cta: 'Start Your Free Lead Audit',
+    cta: 'Book Free Audit',
     popular: true,
   },
   {
-    name: 'Scale',
-    price: 'Custom',
-    description: 'Multi-location, integrations, priority support.',
+    name: 'Custom',
+    price: 'from $5,000+',
+    description: 'Enterprise Growth Partner',
     features: [
-      'Everything in Growth, plus:',
-      'Multi-location management',
-      'Advanced analytics & reporting',
-      'Custom AI model training',
-      'Priority phone support',
-      'Dedicated success manager',
-      'Custom integrations',
-      'White-label options',
-      'Performance guarantee (20+ leads/month)',
+      'Everything in Growth Engine',
+      'Unlimited creatives/month',
+      'Multi-location Maps/SEO management',
+      'Dedicated ads manager & strategy sessions',
+      'Funnel build-outs (email/SMS nurture)',
+      'Quarterly roadmap + competitor analysis',
     ],
-    cta: 'Contact Sales',
+    cta: 'Talk to Eric',
     popular: false,
   },
 ]
@@ -122,13 +127,10 @@ export default function Services() {
             </div>
             
             <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 sm:text-7xl">
-              Med Spa Marketing{' '}
-              <span className="bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">
-                Services
-              </span>
+              Productized services that make your ads work harder
             </h1>
             <p className="mt-6 text-lg sm:text-xl leading-8 text-gray-600 max-w-3xl mx-auto">
-              Our comprehensive marketing package is designed specifically for med spas looking to attract more high-value clients and grow their business.
+              Fresh creative + local visibility + (optional) done-for-you ads.
             </p>
             
             {/* Stats */}
@@ -406,6 +408,18 @@ export default function Services() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* CTA Section */}
+        <div className="mt-16 sm:mt-24 text-center">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+            <Button href="/contact" variant="primary" size="lg" className="hover:scale-105 transition-transform duration-300">
+              See Sample Ads
+            </Button>
+            <Button href="/contact" variant="outline" size="lg" className="hover:scale-105 transition-transform duration-300">
+              Book Free Audit
+            </Button>
+          </div>
         </div>
       </Container>
     </>

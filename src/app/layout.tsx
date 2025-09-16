@@ -9,34 +9,38 @@ const inter = Inter({
   variable: '--font-inter',
   display: 'swap',
   preload: true,
+  fallback: ['system-ui', 'arial'],
+  adjustFontFallback: false,
 })
 const playfair = Playfair_Display({ 
   subsets: ['latin'], 
   variable: '--font-playfair',
   display: 'swap',
   preload: true,
+  fallback: ['Georgia', 'serif'],
+  adjustFontFallback: false,
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://medspapro.agency'),
+  metadataBase: new URL('https://adsformedspas.com'),
   title: {
-    default: 'Ads for MedSpas - AI-Powered Marketing Solutions | Generate 20+ Leads/Month',
-    template: '%s | Ads for MedSpas'
+    default: 'AI Ads for Med Spas | Smarter Ads. More Appointments.',
+    template: '%s | AI Ads for Med Spas'
   },
-  description: 'Generate 20+ qualified leads per month for your Med Spa with our AI-powered marketing solutions. Facebook/Instagram ads, Google Maps optimization, and more. Guaranteed results or free.',
+  description: 'AI-powered ad creative and local visibility that books more patients. See plans: Basic, Standard, Custom.',
   keywords: [
+    'AI ads for med spas',
     'med spa marketing',
-    'medical spa advertising',
-    'Facebook ads for med spas',
-    'Instagram ads for med spas',
+    'med spa advertising',
     'Google Maps optimization',
     'med spa lead generation',
-    'AI marketing for med spas',
+    'AI video creative',
     'med spa digital marketing',
-    'cosmetic procedure marketing',
-    'med spa SEO',
-    'med spa social media marketing',
-    'med spa advertising agency'
+    'local med spa marketing',
+    'med spa visibility',
+    'med spa appointments',
+    'med spa bookings',
+    'med spa marketing agency'
   ],
   authors: [{ name: 'Ads for MedSpas' }],
   creator: 'Ads for MedSpas',
@@ -46,10 +50,18 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
+  category: 'Marketing Services',
+  classification: 'Business',
+  other: {
+    'mobile-web-app-capable': 'yes',
+    'apple-mobile-web-app-capable': 'yes',
+    'apple-mobile-web-app-status-bar-style': 'default',
+    'theme-color': '#14b8a6',
+  },
   openGraph: {
-    title: 'Ads for MedSpas - AI-Powered Marketing Solutions',
-    description: 'Generate 20+ qualified leads per month for your Med Spa with our AI-powered marketing solutions. Facebook/Instagram ads, Google Maps optimization, and more.',
-    url: 'https://medspapro.agency',
+    title: 'AI Ads for Med Spas | Smarter Ads. More Appointments.',
+    description: 'AI-powered ad creative and local visibility that books more patients. See plans: Basic, Standard, Custom.',
+    url: 'https://adsformedspas.com',
     siteName: 'Ads for MedSpas',
     locale: 'en_US',
     type: 'website',
@@ -64,10 +76,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Ads for MedSpas - AI-Powered Marketing Solutions',
-    description: 'Generate 20+ qualified leads per month for your Med Spa with our AI-powered marketing solutions.',
+    title: 'AI Ads for Med Spas | Smarter Ads. More Appointments.',
+    description: 'AI-powered ad creative and local visibility that books more patients.',
     images: ['/og-image.jpg'],
-    creator: '@medspapro',
+    creator: '@adsformedspas',
   },
   robots: {
     index: true,
@@ -86,7 +98,7 @@ export const metadata: Metadata = {
     yahoo: 'your-yahoo-verification-code',
   },
   alternates: {
-    canonical: 'https://medspapro.agency',
+    canonical: 'https://adsformedspas.com',
   },
 }
 
@@ -100,13 +112,39 @@ export default function RootLayout({
       <head>
         {/* Preload critical resources */}
         <link rel="preload" href="/videos/beforeafter.mp4" as="video" type="video/mp4" />
-        <link rel="preload" href="/videos/lips.mp4" as="video" type="video/mp4" />
-        <link rel="preload" href="/videos/botox.mp4" as="video" type="video/mp4" />
-        <link rel="preload" href="/videos/laser.mp4" as="video" type="video/mp4" />
+        
+        {/* Preload critical images */}
+        <link rel="preload" href="/results-1.jpg" as="image" />
+        <link rel="preload" href="/logo.png" as="image" />
         
         {/* DNS prefetch for external domains */}
         <link rel="dns-prefetch" href="//www.google-analytics.com" />
         <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+        
+        {/* Resource hints for better performance */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        
+        {/* Service Worker Registration */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if ('serviceWorker' in navigator) {
+                window.addEventListener('load', function() {
+                  navigator.serviceWorker.register('/sw.js')
+                    .then(function(registration) {
+                      console.log('SW registered: ', registration);
+                    })
+                    .catch(function(registrationError) {
+                      console.log('SW registration failed: ', registrationError);
+                    });
+                });
+              }
+            `,
+          }}
+        />
         
         {/* Structured Data */}
         <script
@@ -116,8 +154,8 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Organization",
               "name": "Ads for MedSpas",
-              "url": "https://medspapro.agency",
-              "logo": "https://medspapro.agency/logo.png",
+              "url": "https://adsformedspas.com",
+              "logo": "https://adsformedspas.com/logo.png",
               "description": "AI-powered marketing solutions for medical spas and aesthetic practices",
               "address": {
                 "@type": "PostalAddress",
@@ -129,8 +167,8 @@ export default function RootLayout({
                 "availableLanguage": "English"
               },
               "sameAs": [
-                "https://www.facebook.com/medspapro",
-                "https://www.linkedin.com/company/medspapro"
+                "https://www.facebook.com/adsformedspas",
+                "https://www.linkedin.com/company/adsformedspas"
               ]
             })
           }}
@@ -162,7 +200,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         <Layout>{children}</Layout>
-        <PerformanceMonitor />
+        <PerformanceMonitor enableReporting={true} />
       </body>
     </html>
   )

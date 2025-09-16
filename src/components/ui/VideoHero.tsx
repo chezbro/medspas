@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 interface VideoHeroProps {
   videoSrc: string;
@@ -8,7 +8,7 @@ interface VideoHeroProps {
   objectFit?: string;
 }
 
-const VideoHero: React.FC<VideoHeroProps> = ({
+const VideoHero: React.FC<VideoHeroProps> = memo(({
   videoSrc,
   fallbackImage,
   overlay = true,
@@ -35,6 +35,8 @@ const VideoHero: React.FC<VideoHeroProps> = ({
       )}
     </div>
   );
-};
+});
+
+VideoHero.displayName = 'VideoHero';
 
 export default VideoHero;
