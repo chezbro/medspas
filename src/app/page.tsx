@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, lazy, Suspense } from 'react'
+import { useState, lazy, Suspense, useEffect } from 'react'
 import { motion, LazyMotion, domAnimation } from 'framer-motion'
 import Image from 'next/image'
 import Container from '@/components/ui/Container'
@@ -93,6 +93,11 @@ const process = [
 export default function Home() {
   const [expandedGuarantee, setExpandedGuarantee] = useState<number | null>(null)
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null)
+  const [isClient, setIsClient] = useState(false)
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
 
   const toggleGuarantee = (index: number) => {
     setExpandedGuarantee(expandedGuarantee === index ? null : index)
@@ -569,7 +574,7 @@ export default function Home() {
             </motion.p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-4xl mx-auto">
             {[
               {
                 name: 'Adaptive Organizer',
@@ -594,37 +599,39 @@ export default function Home() {
             ].map((feature, index) => (
               <motion.div
                 key={feature.name}
-                initial={{ opacity: 0, y: 20 }}
+                initial={isClient ? { opacity: 0, y: 20 } : { opacity: 1, y: 0 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 * index }}
-                className="group"
+                className="group relative"
               >
-                <div className="bg-white border border-gray-200 rounded-2xl p-8 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                  {/* Feature Screenshot Placeholder */}
-                  <div className="relative mb-6">
-                    <div className="w-full h-32 bg-gray-100 rounded-xl flex items-center justify-center mb-4">
+                <div className="relative bg-white border border-gray-200 rounded-2xl overflow-hidden hover:border-primary-200 hover:shadow-lg transition-all duration-300">
+                  {/* Icon Section */}
+                  <div className="relative p-8 pb-6">
+                    <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-primary-50 to-primary-100 rounded-2xl mx-auto mb-6 group-hover:from-primary-100 group-hover:to-primary-200 transition-all duration-300">
                       <Image
                         src={feature.image}
                         alt={feature.name}
-                        width={48}
-                        height={48}
-                        className="w-12 h-12 opacity-60"
+                        width={32}
+                        height={32}
+                        className="w-8 h-8 opacity-70 group-hover:opacity-90 transition-opacity duration-300"
                         loading="lazy"
-                        sizes="48px"
+                        sizes="32px"
                       />
+                    </div>
+                    
+                    {/* Content */}
+                    <div className="space-y-4 text-center">
+                      <h3 className="text-xl font-bold text-gray-900 group-hover:text-primary-600 transition-colors duration-300">
+                        {feature.name}
+                      </h3>
+                      <p className="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-300">
+                        {feature.description}
+                      </p>
                     </div>
                   </div>
                   
-                  {/* Content */}
-                  <div className="space-y-4">
-                    <h3 className="text-xl font-bold text-gray-900">
-                      {feature.name}
-                    </h3>
-                    <p className="text-gray-600 leading-relaxed">
-                      {feature.description}
-                    </p>
-                    
-                  </div>
+                  {/* Decorative Elements */}
+                  <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-primary-50/30 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 </div>
               </motion.div>
             ))}
