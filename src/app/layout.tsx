@@ -27,14 +27,14 @@ export const metadata: Metadata = {
     default: 'AI Ads for Med Spas | Smarter Ads. More Appointments.',
     template: '%s | AI Ads for Med Spas'
   },
-  description: 'AI-powered ad creative and local visibility that books more patients. See plans: Basic, Standard, Custom.',
+  description: 'Complete AI-powered marketing solutions: video ads, Google Maps optimization, speed-to-lead systems, and paid ads management that fill your calendar with qualified patients.',
   keywords: [
     'AI ads for med spas',
     'med spa marketing',
     'med spa advertising',
     'Google Maps optimization',
     'med spa lead generation',
-    'AI video creative',
+    'AI-powered marketing solutions',
     'med spa digital marketing',
     'local med spa marketing',
     'med spa visibility',
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'AI Ads for Med Spas | Smarter Ads. More Appointments.',
-    description: 'AI-powered ad creative and local visibility that books more patients. See plans: Basic, Standard, Custom.',
+    description: 'Complete AI-powered marketing solutions: video ads, Google Maps optimization, speed-to-lead systems, and paid ads management that fill your calendar with qualified patients.',
     url: 'https://adsformedspas.com',
     siteName: 'Ads for MedSpas',
     locale: 'en_US',
@@ -77,7 +77,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'AI Ads for Med Spas | Smarter Ads. More Appointments.',
-    description: 'AI-powered ad creative and local visibility that books more patients.',
+    description: 'Complete AI-powered marketing solutions: video ads, Google Maps optimization, speed-to-lead systems, and paid ads management that fill your calendar with qualified patients.',
     images: ['/og-image.jpg'],
     creator: '@adsformedspas',
   },

@@ -130,7 +130,7 @@ export default function Services() {
               Productized services that make your ads work harder
             </h1>
             <p className="mt-6 text-lg sm:text-xl leading-8 text-gray-600 max-w-3xl mx-auto">
-              Fresh creative + local visibility + (optional) done-for-you ads.
+              Complete marketing solutions: AI video ads, Google Maps optimization, speed-to-lead systems, and paid ads management.
             </p>
             
             {/* Stats */}

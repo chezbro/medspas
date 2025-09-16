@@ -51,7 +51,7 @@ export default function Navbar() {
             <Link
               key={item.name}
               href={item.href}
-              className="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors duration-200"
+              className="text-base font-medium text-gray-700 hover:text-gray-900 transition-colors duration-200 px-2 py-1 rounded-md hover:bg-gray-50"
             >
               {item.name}
             </Link>

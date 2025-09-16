@@ -4,7 +4,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: 'AI Ads for Med Spas | Smarter Ads. More Appointments.',
     short_name: 'MedSpa Ads',
-    description: 'AI-powered ad creative and local visibility that books more patients.',
+    description: 'Complete AI-powered marketing solutions: video ads, Google Maps optimization, speed-to-lead systems, and paid ads management that fill your calendar with qualified patients.',
     start_url: '/',
     display: 'standalone',
     background_color: '#ffffff',

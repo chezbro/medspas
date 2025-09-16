@@ -39,7 +39,7 @@ export default function Footer() {
                 </span>
               </Link>
               <p className="text-gray-600 text-sm leading-relaxed mb-6">
-                AI-powered creative + local visibility that books more med spa patients.
+                Complete AI-powered marketing solutions: video ads, Google Maps optimization, speed-to-lead systems, and paid ads management that fill your calendar with qualified patients.
               </p>
               
               {/* Contact info */}
