@@ -70,8 +70,8 @@ const nextConfig = {
             value: 'public, max-age=31536000, immutable',
           },
           {
-            key: 'Content-Encoding',
-            value: 'gzip',
+            key: 'Content-Type',
+            value: 'video/mp4',
           },
         ],
       },
