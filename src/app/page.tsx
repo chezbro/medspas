@@ -93,6 +93,7 @@ const process = [
 export default function Home() {
   const [expandedGuarantee, setExpandedGuarantee] = useState<number | null>(null)
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null)
+  const [expandedClientResponsibilities, setExpandedClientResponsibilities] = useState(false)
   const [isClient, setIsClient] = useState(false)
 
   useEffect(() => {
@@ -105,6 +106,10 @@ export default function Home() {
 
   const toggleFaq = (index: number) => {
     setExpandedFaq(expandedFaq === index ? null : index)
+  }
+
+  const toggleClientResponsibilities = () => {
+    setExpandedClientResponsibilities(!expandedClientResponsibilities)
   }
 
   return (
@@ -1076,9 +1081,9 @@ export default function Home() {
           </div>
 
           {/* Trust Indicators */}
-          <div className="mt-16 sm:mt-24 mx-auto max-w-2xl text-center">
-            <h3 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl mb-8">
-              HIPAA-aware workflow · National market expertise · Transparent reporting
+          <div className="mt-16 sm:mt-24 mx-auto text-center">
+            <h3 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl mb-8 whitespace-nowrap text-center">
+              HIPAA-Aware Workflow · National Market Expertise · Transparent Reporting
             </h3>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
               <div className="text-center">
@@ -1316,76 +1321,143 @@ export default function Home() {
         </Container>
       </div>
 
-      {/* Guarantee Section */}
-      <Container className="py-16 sm:py-24">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="relative isolate overflow-hidden bg-gradient-to-r from-primary-900 to-primary-800 px-4 sm:px-6 py-16 sm:py-24 text-center shadow-2xl sm:rounded-3xl sm:px-16"
-        >
-          <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,#4f46e5,#0ea5e9)] opacity-10" />
-          <div className="absolute -z-10 h-full w-full bg-[radial-gradient(circle_800px_at_100%_200px,rgba(79,70,229,0.3),transparent)]" />
-          <div className="mx-auto max-w-2xl">
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="mx-auto max-w-2xl text-2xl sm:text-3xl font-bold tracking-tight text-white sm:text-4xl"
-            >
-              Our Performance Guarantee
-            </motion.h2>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="mx-auto mt-4 sm:mt-6 max-w-2xl text-base sm:text-lg leading-7 sm:leading-8 text-primary-100"
-            >
-              <p className="mb-4 font-semibold text-white">
-                We Guarantee 20+ Qualified Leads In Your First 30 Days, Or We&apos;ll Waive Our Management Fee Until We Hit It.
-              </p>
-              <div className="text-sm text-primary-200 space-y-2">
-                <p className="font-medium">Client Responsibilities Required For Guarantee:</p>
-                <ul className="text-left space-y-1 ml-4">
-                  <li>• Maintain Agreed Monthly Ad Spend ($3,000+ Recommended)</li>
-                  <li>• Approve Ad Creatives Within 48 Hours Of Submission</li>
-                  <li>• Implement Our Tracking Codes And Pixel Setup</li>
-                  <li>• Respond To Leads Within 5 Minutes During Business Hours</li>
-                  <li>• Provide Accurate Business Information And Compliance Docs</li>
-                  <li>• Allow 90 Days For Full Optimization And Results</li>
-                </ul>
-                <p className="text-xs italic mt-3">
-                  *Guarantee Void If Client Responsibilities Not Met. Full Terms In Service Agreement.
-                </p>
-              </div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="mt-8 sm:mt-10 flex items-center justify-center gap-x-6"
-            >
-              <Button
-                href="/contact"
-                variant="secondary"
-                size="lg"
-                className="bg-white text-primary-900 hover:bg-primary-50 shadow-lg hover:shadow-xl transition-all"
+      {/* Performance Guarantee Section */}
+      <div className="relative bg-white py-16 sm:py-24">
+        <Container>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="relative isolate overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 px-6 sm:px-8 py-16 sm:py-20 text-center shadow-2xl rounded-3xl"
+          >
+            {/* Background Effects */}
+            <div className="absolute inset-0 bg-gradient-to-r from-primary-600/20 to-blue-600/20" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_50%)]" />
+            
+            {/* Content */}
+            <div className="relative z-10 mx-auto max-w-4xl">
+              {/* Badge */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="inline-flex items-center px-4 py-2 rounded-full bg-primary-500/20 border border-primary-400/30 text-primary-200 text-sm font-medium mb-6"
               >
-                Book Your Strategy Call
-              </Button>
-            </motion.div>
-          </div>
-          <div className="absolute -top-24 right-0 -z-10 transform-gpu blur-3xl" aria-hidden="true">
-            <div
-              className="aspect-[1404/767] w-[87.75rem] bg-gradient-to-r from-primary-400 to-primary-600 opacity-25"
-              style={{
-                clipPath:
-                  'polygon(73.6% 51.7%, 91.7% 11.8%, 100% 46.4%, 97.4% 82.2%, 92.5% 84.9%, 75.7% 64%, 55.3% 47.5%, 46.5% 49.4%, 45% 62.9%, 50.3% 87.2%, 21.3% 64.1%, 0.1% 100%, 5.4% 51.1%, 21.4% 63.9%, 58.9% 0.2%, 73.6% 51.7%)',
-              }}
-            />
-          </div>
-        </motion.div>
-      </Container>
+                <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                </svg>
+                Performance Guarantee
+              </motion.div>
+
+              {/* Main Title */}
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-6"
+              >
+                Our Performance Guarantee
+              </motion.h2>
+
+              {/* Guarantee Statement */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="mb-8"
+              >
+                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-white/20">
+                  <p className="text-xl sm:text-2xl font-semibold text-white leading-relaxed">
+                    We Guarantee <span className="text-primary-300 font-bold">20+ Qualified Leads</span> In Your First 30 Days, Or We&apos;ll Waive Our Management Fee Until We Hit It.
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Client Responsibilities Dropdown */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                className="mb-8"
+              >
+                <button
+                  onClick={toggleClientResponsibilities}
+                  className="w-full bg-white/5 backdrop-blur-sm rounded-xl p-4 border border-white/20 hover:bg-white/10 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-400 focus:ring-offset-2 focus:ring-offset-slate-900"
+                >
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-lg font-semibold text-white text-left">
+                      Client Responsibilities Required For Guarantee
+                    </h3>
+                    <svg
+                      className={`w-5 h-5 text-white transition-transform duration-200 ${expandedClientResponsibilities ? 'rotate-180' : ''}`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
+                </button>
+
+                {expandedClientResponsibilities && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="mt-4 bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/20"
+                  >
+                    <ul className="space-y-3 text-left">
+                      {[
+                        'Maintain Agreed Monthly Ad Spend ($3,000+ Recommended)',
+                        'Approve Ad Creatives Within 48 Hours Of Submission',
+                        'Implement Our Tracking Codes And Pixel Setup',
+                        'Respond To Leads Within 5 Minutes During Business Hours',
+                        'Provide Accurate Business Information And Compliance Docs',
+                        'Allow 90 Days For Full Optimization And Results'
+                      ].map((responsibility, index) => (
+                        <li key={index} className="flex items-start">
+                          <svg className="w-5 h-5 text-primary-400 mt-0.5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clipRule="evenodd" />
+                          </svg>
+                          <span className="text-white/90">{responsibility}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    <p className="text-sm text-white/70 italic mt-4 pt-4 border-t border-white/20">
+                      *Guarantee Void If Client Responsibilities Not Met. Full Terms In Service Agreement.
+                    </p>
+                  </motion.div>
+                )}
+              </motion.div>
+
+              {/* CTA Button */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.5 }}
+                className="flex flex-col sm:flex-row items-center justify-center gap-4"
+              >
+                <Button
+                  href="/contact"
+                  variant="secondary"
+                  size="lg"
+                  className="bg-white text-slate-900 hover:bg-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 font-semibold px-8 py-4 text-lg"
+                >
+                  Book Your Strategy Call
+                </Button>
+                <p className="text-white/80 text-sm">
+                  Free consultation • No commitment required
+                </p>
+              </motion.div>
+            </div>
+
+            {/* Decorative Elements */}
+            <div className="absolute top-0 right-0 w-32 h-32 bg-primary-500/20 rounded-full blur-3xl" />
+            <div className="absolute bottom-0 left-0 w-24 h-24 bg-blue-500/20 rounded-full blur-2xl" />
+          </motion.div>
+        </Container>
+      </div>
 
       {/* Integrations Section */}
       <div className="relative bg-white py-16 sm:py-24">
