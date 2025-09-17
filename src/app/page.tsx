@@ -152,7 +152,7 @@ export default function Home() {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="text-xl sm:text-2xl leading-8 text-gray-600 mb-12 max-w-3xl mx-auto"
               >
-                Complete AI-powered marketing solutions: video ads, Google Maps optimization, speed-to-lead systems, and paid ads management that fill your calendar with qualified patients.
+                AI-driven video ads, Google Maps optimization, and automated lead capture systems that convert browsers into booked appointments.
               </motion.p>
 
               {/* CTA Buttons */}
