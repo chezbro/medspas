@@ -1,12 +1,24 @@
-import { Metadata } from 'next'
+'use client'
 
-export const metadata: Metadata = {
-  title: 'MedSpa Growth Playbook - Download Your Free Guide',
-  description: 'Download our comprehensive MedSpa Growth Playbook and discover proven strategies to scale your medspa business.',
-  robots: 'noindex, nofollow', // This makes it "hidden" from search engines
-}
+import { useState } from 'react'
+import EmailCaptureForm from '@/components/ui/EmailCaptureForm'
 
 export default function PlaybookPage() {
+  const [showDownload, setShowDownload] = useState(false)
+
+  const handleEmailSuccess = () => {
+    setShowDownload(true)
+  }
+
+  const handleDownload = () => {
+    // Create a temporary link to download the file
+    const link = document.createElement('a')
+    link.href = '/MedSpa-Growth-Playbook.pdf'
+    link.download = 'MedSpa-Growth-Playbook.pdf'
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 pt-20 sm:pt-28 lg:pt-32 pb-16">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -64,20 +76,41 @@ export default function PlaybookPage() {
               </p>
             </div>
 
-            <a
-              href="/MedSpa-Growth-Playbook.pdf"
-              download="MedSpa-Growth-Playbook.pdf"
-              className="inline-flex items-center px-8 py-4 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-200 text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-            >
-              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-              </svg>
-              Download Your Free Playbook
-            </a>
-            
-            <p className="text-sm text-gray-500 mt-4">
-              No email required • Instant download • 100% free
-            </p>
+            {!showDownload ? (
+              <div className="max-w-md mx-auto">
+                <EmailCaptureForm onSuccess={handleEmailSuccess} />
+                <p className="text-sm text-gray-500 mt-4">
+                  We'll send you the playbook instantly after you enter your email
+                </p>
+              </div>
+            ) : (
+              <div className="text-center">
+                <div className="bg-green-50 rounded-lg p-6 mb-6">
+                  <div className="flex items-center justify-center mb-4">
+                    <svg className="w-12 h-12 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <p className="text-green-800 font-medium text-lg">
+                    ✅ Email verified! Your playbook is ready to download.
+                  </p>
+                </div>
+                
+                <button
+                  onClick={handleDownload}
+                  className="inline-flex items-center px-8 py-4 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors duration-200 text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                >
+                  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                  Download Your Free Playbook
+                </button>
+                
+                <p className="text-sm text-gray-500 mt-4">
+                  Thank you! Your download will start automatically.
+                </p>
+              </div>
+            )}
           </div>
         </div>
 
