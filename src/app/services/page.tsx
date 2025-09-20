@@ -83,7 +83,7 @@ const pricingTiers = [
   },
   {
     name: 'Custom',
-    price: 'from $5,000+',
+    price: 'Contact Us',
     description: 'Enterprise Growth Partner',
     features: [
       'Everything in Growth Engine',
@@ -108,7 +108,7 @@ export default function Services() {
   return (
     <>
       {/* Services Overview */}
-      <Container className="py-16 sm:py-24">
+      <Container className="py-12 sm:py-16 lg:py-24">
         {/* Hero Section with Visual Elements */}
         <div className="relative">
           {/* Background decorative elements */}
@@ -126,15 +126,15 @@ export default function Services() {
               AI-Powered Marketing Solutions
             </div>
             
-            <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 sm:text-7xl">
+            <h1 className="text-3xl sm:text-4xl lg:text-6xl font-bold tracking-tight text-gray-900">
               Productized services that make your ads work harder
             </h1>
-            <p className="mt-6 text-lg sm:text-xl leading-8 text-gray-600 max-w-3xl mx-auto">
+            <p className="mt-4 sm:mt-6 text-base sm:text-lg lg:text-xl leading-7 sm:leading-8 text-gray-600 max-w-3xl mx-auto">
               Complete marketing solutions: AI video ads, Google Maps optimization, speed-to-lead systems, and paid ads management.
             </p>
             
             {/* Stats */}
-            <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3 max-w-2xl mx-auto">
+            <div className="mt-8 sm:mt-12 grid grid-cols-1 gap-4 sm:gap-6 sm:grid-cols-3 max-w-2xl mx-auto">
               <div className="text-center">
                 <div className="text-3xl font-bold text-primary-600">20+</div>
                 <div className="text-sm text-gray-600">Qualified Leads/Month</div>
@@ -152,8 +152,8 @@ export default function Services() {
         </div>
 
         {/* Services Grid with Enhanced Cards */}
-        <div className="mx-auto mt-20 sm:mt-24 max-w-7xl">
-          <div className="grid grid-cols-1 gap-y-12 sm:gap-y-16 lg:grid-cols-3 lg:gap-x-8">
+        <div className="mx-auto mt-16 sm:mt-20 lg:mt-24 max-w-7xl">
+          <div className="grid grid-cols-1 gap-y-8 sm:gap-y-12 lg:gap-y-16 lg:grid-cols-3 lg:gap-x-8">
             {services.map((service, index) => (
               <div key={service.name} className="group relative">
                 {/* Card with hover effects */}
@@ -197,17 +197,17 @@ export default function Services() {
       </Container>
 
       {/* Pricing Section */}
-      <div className="bg-gray-50 py-16 sm:py-24">
+      <div className="bg-gray-50 py-12 sm:py-16 lg:py-24">
         <Container>
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Simple, Transparent Pricing</h2>
-            <p className="mt-6 text-lg leading-8 text-gray-600">
+            <h2 className="text-2xl sm:text-3xl lg:text-5xl font-bold tracking-tight text-gray-900">Simple, Transparent Pricing</h2>
+            <p className="mt-4 sm:mt-6 text-base sm:text-lg leading-7 sm:leading-8 text-gray-600">
               Choose the perfect package for your med spa's growth stage and scale as you grow.
             </p>
           </div>
 
-          <div className="mx-auto mt-12 sm:mt-16 max-w-7xl">
-            <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+          <div className="mx-auto mt-8 sm:mt-12 lg:mt-16 max-w-7xl">
+            <div className="grid grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-3">
               {pricingTiers.map((tier, index) => (
                 <div key={tier.name} className={`relative group ${tier.popular ? 'lg:scale-105' : ''}`}>
                   {/* Popular badge */}
@@ -369,15 +369,15 @@ export default function Services() {
       </div>
 
       {/* Ad Creative Examples */}
-      <Container className="py-16 sm:py-24">
+      <Container className="py-12 sm:py-16 lg:py-24">
         <div className="mx-auto max-w-2xl lg:text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Sample Ad Creatives</h2>
+          <h2 className="text-xl sm:text-2xl lg:text-4xl font-bold tracking-tight text-gray-900">Sample Ad Creatives</h2>
           <p className="mt-4 sm:mt-6 text-base sm:text-lg leading-7 sm:leading-8 text-gray-600">
             Here are some examples of high-converting ad creatives our AI has generated for med spas.
           </p>
         </div>
 
-        <div className="mt-12 sm:mt-16 grid grid-cols-1 gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 sm:mt-12 lg:mt-16 grid grid-cols-1 gap-4 sm:gap-6 lg:gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {[
             { src: '/videos/lips.mp4', title: 'Lip Filler Treatment' },
             { src: '/videos/botox.mp4', title: 'Botox Treatment' },
@@ -408,7 +408,7 @@ export default function Services() {
         </div>
 
         {/* CTA Section */}
-        <div className="mt-16 sm:mt-24 text-center">
+        <div className="mt-12 sm:mt-16 lg:mt-24 text-center">
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
             <Button href="/contact" variant="primary" size="lg" className="hover:scale-105 transition-transform duration-300">
               See Sample Ads

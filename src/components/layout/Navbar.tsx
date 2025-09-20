@@ -94,24 +94,24 @@ export default function Navbar() {
               <XMarkIcon className="h-6 w-6" aria-hidden="true" />
             </button>
           </div>
-          <div className="mt-6 flow-root">
+          <div className="mt-8 flow-root">
             <div className="-my-6 divide-y divide-gray-500/10">
-              <div className="space-y-2 py-6">
+              <div className="space-y-1 py-6">
                 {navigation.map((item) => (
                   <Link
                     key={item.name}
                     href={item.href}
-                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-medium leading-7 text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-all duration-200"
+                    className="-mx-3 block rounded-lg px-4 py-3 text-base font-medium leading-7 text-gray-700 hover:bg-gray-50 hover:text-gray-900 transition-all duration-200 min-h-[44px] flex items-center"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {item.name}
                   </Link>
                 ))}
               </div>
-              <div className="py-6">
+              <div className="py-8">
                 <Link
                   href="/contact"
-                  className="block rounded-full bg-primary-600 px-4 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-primary-700 transition-colors whitespace-nowrap"
+                  className="block rounded-full bg-primary-600 px-6 py-3 text-center text-base font-semibold text-white shadow-lg hover:bg-primary-700 hover:shadow-xl transition-all duration-200 min-h-[44px] flex items-center justify-center"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Book Free Audit

@@ -81,17 +81,37 @@ html {
   h1 {
     font-size: 1.875rem;
     line-height: 2.25rem;
+    margin-bottom: 1rem;
   }
   
   h2 {
     font-size: 1.5rem;
     line-height: 2rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  h3 {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    margin-bottom: 0.5rem;
   }
   
   /* Mobile button improvements */
   .btn-mobile {
     width: 100%;
     justify-content: center;
+  }
+  
+  /* Better mobile card spacing */
+  .mobile-card {
+    margin-bottom: 1.5rem;
+    padding: 1.25rem;
+  }
+  
+  /* Mobile-optimized sections */
+  .mobile-section {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
   }
 }
 
@@ -319,6 +339,27 @@ html {
   .mobile-first {
     padding: 2rem;
     font-size: 1.125rem;
+  }
+}
+
+/* Enhanced mobile touch interactions */
+@media (max-width: 640px) {
+  /* Better tap targets */
+  .tap-target {
+    padding: 0.75rem;
+    margin: 0.25rem;
+  }
+  
+  /* Mobile-optimized forms */
+  input, textarea, select {
+    font-size: 16px; /* Prevent zoom on iOS */
+    padding: 0.75rem;
+  }
+  
+  /* Better mobile navigation */
+  .mobile-nav {
+    padding: 1rem;
+    gap: 0.5rem;
   }
 }
 

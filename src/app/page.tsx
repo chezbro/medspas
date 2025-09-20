@@ -131,7 +131,7 @@ export default function Home() {
       {/* Hero Section */}
       <div className="relative bg-white overflow-hidden">
         <Container className="relative">
-          <div className="mx-auto max-w-7xl px-6 py-20 sm:py-32 lg:py-40">
+          <div className="mx-auto max-w-7xl px-6 py-12 sm:py-20 lg:py-32">
             {/* Centered layout for modern design */}
             <div className="text-center max-w-4xl mx-auto">
               
@@ -140,7 +140,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 mb-8 leading-tight"
+                className="text-3xl sm:text-4xl lg:text-6xl font-bold tracking-tight text-gray-900 mb-6 sm:mb-8 leading-tight"
               >
                 Smarter Ads. More Appointments.
               </motion.h1>
@@ -150,7 +150,7 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="text-xl sm:text-2xl leading-8 text-gray-600 mb-12 max-w-3xl mx-auto"
+                className="text-lg sm:text-xl lg:text-2xl leading-7 sm:leading-8 text-gray-600 mb-8 sm:mb-12 max-w-3xl mx-auto"
               >
                 AI-driven video ads, Google Maps optimization, and automated lead capture systems that convert browsers into booked appointments.
               </motion.p>
@@ -160,12 +160,12 @@ export default function Home() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.3 }}
-                className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-8"
+                className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 mb-6 sm:mb-8"
               >
-                <Button href="/contact" size="lg" className="bg-primary-600 text-white hover:bg-primary-700 shadow-lg hover:shadow-xl transition-all text-lg px-8 py-4 font-semibold">
+                <Button href="/contact" size="lg" className="w-full sm:w-auto bg-primary-600 text-white hover:bg-primary-700 shadow-lg hover:shadow-xl transition-all text-lg px-8 py-4 font-semibold">
                   Book Free Audit
                 </Button>
-                <Button href="/services" size="lg" className="bg-white text-gray-900 border border-gray-300 hover:bg-gray-50 shadow-lg hover:shadow-xl transition-all text-lg px-8 py-4">
+                <Button href="/services" size="lg" className="w-full sm:w-auto bg-white text-gray-900 border border-gray-300 hover:bg-gray-50 shadow-lg hover:shadow-xl transition-all text-lg px-8 py-4">
                   See Sample Ads
                 </Button>
               </motion.div>
@@ -175,7 +175,7 @@ export default function Home() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
-                className="text-sm text-gray-500 mb-16"
+                className="text-sm text-gray-500 mb-12 sm:mb-16"
                 >
                 No credit card required
                 </motion.p>
@@ -208,55 +208,30 @@ export default function Home() {
         </Container>
       </div>
 
-      {/* Trusted by Section */}
-      <div className="relative bg-white py-16 sm:py-24">
-        <Container>
-          <div className="mx-auto max-w-2xl text-center mb-16">
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="text-2xl sm:text-3xl font-bold tracking-tight text-gray-900"
-            >
-              Trusted By Med Spas Nationwide
-            </motion.h2>
-          </div>
-          
-          {/* Company logos placeholder */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center justify-items-center opacity-60">
-            {[
-              "Beverly Hills Med Spa", "Newport Beach Aesthetics", "Marina Del Rey Spa", 
-              "Santa Monica Wellness", "Manhattan Beach Beauty", "Redondo Beach Med Spa"
-            ].map((company, index) => (
-              <motion.div
-                key={company}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 * index }}
-                className="text-gray-400 font-medium text-sm"
-              >
-                {company}
-              </motion.div>
-            ))}
-          </div>
-        </Container>
-      </div>
 
       {/* Problem → Solution Section */}
-      <div className="relative bg-gradient-to-br from-gray-50 via-white to-primary-50/30 py-16 sm:py-24">
+      <div className="relative bg-gradient-to-br from-gray-50 via-white to-primary-50/30 py-12 sm:py-16 lg:py-24">
         <Container>
           <div className="mx-auto max-w-4xl">
             {/* Problem Section */}
             <div className="mb-16">
-              <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="text-2xl sm:text-3xl font-bold tracking-tight text-gray-900 mb-8"
-              >
-                Why Most Med Spa Marketing Underperforms
-              </motion.h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="text-center mb-12">
+                <motion.h2
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className="text-2xl sm:text-3xl lg:text-5xl font-bold tracking-tight text-gray-900 mb-4"
+                >
+                  Why Most Med Spa Marketing Underperforms
+                </motion.h2>
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  className="w-24 h-1 bg-gradient-to-r from-primary-500 to-primary-600 mx-auto rounded-full"
+                ></motion.div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -298,15 +273,23 @@ export default function Home() {
 
             {/* Solution Section */}
             <div>
-              <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.5 }}
-                className="text-2xl sm:text-3xl font-bold tracking-tight text-gray-900 mb-8"
-              >
-                Our Solution
-              </motion.h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="text-center mb-12">
+                <motion.h2
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.5 }}
+                  className="text-2xl sm:text-3xl lg:text-5xl font-bold tracking-tight text-gray-900 mb-4"
+                >
+                  Our Solution
+                </motion.h2>
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: 0.7 }}
+                  className="w-24 h-1 bg-gradient-to-r from-primary-500 to-primary-600 mx-auto rounded-full"
+                ></motion.div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -350,7 +333,7 @@ export default function Home() {
       </div>
 
       {/* Results Showcase Section */}
-      <div className="relative bg-gradient-to-br from-gray-50 via-white to-primary-50/30 py-16 sm:py-24">
+      <div className="relative bg-gradient-to-br from-gray-50 via-white to-primary-50/30 py-12 sm:py-16 lg:py-24">
         <Container>
           <div className="mx-auto max-w-2xl lg:text-center mb-12 sm:mb-16">
             <motion.h2
@@ -359,15 +342,15 @@ export default function Home() {
               transition={{ duration: 0.5 }}
               className="text-base font-semibold leading-7 text-primary-600"
             >
-              What Results Look Like
+              Proven Results
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="mt-2 text-2xl sm:text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl font-display"
+              className="mt-2 text-xl sm:text-2xl lg:text-4xl font-bold tracking-tight text-gray-900 font-display"
             >
-              More Qualified Inquiries From Local Intent Searches
+              3x More Qualified Leads
             </motion.p>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -375,11 +358,11 @@ export default function Home() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="mt-4 sm:mt-6 text-base sm:text-lg leading-7 sm:leading-8 text-gray-600"
             >
-              Lower Acquisition Costs With Better Creative. Faster Response = More Booked Consultations.
+              Lower costs. Better creative. More bookings.
             </motion.p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
             {[
               {
                 image: "/results-1.jpg",
@@ -444,13 +427,13 @@ export default function Home() {
       </div>
 
       {/* Services Section */}
-      <div className="relative bg-gradient-to-br from-gray-50 via-white to-primary-50/30 py-16 sm:py-24">
+      <div className="relative bg-gradient-to-br from-gray-50 via-white to-primary-50/30 py-12 sm:py-16 lg:py-24">
         <Container>
           <div className="mx-auto max-w-2xl lg:text-center mb-12 sm:mb-16">
             <h2 className="text-base font-semibold leading-7 text-primary-600">
               Our Services
             </h2>
-            <p className="mt-2 text-2xl sm:text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl font-display">
+            <p className="mt-2 text-xl sm:text-2xl lg:text-4xl font-bold tracking-tight text-gray-900 font-display">
               Complete Marketing Solutions
             </p>
             <p className="mt-4 sm:mt-6 text-base sm:text-lg leading-7 sm:leading-8 text-gray-600">
@@ -458,7 +441,7 @@ export default function Home() {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 max-w-6xl mx-auto">
             {[
               {
                 name: 'AI Video & Ad Creative',
@@ -550,7 +533,7 @@ export default function Home() {
       </div>
 
       {/* Features Section */}
-      <div className="relative bg-white py-16 sm:py-24">
+      <div className="relative bg-white py-12 sm:py-16 lg:py-24">
         <Container>
           <div className="mx-auto max-w-2xl text-center mb-16">
             <motion.h2
@@ -565,7 +548,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 mb-6"
+              className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-gray-900 mb-6"
             >
               Features To Boost Your Productivity
             </motion.p>
@@ -1082,7 +1065,7 @@ export default function Home() {
 
           {/* Trust Indicators */}
           <div className="mt-16 sm:mt-24 mx-auto text-center">
-            <h3 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl mb-8 whitespace-nowrap text-center">
+            <h3 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl mb-8 text-center">
               HIPAA-Aware Workflow · National Market Expertise · Transparent Reporting
             </h3>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
