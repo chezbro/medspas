@@ -365,19 +365,19 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
             {[
               {
-                image: "/results-1.jpg",
+                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
                 title: "Lower CPL With Better Creative",
                 description: "AI-Generated Video Ads Reduce Acquisition Costs While Improving Lead Quality.",
                 location: "Sample Dashboard"
               },
               {
-                image: "/results-2.jpg", 
+                image: "https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80", 
                 title: "Faster Lead Response",
                 description: "Speed-To-Lead Systems Ensure Inquiries Get Contacted Within Minutes.",
                 location: "Maps Ranking Grid"
               },
               {
-                image: "/results-3.jpg",
+                image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
                 title: "More Booked Consultations",
                 description: "Higher Show Rates From Qualified Local Intent Searches.",
                 location: "Sample Ad Thumbnails"

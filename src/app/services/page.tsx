@@ -159,16 +159,16 @@ export default function Services() {
                 {/* Card with hover effects */}
                 <div className="relative rounded-2xl bg-white p-8 shadow-lg ring-1 ring-gray-200 transition-all duration-500 hover:shadow-2xl hover:ring-primary-200 hover:-translate-y-2">
                   {/* Service thumbnail with enhanced styling */}
-                  <div className="mb-8 flex h-24 w-24 items-center justify-center rounded-2xl bg-gradient-to-br from-primary-50 to-primary-100 group-hover:from-primary-100 group-hover:to-primary-200 transition-all duration-300 shadow-sm group-hover:shadow-lg overflow-hidden">
+                  <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary-50 to-primary-100 group-hover:from-primary-100 group-hover:to-primary-200 transition-all duration-300 shadow-sm group-hover:shadow-lg overflow-hidden">
                     <img 
                       src={
                         index === 0 ? '/ai-video.jpg' :
-                        index === 1 ? '/gmaps.jpg' :
-                        index === 2 ? '/speed.png' :
-                        '/dashboard.jpg'
+                        index === 1 ? '/biz-cards.png' :
+                        index === 2 ? '/computer.png' :
+                        '/results-1.jpg'
                       }
                       alt={`${service.name} thumbnail`}
-                      className="h-20 w-20 rounded-xl object-cover shadow-md group-hover:shadow-xl group-hover:scale-110 transition-all duration-300"
+                      className="h-8 w-8 rounded-lg object-cover shadow-sm group-hover:shadow-md group-hover:scale-110 transition-all duration-300"
                     />
                   </div>
                   
