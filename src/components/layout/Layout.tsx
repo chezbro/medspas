@@ -1,7 +1,6 @@
 import { ReactNode } from 'react'
 import Navbar from './Navbar'
 import Footer from './Footer'
-import ExitIntentPopup from '../ui/ExitIntentPopup'
 import CookieBanner from '../ui/CookieBanner'
 
 interface LayoutProps {
@@ -14,7 +13,6 @@ export default function Layout({ children }: LayoutProps) {
       <Navbar />
       <main className="flex-grow">{children}</main>
       <Footer />
-      <ExitIntentPopup />
       <CookieBanner />
     </div>
   )
